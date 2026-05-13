@@ -1,0 +1,2096 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ADEL ABU TUREKEI inc</title>
+  <style>
+    :root {
+      --bg: #ffffff;
+      --surface: #f7f8fb;
+      --surface-strong: #eef1f6;
+      --text: #111827;
+      --muted: #5f6b7a;
+      --line: #dfe5ee;
+      --accent: #f7a21a;
+      --accent-soft: #fff4de;
+      --shadow: 0 18px 40px rgba(15, 23, 42, 0.08);
+      --radius: 0px;
+      --site-width: 980px;
+      --transition: 240ms ease;
+      --font-ui: Avenir, "Avenir Next", "Segoe UI", Helvetica, Arial, sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--font-ui);
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button,
+    input,
+    textarea {
+      font: inherit;
+    }
+
+    .container {
+      width: min(var(--site-width), calc(100% - 40px));
+      margin: 0 auto;
+    }
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 40;
+      background: rgba(255, 255, 255, 0.96);
+      border-bottom: 1px solid #e5e7eb;
+      backdrop-filter: blur(10px);
+    }
+
+    .site-header .container {
+      width: min(1280px, calc(100% - 32px));
+    }
+
+    .site-nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      min-height: 78px;
+    }
+
+    .site-brand {
+      display: inline-flex;
+      align-items: center;
+      min-width: 0;
+      font-size: 22px;
+      line-height: 1.1;
+      font-weight: 700;
+      color: #111827;
+      letter-spacing: -0.02em;
+      white-space: nowrap;
+    }
+
+    .site-nav-links {
+      display: flex;
+      align-items: center;
+      gap: 34px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .site-nav-links a {
+      color: #4b5563;
+      font-size: 15px;
+      line-height: 1.2;
+      font-weight: 500;
+      transition: color var(--transition);
+    }
+
+    .site-nav-links a:hover,
+    .site-nav-links a:focus-visible {
+      color: var(--accent);
+      outline: none;
+    }
+
+    .site-nav-links a.is-active {
+      color: var(--accent);
+    }
+
+    .site-nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .site-cta {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 44px;
+      padding: 0 18px;
+      border-radius: 12px;
+      background: var(--accent);
+      color: #fff;
+      font-size: 14px;
+      line-height: 1;
+      font-weight: 600;
+      transition: background-color var(--transition), transform var(--transition);
+    }
+
+    .site-cta:hover,
+    .site-cta:focus-visible {
+      background: #e59a00;
+      transform: translateY(-1px);
+      outline: none;
+    }
+
+    .site-nav-toggle {
+      display: none;
+      width: 44px;
+      height: 44px;
+      padding: 0;
+      border: 1px solid #d1d5db;
+      border-radius: 10px;
+      background: #fff;
+      color: #6b7280;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+    }
+
+    .site-nav-toggle svg {
+      width: 22px;
+      height: 22px;
+      fill: currentColor;
+    }
+
+    .site-nav-toggle .icon-close {
+      display: none;
+    }
+
+    .site-nav-toggle[aria-expanded="true"] .icon-menu {
+      display: none;
+    }
+
+    .site-nav-toggle[aria-expanded="true"] .icon-close {
+      display: block;
+    }
+
+    .site-nav-menu {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 28px;
+      flex: 1 1 auto;
+    }
+
+    #home,
+    #process,
+    #services,
+    #works,
+    #contact {
+      scroll-margin-top: 104px;
+    }
+
+    .hero {
+      padding: 0;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      min-height: 760px;
+      width: 100%;
+      max-width: 100%;
+    }
+
+    .hero-copy {
+      padding-top: 253px;
+      padding-left: max(24px, calc((100vw - var(--site-width)) / 2 + 7px));
+      background: #f6a300;
+      color: #fff;
+    }
+
+    .hero-title {
+      margin: 0 0 17px;
+      width: 446px;
+      font-size: 58px;
+      line-height: 1.05;
+      font-weight: 700;
+      letter-spacing: -0.04em;
+    }
+
+    .hero-text {
+      width: 406px;
+      margin: 0 0 26px;
+      color: rgba(255, 255, 255, 0.96);
+      font-size: 18px;
+      line-height: 1.8;
+      font-weight: 400;
+    }
+
+    .store-buttons {
+      position: relative;
+      display: flex;
+      gap: 28px;
+      align-items: center;
+    }
+
+    .store-buttons img {
+      height: 55px;
+      width: auto;
+    }
+
+    .hero-slider-wrap {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      padding-top: 42px;
+      padding-left: 24px;
+      padding-right: 24px;
+      background: #364762;
+    }
+
+    .slider-shell {
+      position: relative;
+      width: 427px;
+      height: 759px;
+    }
+
+    .slider-frame {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      background: transparent;
+      border: 0;
+      box-shadow: none;
+      perspective: 1200px;
+    }
+
+    .slide {
+      position: absolute;
+      inset: 0;
+      opacity: 0;
+      pointer-events: none;
+      transform: none;
+      transition: none;
+      z-index: 1;
+    }
+
+    .slide.is-active {
+      opacity: 1;
+      pointer-events: auto;
+      transform: none;
+      z-index: 3;
+    }
+
+    .slide.is-soft-slam-enter {
+      animation: rotation-only-enter 900ms cubic-bezier(0.2, 0.7, 0.3, 1) both;
+      transform-origin: 50% 100%;
+    }
+
+    @keyframes rotation-only-enter {
+      0% {
+        transform: rotate(-90deg);
+      }
+      100% {
+        transform: rotate(0deg);
+      }
+    }
+
+    .slide img {
+      position: absolute;
+      left: 50%;
+      object-fit: contain;
+      filter: drop-shadow(0 20px 30px rgba(0, 0, 0, 0.18));
+      transform: translateX(-50%);
+    }
+
+    .slide:nth-child(1) img {
+      top: 98px;
+      width: 282px;
+      height: 600px;
+    }
+
+    .slide:nth-child(2) img {
+      top: 84px;
+      width: 275px;
+      height: 609px;
+    }
+
+    .slide:nth-child(3) img {
+      top: 70px;
+      width: 279px;
+      height: 621px;
+    }
+
+    .slider-nav {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+    }
+
+    .slider-arrow {
+      position: absolute;
+      top: 50%;
+      width: 42px;
+      height: 42px;
+      border: 0;
+      border-radius: 0;
+      background: #f6a300;
+      color: #fff;
+      box-shadow: none;
+      transform: translateY(-50%);
+      cursor: pointer;
+      pointer-events: auto;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      transition: transform var(--transition), background var(--transition);
+    }
+
+    .slider-arrow:hover {
+      background: #e59a00;
+      transform: translateY(-50%) scale(1.03);
+    }
+
+    .slider-arrow.prev {
+      left: -21px;
+    }
+
+    .slider-arrow.next {
+      right: -21px;
+    }
+
+    .slider-arrow svg {
+      width: 28px;
+      height: 28px;
+      fill: currentColor;
+      flex: 0 0 auto;
+    }
+
+    .slider-arrow svg path {
+      stroke: currentColor;
+      stroke-width: 1.8;
+      fill: none;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .slider-arrow.next svg {
+      transform: rotate(180deg);
+    }
+
+    .slider-dots {
+      position: absolute;
+      inset-inline: 0;
+      bottom: 22px;
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      pointer-events: auto;
+    }
+
+    .slider-dots button {
+      width: 12px;
+      height: 12px;
+      padding: 0;
+      border: 0;
+      border-radius: 999px;
+      background: rgba(95, 107, 122, 0.45);
+      cursor: pointer;
+      transition: background var(--transition), transform var(--transition);
+    }
+
+    .slider-dots button[aria-current="true"] {
+      background: var(--accent);
+      transform: scale(1.08);
+    }
+
+    .section-title {
+      margin: 0;
+      font-size: 30px;
+      line-height: 1.2;
+      font-weight: 500;
+      text-align: center;
+    }
+
+    .process {
+      padding: 81px 0 56px;
+    }
+
+    .process-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 318px);
+      gap: 0;
+      justify-content: center;
+      margin-top: 25px;
+    }
+
+    .process-card {
+      padding: 24px 16px 0;
+      text-align: center;
+    }
+
+    .process-card img {
+      width: 75px;
+      height: 71px;
+      margin: 0 auto 6px;
+      object-fit: contain;
+    }
+
+    .process-card h3 {
+      margin: 0 0 4px;
+      font-size: 20px;
+      font-weight: 500;
+    }
+
+    .process-card p {
+      margin: 0;
+      font-size: 16px;
+      line-height: 1.8;
+      color: var(--muted);
+    }
+
+    .services {
+      padding: 86px 0 82px;
+      background: #edf2f8;
+    }
+
+    .services-head {
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      gap: 42px;
+      align-items: end;
+      margin-bottom: 36px;
+    }
+
+    .services-kicker {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin: 0 0 14px;
+      color: #314259;
+      font-size: 12px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      font-weight: 700;
+    }
+
+    .services-kicker::before {
+      content: "";
+      width: 34px;
+      height: 2px;
+      background: #f6a300;
+    }
+
+    .services-title {
+      margin: 0;
+      font-size: 44px;
+      line-height: 1.04;
+      letter-spacing: -0.03em;
+      font-weight: 700;
+      color: #111827;
+      max-width: 560px;
+    }
+
+    .services-intro {
+      margin: 0;
+      color: #475569;
+      font-size: 17px;
+      line-height: 1.78;
+      max-width: 380px;
+      justify-self: end;
+    }
+
+    .service-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .service-card {
+      position: relative;
+      min-height: 342px;
+      margin: 0;
+      overflow: hidden;
+      background: #1f2f47;
+      border: 1px solid rgba(255, 255, 255, 0.34);
+      box-shadow: 0 18px 36px rgba(17, 24, 39, 0.18);
+      isolation: isolate;
+      transition: transform 280ms ease, box-shadow 280ms ease;
+    }
+
+    .service-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 22px 42px rgba(17, 24, 39, 0.26);
+    }
+
+    .service-card img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      transition: transform 420ms ease;
+    }
+
+    .service-card:hover img {
+      transform: scale(1.06);
+    }
+
+    .service-card::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      background: linear-gradient(180deg, rgba(13, 20, 33, 0.14) 20%, rgba(13, 20, 33, 0.84) 84%);
+    }
+
+    .service-card figcaption {
+      position: absolute;
+      inset: auto 0 0;
+      z-index: 2;
+      padding: 18px 16px 16px;
+      display: grid;
+      gap: 10px;
+    }
+
+    .service-card .chip {
+      width: fit-content;
+      padding: 7px 10px;
+      background: rgba(246, 163, 0, 0.94);
+      color: #101827;
+      font-size: 11px;
+      line-height: 1;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      font-weight: 700;
+    }
+
+    .service-card h3 {
+      margin: 0;
+      color: #fff;
+      font-size: 19px;
+      line-height: 1.35;
+      font-weight: 600;
+      max-width: 220px;
+    }
+
+    .works-showcase {
+      position: relative;
+      background: #fff;
+      padding: 0;
+    }
+
+    .works-showcase .container {
+      width: min(1440px, 100%);
+      margin: 0 auto;
+    }
+
+    .works-section-head {
+      background: #fff;
+      padding: 80px 80px 0;
+    }
+
+    .works-mainsection {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+      padding: 12px 80px 64px;
+      gap: 120px;
+      min-height: 635px;
+      background: #fff;
+    }
+
+    .works-copy {
+      width: 527px;
+      height: 635px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: flex-start;
+      gap: 32px;
+      flex: 0 0 auto;
+    }
+
+    .works-copy h2 {
+      margin: 0;
+      width: 527px;
+      font-family: Inter, "Segoe UI", Helvetica, Arial, sans-serif;
+      font-size: 56px;
+      line-height: 1.2;
+      font-weight: 600;
+      color: #000;
+    }
+
+    .works-copy p {
+      margin: 0;
+      width: 527px;
+      font-family: Inter, "Segoe UI", Helvetica, Arial, sans-serif;
+      font-size: 18px;
+      line-height: 1.5;
+      color: #161616;
+    }
+
+    .works-main-image {
+      width: 633px;
+      height: 635px;
+      background: transparent;
+      overflow: hidden;
+      flex: 0 0 auto;
+      align-self: stretch;
+      border-radius: 0;
+    }
+
+    .works-main-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      object-position: center;
+      background: transparent;
+    }
+
+    .works-gallery {
+      background: #fff;
+      display: grid;
+      gap: 28px;
+      padding: 0 80px 80px;
+    }
+
+    .works-gallery-mobile {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 20px;
+    }
+
+    .works-gallery-web {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 28px;
+    }
+
+    .works-gallery-card {
+      margin: 0;
+      overflow: hidden;
+      border-radius: 4px;
+      background: #f9f9f9;
+      border: 1px solid #ececec;
+      display: grid;
+      place-items: center;
+    }
+
+    .works-gallery-card.mobile {
+      aspect-ratio: 242 / 530;
+    }
+
+    .works-gallery-card.web {
+      aspect-ratio: 1917 / 867;
+    }
+
+    .works-gallery-card img {
+      width: 100%;
+      height: 100%;
+      display: block;
+      border-radius: 6px;
+      object-position: center;
+      background: #f9f9f9;
+    }
+
+    .works-gallery-card.mobile img {
+      object-fit: contain;
+    }
+
+    .works-gallery-card.web img {
+      object-fit: contain;
+    }
+
+    .works-project {
+      background: #fff;
+    }
+
+    .works-project + .works-project {
+      padding-top: 12px;
+    }
+
+    .works-slider-project {
+      background: #fff;
+      padding: 0 80px 80px;
+    }
+
+    .works-slider-shell {
+      position: relative;
+      display: flex;
+      align-items: center;
+      gap: 22px;
+    }
+
+    .works-slider-viewport {
+      overflow: hidden;
+      flex: 1 1 auto;
+    }
+
+    .works-slider-track {
+      display: flex;
+      gap: 20px;
+      transition: transform 360ms ease;
+      will-change: transform;
+    }
+
+    .works-slider-card {
+      flex: 0 0 clamp(220px, 23vw, 280px);
+      aspect-ratio: 242 / 530;
+      margin: 0;
+      border-radius: 8px;
+      border: 1px solid #ececec;
+      background: #f9f9f9;
+      display: grid;
+      place-items: center;
+      overflow: hidden;
+    }
+
+    .works-slider-card img {
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: contain;
+      object-position: center;
+      background: #f9f9f9;
+      border-radius: 6px;
+    }
+
+    .works-slider-button {
+      width: 52px;
+      height: 52px;
+      flex: 0 0 52px;
+      border: 1px solid #d8e0ea;
+      border-radius: 999px;
+      background: #fff;
+      color: #0f172a;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: background-color 180ms ease, border-color 180ms ease, color 180ms ease, opacity 180ms ease;
+    }
+
+    .works-slider-button:hover:not(:disabled) {
+      background: #f8fafc;
+      border-color: #c9d4e2;
+    }
+
+    .works-slider-button:disabled {
+      opacity: 0.4;
+      cursor: default;
+    }
+
+    .works-slider-button svg {
+      width: 18px;
+      height: 18px;
+      stroke: currentColor;
+      stroke-width: 2;
+      fill: none;
+    }
+
+    .works-oschool-gallery {
+      background: #fff;
+      display: grid;
+      gap: 24px;
+      padding: 0 80px 80px;
+    }
+
+    .works-oschool-lead,
+    .works-oschool-grid figure {
+      margin: 0;
+      overflow: hidden;
+      border-radius: 8px;
+      border: 1px solid #ececec;
+      background: #f9f9f9;
+      box-shadow: 0 14px 30px rgba(15, 23, 42, 0.05);
+    }
+
+    .works-oschool-lead {
+      aspect-ratio: 1917 / 867;
+    }
+
+    .works-oschool-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 24px;
+    }
+
+    .works-oschool-grid figure {
+      aspect-ratio: 1917 / 867;
+    }
+
+    .works-oschool-gallery img {
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: cover;
+      object-position: center;
+      background: #f9f9f9;
+      border-radius: 6px;
+    }
+
+    .contact {
+      padding: 88px 0 96px;
+      background: #fff;
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: minmax(300px, 360px) minmax(0, 635px);
+      justify-content: space-between;
+      gap: 72px;
+      align-items: start;
+    }
+
+    .contact-copy {
+      display: grid;
+      gap: 26px;
+      align-content: start;
+      padding-top: 10px;
+    }
+
+    .contact-kicker {
+      margin: 0;
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      color: #f6a300;
+      font-size: 12px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      font-weight: 700;
+    }
+
+    .contact-kicker::before {
+      content: "";
+      width: 34px;
+      height: 2px;
+      background: #f6a300;
+    }
+
+    .contact-copy h2 {
+      margin: 0;
+      max-width: 320px;
+      font-size: 44px;
+      line-height: 1.06;
+      letter-spacing: -0.03em;
+      font-weight: 700;
+      color: #111827;
+    }
+
+    .contact-copy p {
+      margin: 0;
+      max-width: 320px;
+      color: #475569;
+      font-size: 17px;
+      line-height: 1.8;
+    }
+
+    .contact-meta {
+      display: grid;
+      gap: 14px;
+    }
+
+    .contact-detail {
+      margin: 0;
+      color: #111827;
+      font-size: 15px;
+      line-height: 1.7;
+    }
+
+    .contact-detail span {
+      display: block;
+      margin-bottom: 2px;
+      color: #7b8794;
+      font-size: 11px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      font-weight: 700;
+    }
+
+    .contact-links {
+      display: flex;
+      gap: 10px;
+      margin-top: 4px;
+    }
+
+    .contact-links a {
+      width: 42px;
+      height: 42px;
+      border: 1px solid #d8e0ea;
+      border-radius: 999px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      color: #111827;
+      background: #fff;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      transition: border-color var(--transition), color var(--transition), transform var(--transition), background-color var(--transition);
+    }
+
+    .contact-links a:hover {
+      border-color: #f6a300;
+      color: #f6a300;
+      background: #fff8eb;
+      transform: translateY(-1px);
+    }
+
+    .contact-form-card {
+      width: 100%;
+    }
+
+    .contact-form {
+      width: 100%;
+      padding: 0;
+    }
+
+    .field-row {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 22px;
+      margin-bottom: 0;
+    }
+
+    .field {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-bottom: 26px;
+    }
+
+    .field label {
+      font-size: 12px;
+      line-height: 1.2;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      font-weight: 700;
+      color: #7b8794;
+    }
+
+    .field input,
+    .field textarea {
+      width: 100%;
+      border: 0;
+      border-bottom: 1px solid #0f172a;
+      background: transparent;
+      color: #0f172a;
+      padding: 0 0 12px;
+      transition: border-color var(--transition), box-shadow var(--transition);
+      border-radius: 0;
+    }
+
+    .field input {
+      min-height: 42px;
+    }
+
+    .field textarea {
+      min-height: 140px;
+      resize: vertical;
+      padding-top: 4px;
+    }
+
+    .field input:focus,
+    .field textarea:focus {
+      outline: none;
+      border-bottom-width: 2px;
+      border-color: #f6a300;
+      box-shadow: none;
+    }
+
+    .field input::placeholder,
+    .field textarea::placeholder {
+      color: #94a3b8;
+    }
+
+    .contact-form button {
+      min-width: 168px;
+      min-height: 48px;
+      border: 0;
+      background: #111827;
+      color: #fff;
+      cursor: pointer;
+      transition: transform var(--transition), background var(--transition);
+    }
+
+    .contact-form button:hover {
+      background: #1f2937;
+      transform: translateY(-1px);
+    }
+
+    .form-status {
+      margin-top: 16px;
+      min-height: 24px;
+      color: #64748b;
+      font-size: 14px;
+    }
+
+    .site-footer {
+      padding: 0 0 40px;
+    }
+
+    .site-footer p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 14px;
+      text-align: center;
+    }
+
+    @media (max-width: 1040px) {
+      .site-nav {
+        min-height: 72px;
+      }
+
+      .site-nav-toggle {
+        display: inline-flex;
+      }
+
+      .site-nav-menu {
+        position: absolute;
+        top: calc(100% + 8px);
+        left: 16px;
+        right: 16px;
+        display: none;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 18px;
+        padding: 20px;
+        background: #fff;
+        border: 1px solid #e5e7eb;
+        border-radius: 18px;
+        box-shadow: 0 20px 40px rgba(15, 23, 42, 0.08);
+      }
+
+      .site-nav-menu.is-open {
+        display: flex;
+      }
+
+      .site-nav-links {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 14px;
+      }
+
+      .site-nav-actions {
+        width: 100%;
+      }
+
+      .site-cta {
+        width: 100%;
+      }
+
+      .container.hero-grid {
+        width: 100%;
+      }
+
+      .hero-grid,
+      .contact-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero {
+        padding-bottom: 60px;
+      }
+
+      .hero-grid {
+        min-height: auto;
+      }
+
+      .hero-copy,
+      .hero-slider-wrap,
+      .contact-copy,
+      .contact-form-card {
+        padding-left: 0;
+        padding-top: 40px;
+      }
+
+      .hero-copy,
+      .hero-slider-wrap {
+        padding-inline: 20px;
+      }
+
+      .hero-copy {
+        order: 1;
+      }
+
+      .hero-slider-wrap {
+        justify-content: center;
+        order: 2;
+      }
+
+      .hero-title,
+      .hero-text,
+      .contact-copy h2,
+      .contact-copy p {
+        width: auto;
+      }
+
+      .process-grid,
+      .service-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 28px;
+      }
+
+      .services-head {
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
+
+      .services-intro {
+        justify-self: start;
+        max-width: 100%;
+      }
+
+      .service-card,
+      .contact-form {
+        width: 100%;
+      }
+
+      .works-mainsection {
+        flex-direction: column;
+        align-items: flex-start;
+        height: auto;
+        padding: 24px 32px 40px;
+        gap: 40px;
+      }
+
+      .works-section-head {
+        padding: 56px 32px 0;
+      }
+
+      .works-copy,
+      .works-copy h2,
+      .works-copy p,
+      .works-main-image {
+        width: 100%;
+      }
+
+      .works-copy {
+        height: auto;
+      }
+
+      .works-main-image {
+        height: 520px;
+      }
+
+      .works-gallery {
+        padding: 0 32px 56px;
+      }
+
+      .works-gallery-mobile {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .works-gallery-web {
+        grid-template-columns: 1fr;
+      }
+
+      .works-slider-project {
+        padding: 0 32px 56px;
+      }
+
+      .works-oschool-gallery {
+        padding: 0 32px 56px;
+      }
+
+      .works-slider-shell {
+        gap: 14px;
+      }
+
+      .works-slider-card {
+        flex-basis: clamp(210px, 38vw, 260px);
+      }
+
+      .field-row {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 720px) {
+      .site-brand {
+        font-size: 18px;
+        white-space: normal;
+      }
+
+      .hero-title {
+        font-size: 44px;
+      }
+
+      .hero-text {
+        font-size: 17px;
+      }
+
+      .slider-shell {
+        width: min(100%, 360px);
+        height: 640px;
+      }
+
+      .slide:nth-child(1) img {
+        top: 84px;
+        width: 236px;
+        height: 500px;
+      }
+
+      .slide:nth-child(2) img {
+        top: 77px;
+        width: 228px;
+        height: 506px;
+      }
+
+      .slide:nth-child(3) img {
+        top: 64px;
+        width: 232px;
+        height: 516px;
+      }
+
+      .process-grid,
+      .service-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .services {
+        padding: 66px 0 62px;
+      }
+
+      .services-title {
+        font-size: 36px;
+      }
+
+      .store-buttons {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+      }
+
+      .works-mainsection,
+      .contact-copy,
+      .contact-form-card {
+        padding-top: 28px;
+      }
+
+      .works-mainsection {
+        padding-inline: 20px;
+        padding-top: 18px;
+        gap: 28px;
+      }
+
+      .works-section-head {
+        padding: 48px 20px 0;
+      }
+
+      .works-main-image {
+        height: 340px;
+      }
+
+      .works-gallery {
+        padding: 0 20px 40px;
+        gap: 16px;
+      }
+
+      .works-gallery-mobile,
+      .works-gallery-web {
+        grid-template-columns: 1fr;
+        gap: 16px;
+      }
+
+      .works-oschool-gallery {
+        padding: 0 20px 40px;
+        gap: 16px;
+      }
+
+      .works-oschool-grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+      }
+
+      .works-slider-project {
+        padding: 0 20px 40px;
+      }
+
+      .works-slider-shell {
+        gap: 10px;
+      }
+
+      .works-slider-button {
+        width: 44px;
+        height: 44px;
+        flex-basis: 44px;
+      }
+
+      .works-slider-card {
+        flex-basis: calc(100vw - 120px);
+        max-width: 320px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container">
+      <nav class="site-nav" aria-label="Primary navigation">
+        <a class="site-brand" href="#home">ADEL ABUTURKEI inc</a>
+
+        <button
+          class="site-nav-toggle"
+          type="button"
+          aria-expanded="false"
+          aria-controls="site-nav-menu"
+          aria-label="Toggle navigation"
+        >
+          <svg class="icon-menu" viewBox="0 0 20 20" aria-hidden="true">
+            <path fill-rule="evenodd" d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd"></path>
+          </svg>
+          <svg class="icon-close" viewBox="0 0 20 20" aria-hidden="true">
+            <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path>
+          </svg>
+        </button>
+
+        <div class="site-nav-menu" id="site-nav-menu">
+          <ul class="site-nav-links">
+            <li><a class="is-active" href="#home">Home</a></li>
+            <li><a href="#process">How We Work</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#works">Our Works</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+
+          <div class="site-nav-actions">
+            <a class="site-cta" href="#contact">Get started</a>
+          </div>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="home">
+      <div class="container hero-grid">
+        <div class="hero-copy">
+          <h2 class="hero-title">Get your APP,<br />Ready for distribution</h2>
+          <p class="hero-text">
+            In Adil ABU TURKEI inc we promise to deliver the best modern apps -
+            websites to our clients.<br />
+            Stay on touch and get you app ready on the store
+          </p>
+          <div class="store-buttons" aria-label="App store badges">
+            <a href="#" aria-label="Download on the App Store">
+              <img
+                src="https://static.wixstatic.com/media/fc7570_2ceee2afeafa4aa083bc3d48986bb811~mv2.png/v1/fill/w_176,h_55,al_c,q_85,enc_avif,quality_auto/fc7570_2ceee2afeafa4aa083bc3d48986bb811~mv2.png"
+                alt="Download on the App Store"
+                width="176"
+                height="55"
+              />
+            </a>
+            <a href="#" aria-label="Get it on Google Play">
+              <img
+                src="https://static.wixstatic.com/media/fc7570_83a62c92abd54d60915647751731bc62~mv2.png/v1/fill/w_179,h_55,al_c,lg_1,q_85,enc_avif,quality_auto/fc7570_83a62c92abd54d60915647751731bc62~mv2.png"
+                alt="Get it on Google Play"
+                width="179"
+                height="55"
+              />
+            </a>
+          </div>
+        </div>
+
+        <div class="hero-slider-wrap">
+          <div class="slider-shell" data-slider>
+            <div class="slider-frame">
+              <article class="slide is-active">
+                <img src="bug.png" alt="Bug app preview" width="282" height="600" />
+              </article>
+              <article class="slide">
+                <img src="glow.png" alt="GlowLabs app preview" width="275" height="609" />
+              </article>
+              <article class="slide">
+                <img src="dark.png" alt="Dark app preview" width="279" height="621" />
+              </article>
+            </div>
+
+            <div class="slider-nav">
+              <button class="slider-arrow prev" type="button" aria-label="Previous slide">
+                <svg viewBox="0 0 50 50" aria-hidden="true">
+                  <path d="M28.5 32.4c.1 0 .3-.1.4-.2.2-.2.2-.5 0-.7L22.2 25l6.7-6.5c.2-.2.2-.5 0-.7-.2-.2-.5-.2-.7 0L21 24.7c-.1.1-.2.2-.2.4 0 .1.1.3.2.4l7.1 6.8c.1 0 .3.1.4.1z"></path>
+                </svg>
+              </button>
+              <button class="slider-arrow next" type="button" aria-label="Next slide">
+                <svg viewBox="0 0 50 50" aria-hidden="true">
+                  <path d="M28.5 32.4c.1 0 .3-.1.4-.2.2-.2.2-.5 0-.7L22.2 25l6.7-6.5c.2-.2.2-.5 0-.7-.2-.2-.5-.2-.7 0L21 24.7c-.1.1-.2.2-.2.4 0 .1.1.3.2.4l7.1 6.8c.1 0 .3.1.4.1z"></path>
+                </svg>
+              </button>
+
+              <ol class="slider-dots" aria-label="Slides">
+                <li><button type="button" aria-label="Slide 1" aria-current="true"></button></li>
+                <li><button type="button" aria-label="Slide 2" aria-current="false"></button></li>
+                <li><button type="button" aria-label="Slide 3" aria-current="false"></button></li>
+              </ol>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="process" id="process">
+      <div class="container">
+        <h2 class="section-title">How we work to transfer your ideas</h2>
+        <div class="process-grid">
+          <article class="process-card">
+            <img src="https://static.wixstatic.com/media/5904c2_603bc73a247f48008a1f9ee7f37f9989~mv2.png/v1/fill/w_75,h_71,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/5904c2_603bc73a247f48008a1f9ee7f37f9989~mv2.png" alt="" width="75" height="71" />
+            <h3>Meet</h3>
+            <p>Start with a discovery meeting to understand the client needs, identify their goals, and gather the full project requirements.</p>
+          </article>
+          <article class="process-card">
+            <img src="https://static.wixstatic.com/media/5904c2_a6f180df9aa14d608ee1ffb10488f38e~mv2.png/v1/fill/w_75,h_71,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/email.png" alt="" width="75" height="71" />
+            <h3>Send Proposal</h3>
+            <p>Send a professional proposal to the client that includes the key highlights, main ideas, project scope, expected deliverables, timeline, and pricing details.</p>
+          </article>
+          <article class="process-card">
+            <img src="https://static.wixstatic.com/media/5904c2_33423b91feb741eab2bebed986b9c103~mv2.png/v1/fill/w_75,h_71,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/quality.png" alt="" width="75" height="71" />
+            <h3>Get Approval</h3>
+            <p>Wait for the client to review and consider the proposal, then schedule a final meeting to discuss feedback, confirm the project details, and move forward with the next steps.</p>
+          </article>
+          <article class="process-card">
+            <img src="https://static.wixstatic.com/media/5904c2_6bbcfc99f64641ecb0c8f93b93df2cce~mv2.png/v1/fill/w_75,h_71,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/man-working-on-a-laptop-from-side-view.png" alt="" width="75" height="71" />
+            <h3>Start Working</h3>
+            <p>We start working on the project based on the client preferences, turning their goals and vision into a real, practical solution.</p>
+          </article>
+          <article class="process-card">
+            <img src="https://static.wixstatic.com/media/5904c2_07c1ed7023b643a88ebe620dfb446ba5~mv2.png/v1/fill/w_75,h_71,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/demo.png" alt="" width="75" height="71" />
+            <h3>Demo</h3>
+            <p>Demonstrate the progress achieved so far in stages or batches to ensure the client is satisfied and aligned with the project direction.</p>
+          </article>
+          <article class="process-card">
+            <img src="https://static.wixstatic.com/media/5904c2_df058049d8a3489e82979885fa51db2f~mv2.png/v1/fill/w_75,h_71,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/app-store.png" alt="" width="75" height="71" />
+            <h3>Upload to App Store</h3>
+            <p>Prepare the final release build, complete the listing assets, and publish the product to the stores so the app is ready for distribution.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="services" id="services">
+      <div class="container">
+        <div class="services-head">
+          <div>
+            <p class="services-kicker">Capabilities</p>
+            <h2 class="services-title">Our Services</h2>
+          </div>
+        </div>
+        <div class="service-grid">
+          <figure class="service-card">
+            <img src="assets/services/mobile-app.jpg" alt="Mobile App Development" width="286" height="335" />
+            <figcaption>
+              <span class="chip">Build</span>
+              <h3>Mobile App Development</h3>
+            </figcaption>
+          </figure>
+          <figure class="service-card">
+            <img src="assets/services/website-development.jpg" alt="Website Development" width="286" height="335" />
+            <figcaption>
+              <span class="chip">Web</span>
+              <h3>Website Development</h3>
+            </figcaption>
+          </figure>
+          <figure class="service-card">
+            <img src="assets/services/dashboard-development.jpg" alt="Dashboard Development" width="286" height="335" />
+            <figcaption>
+              <span class="chip">Data</span>
+              <h3>Dashboard Development</h3>
+            </figcaption>
+          </figure>
+          <figure class="service-card">
+            <img src="assets/services/database-design.jpg" alt="Database Design" width="286" height="335" />
+            <figcaption>
+              <span class="chip">Backend</span>
+              <h3>Database Design</h3>
+            </figcaption>
+          </figure>
+          <figure class="service-card">
+            <img src="assets/services/ui-ux-design.jpg" alt="UI/UX Design" width="286" height="335" />
+            <figcaption>
+              <span class="chip">Design</span>
+              <h3>UI/UX Design</h3>
+            </figcaption>
+          </figure>
+          <figure class="service-card">
+            <img src="assets/services/branding-identity.jpg" alt="Branding and Visual Identity" width="286" height="335" />
+            <figcaption>
+              <span class="chip">Brand</span>
+              <h3>Branding &amp; Visual Identity</h3>
+            </figcaption>
+          </figure>
+          <figure class="service-card">
+            <img src="assets/services/graphic-marketing.jpg" alt="Graphic and Marketing Design" width="286" height="335" />
+            <figcaption>
+              <span class="chip">Creative</span>
+              <h3>Graphic &amp; Marketing Design</h3>
+            </figcaption>
+          </figure>
+          <figure class="service-card">
+            <img src="assets/services/social-media.jpg" alt="Social Media Management and Advertising" width="286" height="335" />
+            <figcaption>
+              <span class="chip">Growth</span>
+              <h3>Social Media Management &amp; Advertising</h3>
+            </figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <section class="works-showcase" id="works">
+      <div class="container">
+        <div class="services-head works-section-head">
+          <div>
+            <p class="services-kicker">Portfolio</p>
+            <h2 class="services-title">Our Works</h2>
+          </div>
+        </div>
+
+        <div class="works-project">
+          <article class="works-mainsection">
+            <div class="works-copy">
+              <h2>GlowLabs</h2>
+              <p>
+                GlowLabs is a multivendor marketplace application with modern dashboard screens, storefront
+                flows, and commerce management experiences built for production use.
+              </p>
+            </div>
+            <div class="works-main-image">
+              <img src="assets/glowlabs/home.png" alt="GlowLabs home main visual" />
+            </div>
+          </article>
+
+          <div class="works-gallery">
+            <div class="works-gallery-mobile">
+              <figure class="works-gallery-card mobile">
+                <img src="assets/glowlabs/bookingInvoice.png" alt="GlowLabs booking invoice mobile screen" />
+              </figure>
+              <figure class="works-gallery-card mobile">
+                <img src="assets/glowlabs/deal.png" alt="GlowLabs deal mobile screen" />
+              </figure>
+              <figure class="works-gallery-card mobile">
+                <img src="assets/glowlabs/merchants.png" alt="GlowLabs merchants mobile screen" />
+              </figure>
+              <figure class="works-gallery-card mobile">
+                <img src="assets/glowlabs/productPage.png" alt="GlowLabs product page mobile screen" />
+              </figure>
+            </div>
+            <div class="works-gallery-web">
+              <figure class="works-gallery-card web">
+                <img src="assets/glowlabs/branchesWeb.png" alt="GlowLabs branches web screen" />
+              </figure>
+              <figure class="works-gallery-card web">
+                <img src="assets/glowlabs/loginWeb.png" alt="GlowLabs login web screen" />
+              </figure>
+              <figure class="works-gallery-card web">
+                <img src="assets/glowlabs/productsWeb.png" alt="GlowLabs products web screen" />
+              </figure>
+              <figure class="works-gallery-card web">
+                <img src="assets/glowlabs/registerWeb.png" alt="GlowLabs register web screen" />
+              </figure>
+            </div>
+          </div>
+        </div>
+
+        <div class="works-project works-project-food">
+          <article class="works-mainsection">
+            <div class="works-copy">
+              <h2>Nicosia Food</h2>
+              <p>
+                A food delivery app designed to showcase store catalogs and food listings to customers
+                in Nicosia through a rich, modern, and user-friendly interface.
+              </p>
+            </div>
+            <div class="works-main-image">
+              <img src="assets/food/foodHero.png" alt="Nicosia Food hero visual" />
+            </div>
+          </article>
+
+          <div class="works-slider-project" data-works-food-slider>
+            <div class="works-slider-shell">
+              <button class="works-slider-button works-slider-button-prev" type="button" aria-label="Show previous food project image">
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M15 6L9 12L15 18" />
+                </svg>
+              </button>
+
+              <div class="works-slider-viewport">
+                <div class="works-slider-track">
+                  <figure class="works-slider-card">
+                    <img src="assets/food/foodHistory.jpg" alt="Nicosia Food order history screen" />
+                  </figure>
+                  <figure class="works-slider-card">
+                    <img src="assets/food/foodLocation.jpg" alt="Nicosia Food location selection screen" />
+                  </figure>
+                  <figure class="works-slider-card">
+                    <img src="assets/food/foodLogin.jpg" alt="Nicosia Food login screen" />
+                  </figure>
+                  <figure class="works-slider-card">
+                    <img src="assets/food/foodMap.jpg" alt="Nicosia Food map screen" />
+                  </figure>
+                  <figure class="works-slider-card">
+                    <img src="assets/food/foodProfile.jpg" alt="Nicosia Food profile screen" />
+                  </figure>
+                  <figure class="works-slider-card">
+                    <img src="assets/food/foodRegister.jpg" alt="Nicosia Food register screen" />
+                  </figure>
+                </div>
+              </div>
+
+              <button class="works-slider-button works-slider-button-next" type="button" aria-label="Show next food project image">
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M9 6L15 12L9 18" />
+                </svg>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="works-project works-project-oschool">
+          <article class="works-mainsection">
+            <div class="works-copy">
+              <h2>Oschool</h2>
+              <p>
+                Electronic School for digital learning and school management developed using modern web
+                technologies to streamline and enhance traditional school administration and edcutional work.
+              </p>
+            </div>
+            <div class="works-main-image">
+              <img src="assets/oschool/schoolHero.png" alt="Oschool hero visual" />
+            </div>
+          </article>
+
+          <div class="works-oschool-gallery">
+            <figure class="works-oschool-lead">
+              <img src="assets/oschool/oschool1.png" alt="Oschool dashboard overview screen" />
+            </figure>
+
+            <div class="works-oschool-grid">
+              <figure>
+                <img src="assets/oschool/oschool2.png" alt="Oschool admin panel screen" />
+              </figure>
+              <figure>
+                <img src="assets/oschool/oschool3.png" alt="Oschool school analytics screen" />
+              </figure>
+              <figure>
+                <img src="assets/oschool/oschool4.png" alt="Oschool classroom management screen" />
+              </figure>
+              <figure>
+                <img src="assets/oschool/oschool5.png" alt="Oschool student records screen" />
+              </figure>
+              <figure>
+                <img src="assets/oschool/oschool6.png" alt="Oschool attendance management screen" />
+              </figure>
+              <figure>
+                <img src="assets/oschool/oschool7.png" alt="Oschool finance and reporting screen" />
+              </figure>
+              <figure>
+                <img src="assets/oschool/oschool8.png" alt="Oschool timetable management screen" />
+              </figure>
+              <figure>
+                <img src="assets/oschool/oschool9.png" alt="Oschool communication and portal screen" />
+              </figure>
+            </div>
+          </div>
+        </div>
+
+        <div class="works-project works-project-magellan">
+          <article class="works-mainsection">
+            <div class="works-copy">
+              <h2>Magellan</h2>
+              <p>
+                An advanced real estate application designed to list properties and connect buyers with
+                sellers through interactive, social-style chatroom interfaces. The app includes powerful
+                search and filtering features to reduce browsing time and help buyers easily find the
+                most suitable property options.
+              </p>
+            </div>
+            <div class="works-main-image">
+              <img src="assets/magellan/heroMagellan.png" alt="Magellan hero visual" />
+            </div>
+          </article>
+
+          <div class="works-slider-project" data-works-magellan-slider>
+            <div class="works-slider-shell">
+              <button class="works-slider-button works-slider-button-prev" type="button" aria-label="Show previous Magellan project image">
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M15 6L9 12L15 18" />
+                </svg>
+              </button>
+
+              <div class="works-slider-viewport">
+                <div class="works-slider-track">
+                  <figure class="works-slider-card">
+                    <img src="assets/magellan/5.jpg" alt="Magellan home feed screen" />
+                  </figure>
+                  <figure class="works-slider-card">
+                    <img src="assets/magellan/m1.jpg" alt="Magellan real estate listing screen" />
+                  </figure>
+                  <figure class="works-slider-card">
+                    <img src="assets/magellan/m2.jpg" alt="Magellan chatroom interface screen" />
+                  </figure>
+                  <figure class="works-slider-card">
+                    <img src="assets/magellan/m3.jpg" alt="Magellan property detail screen" />
+                  </figure>
+                  <figure class="works-slider-card">
+                    <img src="assets/magellan/m4.jpg" alt="Magellan property filter screen" />
+                  </figure>
+                  <figure class="works-slider-card">
+                    <img src="assets/magellan/m5.jpg" alt="Magellan saved property screen" />
+                  </figure>
+                  <figure class="works-slider-card">
+                    <img src="assets/magellan/m6.jpg" alt="Magellan buyer message thread screen" />
+                  </figure>
+                  <figure class="works-slider-card">
+                    <img src="assets/magellan/m7.jpg" alt="Magellan interactive feed screen" />
+                  </figure>
+                  <figure class="works-slider-card">
+                    <img src="assets/magellan/m8.jpg" alt="Magellan featured property screen" />
+                  </figure>
+                  <figure class="works-slider-card">
+                    <img src="assets/magellan/m9.png" alt="Magellan dashboard overview screen" />
+                  </figure>
+                </div>
+              </div>
+
+              <button class="works-slider-button works-slider-button-next" type="button" aria-label="Show next Magellan project image">
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M9 6L15 12L9 18" />
+                </svg>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="contact" id="contact">
+      <div class="container contact-grid">
+        <div class="contact-copy">
+          <p class="contact-kicker">Contact</p>
+          <h2>Get in Touch</h2>
+          <p>
+            Tell us about your product, launch timeline, or redesign goals and we will shape the right
+            delivery plan with you.
+          </p>
+          <div class="contact-meta">
+            <p class="contact-detail">
+              <span>Address</span>
+              University St.<br />
+              UAE, Ajman, Jerf
+            </p>
+            <p class="contact-detail">
+              <span>Phone</span>
+              <a href="tel:+971556441299">+971-556-441-299</a>
+            </p>
+          </div>
+          <div class="contact-links">
+            <a href="#contact-form" aria-label="Jump to contact form">FM</a>
+            <a href="#contact-form" aria-label="Start project discussion">PR</a>
+            <a href="#contact-form" aria-label="Request quote">QT</a>
+          </div>
+        </div>
+
+        <div class="contact-form-card">
+          <form class="contact-form" id="contact-form" action="https://api.web3forms.com/submit" method="POST" novalidate>
+            <input type="hidden" name="access_key" value="0556ea60-7b1f-4a92-aa5a-18d1b98e4796" />
+            <input type="hidden" name="subject" value="New website inquiry from ADEL ABU TUREKEI inc" />
+            <input type="hidden" name="from_name" value="ADEL ABU TUREKEI inc website" />
+            <input type="checkbox" name="botcheck" tabindex="-1" autocomplete="off" style="display: none;" />
+            <div class="field-row">
+              <div class="field">
+                <label for="first-name">Full Name</label>
+                <input id="first-name" name="firstName" type="text" placeholder="First Name" required />
+              </div>
+              <div class="field">
+                <label for="phone-number">Phone Number</label>
+                <input id="phone-number" name="phone" type="tel" placeholder="Phone Number" required />
+              </div>
+            </div>
+
+            <div class="field">
+              <label for="email-address">Email</label>
+              <input id="email-address" name="email" type="email" placeholder="Email" required />
+            </div>
+
+            <div class="field">
+              <label for="message">Message</label>
+              <textarea id="message" name="message" placeholder="Message" required></textarea>
+            </div>
+
+            <button type="submit">Send</button>
+            <div class="form-status" aria-live="polite"></div>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>ADEL ABU TURKEI inc</p>
+    </div>
+  </footer>
+
+  <script>
+    (() => {
+      const headerToggle = document.querySelector(".site-nav-toggle");
+      const headerMenu = document.querySelector(".site-nav-menu");
+      const headerMenuLinks = Array.from(document.querySelectorAll(".site-nav-menu a"));
+      const headerNavLinks = Array.from(document.querySelectorAll(".site-nav-links a"));
+      const headerSections = headerNavLinks
+        .map((link) => {
+          const href = link.getAttribute("href");
+          if (!href || !href.startsWith("#")) return null;
+          const section = document.querySelector(href);
+          if (!section) return null;
+          return { link, section };
+        })
+        .filter(Boolean);
+
+      const closeHeaderMenu = () => {
+        if (!headerToggle || !headerMenu) return;
+        headerToggle.setAttribute("aria-expanded", "false");
+        headerMenu.classList.remove("is-open");
+      };
+
+      const setActiveHeaderLink = (targetId) => {
+        headerNavLinks.forEach((link) => {
+          const isActive = link.getAttribute("href") === `#${targetId}`;
+          link.classList.toggle("is-active", isActive);
+          link.setAttribute("aria-current", isActive ? "page" : "false");
+        });
+      };
+
+      headerToggle?.addEventListener("click", () => {
+        if (!headerMenu) return;
+        const isOpen = headerToggle.getAttribute("aria-expanded") === "true";
+        headerToggle.setAttribute("aria-expanded", String(!isOpen));
+        headerMenu.classList.toggle("is-open", !isOpen);
+      });
+
+      headerMenuLinks.forEach((link) => {
+        link.addEventListener("click", () => {
+          if (window.innerWidth <= 1040) {
+            closeHeaderMenu();
+          }
+        });
+      });
+
+      headerNavLinks.forEach((link) => {
+        link.addEventListener("click", () => {
+          const targetId = link.getAttribute("href")?.replace("#", "");
+          if (targetId) {
+            setActiveHeaderLink(targetId);
+          }
+        });
+      });
+
+      if (headerSections.length) {
+        const updateActiveSection = () => {
+          const headerHeight = document.querySelector(".site-header")?.offsetHeight || 0;
+          const marker = headerHeight + 120;
+          let activeId = headerSections[0].section.id;
+
+          for (const item of headerSections) {
+            if (item.section.offsetTop <= window.scrollY + marker) {
+              activeId = item.section.id;
+            }
+          }
+
+          setActiveHeaderLink(activeId);
+        };
+
+        window.addEventListener("scroll", updateActiveSection, { passive: true });
+        window.addEventListener("load", updateActiveSection);
+        window.addEventListener("resize", updateActiveSection);
+        updateActiveSection();
+      }
+
+      window.addEventListener("resize", () => {
+        if (window.innerWidth > 1040) {
+          closeHeaderMenu();
+        }
+      });
+
+      const slider = document.querySelector("[data-slider]");
+      if (slider) {
+        const slides = Array.from(slider.querySelectorAll(".slide"));
+        const dots = Array.from(slider.querySelectorAll(".slider-dots button"));
+        const prevButton = slider.querySelector(".slider-arrow.prev");
+        const nextButton = slider.querySelector(".slider-arrow.next");
+        let activeIndex = 0;
+        let timerId;
+
+        const render = (nextIndex) => {
+          if (slides.length < 2) return;
+          const targetIndex = (nextIndex + slides.length) % slides.length;
+          if (targetIndex === activeIndex) return;
+          const currentSlide = slides[activeIndex];
+          const nextSlide = slides[targetIndex];
+          currentSlide.classList.remove("is-active", "is-soft-slam-enter");
+          nextSlide.classList.remove("is-soft-slam-enter");
+          nextSlide.classList.add("is-active");
+          void nextSlide.offsetWidth;
+          nextSlide.classList.add("is-soft-slam-enter");
+          activeIndex = targetIndex;
+          dots.forEach((dot, index) => {
+            dot.setAttribute("aria-current", String(index === activeIndex));
+          });
+        };
+
+        slides.forEach((slide) => {
+          slide.addEventListener("animationend", () => {
+            slide.classList.remove("is-soft-slam-enter");
+          });
+        });
+
+        const syncDots = () => {
+          dots.forEach((dot, index) => {
+            dot.setAttribute("aria-current", String(index === activeIndex));
+          });
+        };
+
+        const restart = () => {
+          window.clearInterval(timerId);
+          timerId = window.setInterval(() => {
+            render(activeIndex + 1);
+          }, 5200);
+        };
+
+        prevButton?.addEventListener("click", () => {
+          render(activeIndex - 1);
+          restart();
+        });
+
+        nextButton?.addEventListener("click", () => {
+          render(activeIndex + 1);
+          restart();
+        });
+
+        dots.forEach((dot, index) => {
+          dot.addEventListener("click", () => {
+            render(index);
+            restart();
+          });
+        });
+
+        syncDots();
+        restart();
+      }
+
+      const initWorksSlider = (sliderRoot) => {
+        if (!sliderRoot) return;
+        const viewport = sliderRoot.querySelector(".works-slider-viewport");
+        const track = sliderRoot.querySelector(".works-slider-track");
+        const cards = Array.from(sliderRoot.querySelectorAll(".works-slider-card"));
+        const prevButton = sliderRoot.querySelector(".works-slider-button-prev");
+        const nextButton = sliderRoot.querySelector(".works-slider-button-next");
+        let activeIndex = 0;
+
+        const measure = () => {
+          if (!viewport || !track || !cards.length) {
+            return { cardSpan: 0, visibleCount: 1, maxIndex: 0 };
+          }
+          const cardRect = cards[0].getBoundingClientRect();
+          const viewportRect = viewport.getBoundingClientRect();
+          const styles = window.getComputedStyle(track);
+          const gap = Number.parseFloat(styles.columnGap || styles.gap || "0") || 0;
+          const cardSpan = cardRect.width + gap;
+          const visibleCount = Math.max(1, Math.floor((viewportRect.width + gap) / Math.max(cardSpan, 1)));
+          const maxIndex = Math.max(0, cards.length - visibleCount);
+          return { cardSpan, visibleCount, maxIndex };
+        };
+
+        const render = () => {
+          const { cardSpan, maxIndex } = measure();
+          activeIndex = Math.min(activeIndex, maxIndex);
+          const offset = cardSpan * activeIndex;
+          track.style.transform = `translateX(${-offset}px)`;
+          if (prevButton) prevButton.disabled = activeIndex <= 0;
+          if (nextButton) nextButton.disabled = activeIndex >= maxIndex;
+        };
+
+        prevButton?.addEventListener("click", () => {
+          activeIndex = Math.max(0, activeIndex - 1);
+          render();
+        });
+
+        nextButton?.addEventListener("click", () => {
+          const { maxIndex } = measure();
+          activeIndex = Math.min(maxIndex, activeIndex + 1);
+          render();
+        });
+
+        window.addEventListener("resize", render);
+        render();
+      };
+
+      initWorksSlider(document.querySelector("[data-works-food-slider]"));
+      initWorksSlider(document.querySelector("[data-works-magellan-slider]"));
+
+      const form = document.querySelector(".contact-form");
+      const status = document.querySelector(".form-status");
+      form?.addEventListener("submit", async (event) => {
+        event.preventDefault();
+        if (!form.reportValidity()) {
+          status.textContent = "Please complete all fields before sending.";
+          return;
+        }
+
+        const submitButton = form.querySelector('button[type="submit"]');
+        const originalLabel = submitButton?.textContent || "Send";
+        const formData = new FormData(form);
+
+        try {
+          if (submitButton) {
+            submitButton.disabled = true;
+            submitButton.textContent = "Sending...";
+          }
+          status.textContent = "Sending your message...";
+
+          const response = await fetch(form.action, {
+            method: "POST",
+            body: formData,
+            headers: {
+              Accept: "application/json",
+            },
+          });
+
+          const result = await response.json();
+
+          if (!response.ok || result.success !== true) {
+            throw new Error(result.message || "Submission failed.");
+          }
+
+          form.reset();
+          status.textContent = "Your message was sent successfully.";
+        } catch (error) {
+          status.textContent = error instanceof Error
+            ? error.message
+            : "Something went wrong while sending the form.";
+        } finally {
+          if (submitButton) {
+            submitButton.disabled = false;
+            submitButton.textContent = originalLabel;
+          }
+        }
+      });
+    })();
+  </script>
+</body>
+</html>

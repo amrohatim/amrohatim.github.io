@@ -4,6 +4,9 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>ADEL ABU TUREKEI inc</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@600;700&display=swap" rel="stylesheet" />
   <style>
     :root {
       --bg: #ffffff;
@@ -125,6 +128,39 @@
       gap: 12px;
     }
 
+    .lang-switcher {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px;
+      border: 1px solid #e5e7eb;
+      border-radius: 999px;
+      background: #f8fafc;
+    }
+
+    .lang-switcher button {
+      min-width: 42px;
+      height: 34px;
+      padding: 0 12px;
+      border: 0;
+      border-radius: 999px;
+      background: transparent;
+      color: #475569;
+      cursor: pointer;
+      font-size: 12px;
+      line-height: 1;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      transition: background-color var(--transition), color var(--transition);
+    }
+
+    .lang-switcher button.is-active {
+      background: #fff;
+      color: #111827;
+      box-shadow: 0 2px 6px rgba(15, 23, 42, 0.1);
+    }
+
     .site-cta {
       display: inline-flex;
       align-items: center;
@@ -187,6 +223,20 @@
       flex: 1 1 auto;
     }
 
+    html[dir="rtl"] body {
+      direction: rtl;
+    }
+
+    html[dir="rtl"] .site-nav {
+      flex-direction: row-reverse;
+    }
+
+    html[dir="rtl"] .site-nav-menu,
+    html[dir="rtl"] .site-nav-links,
+    html[dir="rtl"] .site-nav-actions {
+      flex-direction: row-reverse;
+    }
+
     #home,
     #process,
     #services,
@@ -214,6 +264,12 @@
       color: #fff;
     }
 
+    html[dir="rtl"] .hero-copy {
+      padding-left: 24px;
+      padding-right: max(24px, calc((100vw - var(--site-width)) / 2 + 7px));
+      text-align: right;
+    }
+
     .hero-title {
       margin: 0 0 17px;
       width: 446px;
@@ -235,12 +291,16 @@
     .store-buttons {
       position: relative;
       display: flex;
-      gap: 28px;
+      gap: 4px;
       align-items: center;
     }
 
+    html[dir="rtl"] .store-buttons {
+      justify-content: flex-start;
+    }
+
     .store-buttons img {
-      height: 55px;
+      height: 56px;
       width: auto;
     }
 
@@ -367,6 +427,24 @@
       right: -21px;
     }
 
+    html[dir="rtl"] .slider-arrow.prev {
+      left: auto;
+      right: -21px;
+    }
+
+    html[dir="rtl"] .slider-arrow.next {
+      right: auto;
+      left: -21px;
+    }
+
+    html[dir="rtl"] .slider-arrow.prev svg {
+      transform: rotate(180deg);
+    }
+
+    html[dir="rtl"] .slider-arrow.next svg {
+      transform: none;
+    }
+
     .slider-arrow svg {
       width: 28px;
       height: 28px;
@@ -441,8 +519,8 @@
     }
 
     .process-card img {
-      width: 75px;
-      height: 71px;
+      width: auto;
+      height: auto;
       margin: 0 auto 6px;
       object-fit: contain;
     }
@@ -473,6 +551,10 @@
       margin-bottom: 36px;
     }
 
+    html[dir="rtl"] .services-head {
+      direction: rtl;
+    }
+
     .services-kicker {
       display: inline-flex;
       align-items: center;
@@ -483,6 +565,17 @@
       letter-spacing: 0.2em;
       text-transform: uppercase;
       font-weight: 700;
+    }
+
+    html[dir="rtl"] .services-kicker,
+    html[dir="rtl"] .contact-kicker {
+      flex-direction: row-reverse;
+    }
+
+    html[dir="rtl"] .contact-kicker {
+      align-self: end;
+      justify-self: start;
+      margin-inline-start: 0;
     }
 
     .services-kicker::before {
@@ -500,6 +593,26 @@
       font-weight: 700;
       color: #111827;
       max-width: 560px;
+    }
+
+    html[dir="rtl"] .section-title,
+    html[dir="rtl"] .services-title,
+    html[dir="rtl"] .works-copy,
+    html[dir="rtl"] .contact-copy,
+    html[dir="rtl"] .contact-detail,
+    html[dir="rtl"] .field {
+      text-align: right;
+    }
+
+    html[dir="rtl"] .hero-title,
+    html[dir="rtl"] .section-title,
+    html[dir="rtl"] .services-title,
+    html[dir="rtl"] .contact-copy h2 {
+      font-family: "Cairo", var(--font-ui);
+    }
+
+    html[dir="rtl"] .hero-title {
+      line-height: 1.38;
     }
 
     .services-intro {
@@ -613,6 +726,10 @@
       background: #fff;
     }
 
+    html[dir="rtl"] .works-mainsection {
+      flex-direction: row-reverse;
+    }
+
     .works-copy {
       width: 527px;
       height: 635px;
@@ -622,6 +739,10 @@
       align-items: flex-start;
       gap: 32px;
       flex: 0 0 auto;
+    }
+
+    html[dir="rtl"] .works-copy {
+      align-items: flex-end;
     }
 
     .works-copy h2 {
@@ -736,6 +857,10 @@
       gap: 22px;
     }
 
+    html[dir="rtl"] .works-slider-shell {
+      flex-direction: row-reverse;
+    }
+
     .works-slider-viewport {
       overflow: hidden;
       flex: 1 1 auto;
@@ -822,7 +947,7 @@
     }
 
     .works-oschool-lead {
-      aspect-ratio: 1917 / 867;
+      aspect-ratio: 1700 / 867;
     }
 
     .works-oschool-grid {
@@ -832,7 +957,7 @@
     }
 
     .works-oschool-grid figure {
-      aspect-ratio: 1917 / 867;
+      aspect-ratio: 1700 / 867;
     }
 
     .works-oschool-gallery img {
@@ -915,6 +1040,10 @@
       align-items: start;
     }
 
+    html[dir="rtl"] .contact-grid {
+      direction: rtl;
+    }
+
     .contact-copy {
       display: grid;
       gap: 26px;
@@ -925,6 +1054,7 @@
     .contact-kicker {
       margin: 0;
       display: inline-flex;
+      width: fit-content;
       align-items: center;
       gap: 12px;
       color: #f6a300;
@@ -1054,6 +1184,11 @@
       border-radius: 0;
     }
 
+    html[dir="rtl"] .field input,
+    html[dir="rtl"] .field textarea {
+      text-align: right;
+    }
+
     .field input {
       min-height: 42px;
     }
@@ -1149,6 +1284,10 @@
         width: 100%;
       }
 
+      .lang-switcher {
+        align-self: flex-start;
+      }
+
       .site-cta {
         width: 100%;
       }
@@ -1183,6 +1322,11 @@
         padding-inline: 20px;
       }
 
+      html[dir="rtl"] .hero-copy {
+        padding-right: 20px;
+        padding-left: 20px;
+      }
+
       .hero-copy {
         order: 1;
       }
@@ -1210,6 +1354,10 @@
         gap: 20px;
       }
 
+      html[dir="rtl"] .services-head {
+        text-align: right;
+      }
+
       .services-intro {
         justify-self: start;
         max-width: 100%;
@@ -1226,6 +1374,10 @@
         height: auto;
         padding: 24px 32px 40px;
         gap: 40px;
+      }
+
+      html[dir="rtl"] .works-mainsection {
+        align-items: flex-end;
       }
 
       .works-section-head {
@@ -1332,8 +1484,9 @@
 
       .store-buttons {
         flex-direction: column;
-        align-items: flex-start;
+        align-items: center;
         gap: 12px;
+        margin-bottom: 10px;
       }
 
       .works-mainsection,
@@ -1401,7 +1554,7 @@
 <body>
   <header class="site-header">
     <div class="container">
-      <nav class="site-nav" aria-label="Primary navigation">
+      <nav class="site-nav" aria-label="Primary navigation" data-i18n-aria="nav.primary">
         <a class="site-brand" href="#home">ADEL ABUTURKEI inc</a>
 
         <button
@@ -1410,6 +1563,7 @@
           aria-expanded="false"
           aria-controls="site-nav-menu"
           aria-label="Toggle navigation"
+          data-i18n-aria="nav.toggle"
         >
           <svg class="icon-menu" viewBox="0 0 20 20" aria-hidden="true">
             <path fill-rule="evenodd" d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd"></path>
@@ -1421,15 +1575,19 @@
 
         <div class="site-nav-menu" id="site-nav-menu">
           <ul class="site-nav-links">
-            <li><a class="is-active" href="#home">Home</a></li>
-            <li><a href="#process">How We Work</a></li>
-            <li><a href="#services">Services</a></li>
-            <li><a href="#works">Our Works</a></li>
-            <li><a href="#contact">Contact</a></li>
+            <li><a class="is-active" href="#home" data-i18n="nav.home">Home</a></li>
+            <li><a href="#process" data-i18n="nav.process">How We Work</a></li>
+            <li><a href="#services" data-i18n="nav.services">Services</a></li>
+            <li><a href="#works" data-i18n="nav.works">Our Works</a></li>
+            <li><a href="#contact" data-i18n="nav.contact">Contact</a></li>
           </ul>
 
           <div class="site-nav-actions">
-            <a class="site-cta" href="#contact">Get started</a>
+            <div class="lang-switcher" aria-label="Language switcher" data-i18n-aria="nav.language">
+              <button type="button" class="is-active" data-lang-switch="en" aria-pressed="true">EN</button>
+              <button type="button" data-lang-switch="ar" aria-pressed="false">AR</button>
+            </div>
+            <a class="site-cta" href="#contact" data-i18n="nav.cta">Get started</a>
           </div>
         </div>
       </nav>
@@ -1440,24 +1598,25 @@
     <section class="hero" id="home">
       <div class="container hero-grid">
         <div class="hero-copy">
-          <h2 class="hero-title">Get your APP,<br />Ready for distribution</h2>
-          <p class="hero-text">
+          <h2 class="hero-title" data-i18n-html="hero.title">Get your APP,<br />Ready for distribution</h2>
+          <p class="hero-text" data-i18n-html="hero.text">
             In Adil ABU TURKEI inc we promise to deliver the best modern apps -
             websites to our clients.<br />
             Stay on touch and get you app ready on the store
           </p>
-          <div class="store-buttons" aria-label="App store badges">
-            <a href="#" aria-label="Download on the App Store">
+          <div class="store-buttons" aria-label="App store badges" data-i18n-aria="hero.badges">
+           
+            <a  aria-label="Download on the App Store">
               <img
-                src="https://static.wixstatic.com/media/fc7570_2ceee2afeafa4aa083bc3d48986bb811~mv2.png/v1/fill/w_176,h_55,al_c,q_85,enc_avif,quality_auto/fc7570_2ceee2afeafa4aa083bc3d48986bb811~mv2.png"
+                src="app_store.png"
                 alt="Download on the App Store"
                 width="176"
                 height="55"
               />
             </a>
-            <a href="#" aria-label="Get it on Google Play">
+            <a  aria-label="Get it on Google Play">
               <img
-                src="https://static.wixstatic.com/media/fc7570_83a62c92abd54d60915647751731bc62~mv2.png/v1/fill/w_179,h_55,al_c,lg_1,q_85,enc_avif,quality_auto/fc7570_83a62c92abd54d60915647751731bc62~mv2.png"
+                src="google_play.png"
                 alt="Get it on Google Play"
                 width="179"
                 height="55"
@@ -1481,21 +1640,21 @@
             </div>
 
             <div class="slider-nav">
-              <button class="slider-arrow prev" type="button" aria-label="Previous slide">
+              <button class="slider-arrow prev" type="button" aria-label="Previous slide" data-i18n-aria="hero.prev">
                 <svg viewBox="0 0 50 50" aria-hidden="true">
                   <path d="M28.5 32.4c.1 0 .3-.1.4-.2.2-.2.2-.5 0-.7L22.2 25l6.7-6.5c.2-.2.2-.5 0-.7-.2-.2-.5-.2-.7 0L21 24.7c-.1.1-.2.2-.2.4 0 .1.1.3.2.4l7.1 6.8c.1 0 .3.1.4.1z"></path>
                 </svg>
               </button>
-              <button class="slider-arrow next" type="button" aria-label="Next slide">
+              <button class="slider-arrow next" type="button" aria-label="Next slide" data-i18n-aria="hero.next">
                 <svg viewBox="0 0 50 50" aria-hidden="true">
                   <path d="M28.5 32.4c.1 0 .3-.1.4-.2.2-.2.2-.5 0-.7L22.2 25l6.7-6.5c.2-.2.2-.5 0-.7-.2-.2-.5-.2-.7 0L21 24.7c-.1.1-.2.2-.2.4 0 .1.1.3.2.4l7.1 6.8c.1 0 .3.1.4.1z"></path>
                 </svg>
               </button>
 
-              <ol class="slider-dots" aria-label="Slides">
-                <li><button type="button" aria-label="Slide 1" aria-current="true"></button></li>
-                <li><button type="button" aria-label="Slide 2" aria-current="false"></button></li>
-                <li><button type="button" aria-label="Slide 3" aria-current="false"></button></li>
+              <ol class="slider-dots" aria-label="Slides" data-i18n-aria="hero.slides">
+                <li><button type="button" aria-label="Slide 1" aria-current="true" data-i18n-aria="hero.slide1"></button></li>
+                <li><button type="button" aria-label="Slide 2" aria-current="false" data-i18n-aria="hero.slide2"></button></li>
+                <li><button type="button" aria-label="Slide 3" aria-current="false" data-i18n-aria="hero.slide3"></button></li>
               </ol>
             </div>
           </div>
@@ -1505,37 +1664,37 @@
 
     <section class="process" id="process">
       <div class="container">
-        <h2 class="section-title">How we work to transfer your ideas</h2>
+        <h2 class="section-title" data-i18n="process.title">How we work to transfer your ideas</h2>
         <div class="process-grid">
           <article class="process-card">
-            <img src="https://static.wixstatic.com/media/5904c2_603bc73a247f48008a1f9ee7f37f9989~mv2.png/v1/fill/w_75,h_71,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/5904c2_603bc73a247f48008a1f9ee7f37f9989~mv2.png" alt="" width="75" height="71" />
-            <h3>Meet</h3>
-            <p>Start with a discovery meeting to understand the client needs, identify their goals, and gather the full project requirements.</p>
+            <img src="assets/meeting.avif" alt="" width="75" height="71" />
+            <h3 data-i18n="process.step1.title">Meet</h3>
+            <p data-i18n="process.step1.text">Start with a discovery meeting to understand the client needs, identify their goals, and gather the full project requirements.</p>
           </article>
           <article class="process-card">
-            <img src="https://static.wixstatic.com/media/5904c2_a6f180df9aa14d608ee1ffb10488f38e~mv2.png/v1/fill/w_75,h_71,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/email.png" alt="" width="75" height="71" />
-            <h3>Send Proposal</h3>
-            <p>Send a professional proposal to the client that includes the key highlights, main ideas, project scope, expected deliverables, timeline, and pricing details.</p>
+            <img src="assets/proposal.avif" alt="" width="75" height="71" />
+            <h3 data-i18n="process.step2.title">Send Proposal</h3>
+            <p data-i18n="process.step2.text">Send a professional proposal to the client that includes the key highlights, main ideas, project scope, expected deliverables, timeline, and pricing details.</p>
           </article>
           <article class="process-card">
-            <img src="https://static.wixstatic.com/media/5904c2_33423b91feb741eab2bebed986b9c103~mv2.png/v1/fill/w_75,h_71,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/quality.png" alt="" width="75" height="71" />
-            <h3>Get Approval</h3>
-            <p>Wait for the client to review and consider the proposal, then schedule a final meeting to discuss feedback, confirm the project details, and move forward with the next steps.</p>
+            <img src="assets/approve.avif" alt="" width="75" height="71" />
+            <h3 data-i18n="process.step3.title">Get Approval</h3>
+            <p data-i18n="process.step3.text">Wait for the client to review and consider the proposal, then schedule a final meeting to discuss feedback, confirm the project details, and move forward with the next steps.</p>
           </article>
           <article class="process-card">
-            <img src="https://static.wixstatic.com/media/5904c2_6bbcfc99f64641ecb0c8f93b93df2cce~mv2.png/v1/fill/w_75,h_71,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/man-working-on-a-laptop-from-side-view.png" alt="" width="75" height="71" />
-            <h3>Start Working</h3>
-            <p>We start working on the project based on the client preferences, turning their goals and vision into a real, practical solution.</p>
+            <img src="assets/working.avif" alt="" width="75" height="71" />
+            <h3 data-i18n="process.step4.title">Start Working</h3>
+            <p data-i18n="process.step4.text">We start working on the project based on the client preferences, turning their goals and vision into a real, practical solution.</p>
           </article>
           <article class="process-card">
-            <img src="https://static.wixstatic.com/media/5904c2_07c1ed7023b643a88ebe620dfb446ba5~mv2.png/v1/fill/w_75,h_71,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/demo.png" alt="" width="75" height="71" />
-            <h3>Demo</h3>
-            <p>Demonstrate the progress achieved so far in stages or batches to ensure the client is satisfied and aligned with the project direction.</p>
+            <img src="assets/demo.avif" alt="" width="75" height="71" />
+            <h3 data-i18n="process.step5.title">Demo</h3>
+            <p data-i18n="process.step5.text">Demonstrate the progress achieved so far in stages or batches to ensure the client is satisfied and aligned with the project direction.</p>
           </article>
           <article class="process-card">
-            <img src="https://static.wixstatic.com/media/5904c2_df058049d8a3489e82979885fa51db2f~mv2.png/v1/fill/w_75,h_71,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/app-store.png" alt="" width="75" height="71" />
-            <h3>Upload to App Store</h3>
-            <p>Prepare the final release build, complete the listing assets, and publish the product to the stores so the app is ready for distribution.</p>
+            <img src="assets/store.avif" alt="" width="75" height="71" />
+            <h3 data-i18n="process.step6.title">Upload to App Store</h3>
+            <p data-i18n="process.step6.text">Prepare the final release build, complete the listing assets, and publish the product to the stores so the app is ready for distribution.</p>
           </article>
         </div>
       </div>
@@ -1545,65 +1704,65 @@
       <div class="container">
         <div class="services-head">
           <div>
-            <p class="services-kicker">Capabilities</p>
-            <h2 class="services-title">Our Services</h2>
+            <p class="services-kicker" data-i18n="services.kicker">Capabilities</p>
+            <h2 class="services-title" data-i18n="services.title">Our Services</h2>
           </div>
         </div>
         <div class="service-grid">
           <figure class="service-card">
-            <img src="assets/services/mobile-app.jpg" alt="Mobile App Development" width="286" height="335" />
+            <img src="assets/services/mobile-app.png" alt="Mobile App Development" width="286" height="335" />
             <figcaption>
-              <span class="chip">Build</span>
-              <h3>Mobile App Development</h3>
+              <span class="chip" data-i18n="services.items.mobile.chip">Build</span>
+              <h3 data-i18n="services.items.mobile.title">Mobile App Development</h3>
             </figcaption>
           </figure>
           <figure class="service-card">
-            <img src="assets/services/website-development.jpg" alt="Website Development" width="286" height="335" />
+            <img src="assets/services/website-development.png" alt="Website Development" width="286" height="335" />
             <figcaption>
-              <span class="chip">Web</span>
-              <h3>Website Development</h3>
+              <span class="chip" data-i18n="services.items.website.chip">Web</span>
+              <h3 data-i18n="services.items.website.title">Website Development</h3>
             </figcaption>
           </figure>
           <figure class="service-card">
-            <img src="assets/services/dashboard-development.jpg" alt="Dashboard Development" width="286" height="335" />
+            <img src="assets/services/dashboard-development.png" alt="Dashboard Development" width="286" height="335" />
             <figcaption>
-              <span class="chip">Data</span>
-              <h3>Dashboard Development</h3>
+              <span class="chip" data-i18n="services.items.dashboard.chip">Data</span>
+              <h3 data-i18n="services.items.dashboard.title">Dashboard Development</h3>
             </figcaption>
           </figure>
           <figure class="service-card">
-            <img src="assets/services/database-design.jpg" alt="Database Design" width="286" height="335" />
+            <img src="assets/services/database-design.png" alt="Database Design" width="286" height="335" />
             <figcaption>
-              <span class="chip">Backend</span>
-              <h3>Database Design</h3>
+              <span class="chip" data-i18n="services.items.database.chip">Backend</span>
+              <h3 data-i18n="services.items.database.title">Database Design</h3>
             </figcaption>
           </figure>
           <figure class="service-card">
-            <img src="assets/services/ui-ux-design.jpg" alt="UI/UX Design" width="286" height="335" />
+            <img src="assets/services/ui-ux-design.png" alt="UI/UX Design" width="286" height="335" />
             <figcaption>
-              <span class="chip">Design</span>
-              <h3>UI/UX Design</h3>
+              <span class="chip" data-i18n="services.items.uiux.chip">Design</span>
+              <h3 data-i18n="services.items.uiux.title">UI/UX Design</h3>
             </figcaption>
           </figure>
           <figure class="service-card">
-            <img src="assets/services/branding-identity.jpg" alt="Branding and Visual Identity" width="286" height="335" />
+            <img src="assets/services/branding-identity.png" alt="Branding and Visual Identity" width="286" height="335" />
             <figcaption>
-              <span class="chip">Brand</span>
-              <h3>Branding &amp; Visual Identity</h3>
+              <span class="chip" data-i18n="services.items.branding.chip">Brand</span>
+              <h3 data-i18n="services.items.branding.title">Branding &amp; Visual Identity</h3>
             </figcaption>
           </figure>
           <figure class="service-card">
-            <img src="assets/services/graphic-marketing.jpg" alt="Graphic and Marketing Design" width="286" height="335" />
+            <img src="assets/services/graphic-marketing.png" alt="Graphic and Marketing Design" width="286" height="335" />
             <figcaption>
-              <span class="chip">Creative</span>
-              <h3>Graphic &amp; Marketing Design</h3>
+              <span class="chip" data-i18n="services.items.graphic.chip">Creative</span>
+              <h3 data-i18n="services.items.graphic.title">Graphic &amp; Marketing Design</h3>
             </figcaption>
           </figure>
           <figure class="service-card">
-            <img src="assets/services/social-media.jpg" alt="Social Media Management and Advertising" width="286" height="335" />
+            <img src="assets/services/social-media.png" alt="Social Media Management and Advertising" width="286" height="335" />
             <figcaption>
-              <span class="chip">Growth</span>
-              <h3>Social Media Management &amp; Advertising</h3>
+              <span class="chip" data-i18n="services.items.social.chip">Growth</span>
+              <h3 data-i18n="services.items.social.title">Social Media Management &amp; Advertising</h3>
             </figcaption>
           </figure>
         </div>
@@ -1614,8 +1773,8 @@
       <div class="container">
         <div class="services-head works-section-head">
           <div>
-            <p class="services-kicker">Portfolio</p>
-            <h2 class="services-title">Our Works</h2>
+            <p class="services-kicker" data-i18n="works.kicker">Portfolio</p>
+            <h2 class="services-title" data-i18n="works.title">Our Works</h2>
           </div>
         </div>
 
@@ -1623,7 +1782,7 @@
           <article class="works-mainsection">
             <div class="works-copy">
               <h2>GlowLabs</h2>
-              <p>
+              <p data-i18n="works.projects.glowlabs">
                 GlowLabs is a multivendor marketplace application with modern dashboard screens, storefront
                 flows, and commerce management experiences built for production use.
               </p>
@@ -1669,7 +1828,7 @@
           <article class="works-mainsection">
             <div class="works-copy">
               <h2>Nicosia Food</h2>
-              <p>
+              <p data-i18n="works.projects.nicosiaFood">
                 A food delivery app designed to showcase store catalogs and food listings to customers
                 in Nicosia through a rich, modern, and user-friendly interface.
               </p>
@@ -1723,7 +1882,7 @@
           <article class="works-mainsection">
             <div class="works-copy">
               <h2>Oschool</h2>
-              <p>
+              <p data-i18n="works.projects.oschool">
                 Electronic School for digital learning and school management developed using modern web
                 technologies to streamline and enhance traditional school administration and edcutional work.
               </p>
@@ -1771,7 +1930,7 @@
           <article class="works-mainsection">
             <div class="works-copy">
               <h2>Magellan</h2>
-              <p>
+              <p data-i18n="works.projects.magellan">
                 An advanced real estate application designed to list properties and connect buyers with
                 sellers through interactive, social-style chatroom interfaces. The app includes powerful
                 search and filtering features to reduce browsing time and help buyers easily find the
@@ -1840,20 +1999,20 @@
     <section class="contact" id="contact">
       <div class="container contact-grid">
         <div class="contact-copy">
-          <p class="contact-kicker">Contact</p>
-          <h2>Get in Touch</h2>
-          <p>
+          <p class="contact-kicker" data-i18n="contact.kicker">Contact</p>
+          <h2 data-i18n="contact.title">Get in Touch</h2>
+          <p data-i18n="contact.text">
             Tell us about your product, launch timeline, or redesign goals and we will shape the right
             delivery plan with you.
           </p>
           <div class="contact-meta">
             <p class="contact-detail">
-              <span>Address</span>
+              <span data-i18n="contact.addressLabel">Address</span>
               University St.<br />
               UAE, Ajman, Jerf
             </p>
             <p class="contact-detail">
-              <span>Phone</span>
+              <span data-i18n="contact.phoneLabel">Phone</span>
               <a href="tel:+971556441299">+971-556-441-299</a>
             </p>
           </div>
@@ -1872,26 +2031,26 @@
             <input type="checkbox" name="botcheck" tabindex="-1" autocomplete="off" style="display: none;" />
             <div class="field-row">
               <div class="field">
-                <label for="first-name">Full Name</label>
-                <input id="first-name" name="firstName" type="text" placeholder="First Name" required />
+                <label for="first-name" data-i18n="form.fullName">Full Name</label>
+                <input id="first-name" name="firstName" type="text" placeholder="First Name" data-i18n-placeholder="form.fullNamePlaceholder" required />
               </div>
               <div class="field">
-                <label for="phone-number">Phone Number</label>
-                <input id="phone-number" name="phone" type="tel" placeholder="Phone Number" required />
+                <label for="phone-number" data-i18n="form.phone">Phone Number</label>
+                <input id="phone-number" name="phone" type="tel" placeholder="Phone Number" data-i18n-placeholder="form.phonePlaceholder" required />
               </div>
             </div>
 
             <div class="field">
-              <label for="email-address">Email</label>
-              <input id="email-address" name="email" type="email" placeholder="Email" required />
+              <label for="email-address" data-i18n="form.email">Email</label>
+              <input id="email-address" name="email" type="email" placeholder="Email" data-i18n-placeholder="form.emailPlaceholder" required />
             </div>
 
             <div class="field">
-              <label for="message">Message</label>
-              <textarea id="message" name="message" placeholder="Message" required></textarea>
+              <label for="message" data-i18n="form.message">Message</label>
+              <textarea id="message" name="message" placeholder="Message" data-i18n-placeholder="form.messagePlaceholder" required></textarea>
             </div>
 
-            <button type="submit">Send</button>
+            <button type="submit" data-i18n="form.send">Send</button>
             <div class="form-status" aria-live="polite"></div>
           </form>
         </div>
@@ -1899,9 +2058,9 @@
     </section>
   </main>
 
-  <dialog class="works-lightbox" aria-label="Project image preview">
+  <dialog class="works-lightbox" aria-label="Project image preview" data-i18n-aria="lightbox.dialog">
     <div class="works-lightbox-frame">
-      <button class="works-lightbox-close" type="button" aria-label="Close image preview">
+      <button class="works-lightbox-close" type="button" aria-label="Close image preview" data-i18n-aria="lightbox.close">
         <svg viewBox="0 0 24 24" aria-hidden="true">
           <path d="M6 6L18 18M18 6L6 18" />
         </svg>
@@ -1918,6 +2077,275 @@
 
   <script>
     (() => {
+      const translations = {
+        en: {
+          nav: {
+            primary: "Primary navigation",
+            toggle: "Toggle navigation",
+            language: "Language switcher",
+            home: "Home",
+            process: "How We Work",
+            services: "Services",
+            works: "Our Works",
+            contact: "Contact",
+            cta: "Get started",
+          },
+          hero: {
+            title: "Get your APP,<br />Ready for distribution",
+            text: "In Adil ABU TURKEI inc we promise to deliver the best modern apps -<br />websites to our clients.<br />Stay on touch and get you app ready on the store",
+            badges: "App store badges",
+            prev: "Previous slide",
+            next: "Next slide",
+            slides: "Slides",
+            slide1: "Slide 1",
+            slide2: "Slide 2",
+            slide3: "Slide 3",
+          },
+          process: {
+            title: "How we work to transfer your ideas",
+            step1: {
+              title: "Meet",
+              text: "Start with a discovery meeting to understand the client needs, identify their goals, and gather the full project requirements.",
+            },
+            step2: {
+              title: "Send Proposal",
+              text: "Send a professional proposal to the client that includes the key highlights, main ideas, project scope, expected deliverables, timeline, and pricing details.",
+            },
+            step3: {
+              title: "Get Approval",
+              text: "Wait for the client to review and consider the proposal, then schedule a final meeting to discuss feedback, confirm the project details, and move forward with the next steps.",
+            },
+            step4: {
+              title: "Start Working",
+              text: "We start working on the project based on the client preferences, turning their goals and vision into a real, practical solution.",
+            },
+            step5: {
+              title: "Demo",
+              text: "Demonstrate the progress achieved so far in stages or batches to ensure the client is satisfied and aligned with the project direction.",
+            },
+            step6: {
+              title: "Upload to App Store",
+              text: "Prepare the final release build, complete the listing assets, and publish the product to the stores so the app is ready for distribution.",
+            },
+          },
+          services: {
+            kicker: "Capabilities",
+            title: "Our Services",
+            items: {
+              mobile: { chip: "Build", title: "Mobile App Development" },
+              website: { chip: "Web", title: "Website Development" },
+              dashboard: { chip: "Data", title: "Dashboard Development" },
+              database: { chip: "Backend", title: "Database Design" },
+              uiux: { chip: "Design", title: "UI/UX Design" },
+              branding: { chip: "Brand", title: "Branding & Visual Identity" },
+              graphic: { chip: "Creative", title: "Graphic & Marketing Design" },
+              social: { chip: "Growth", title: "Social Media Management & Advertising" },
+            },
+          },
+          works: {
+            kicker: "Portfolio",
+            title: "Our Works",
+            projects: {
+              glowlabs: "GlowLabs is a multivendor marketplace application with modern dashboard screens, storefront flows, and commerce management experiences built for production use.",
+              nicosiaFood: "A food delivery app designed to showcase store catalogs and food listings to customers in Nicosia through a rich, modern, and user-friendly interface.",
+              oschool: "Electronic School for digital learning and school management developed using modern web technologies to streamline and enhance traditional school administration and edcutional work.",
+              magellan: "An advanced real estate application designed to list properties and connect buyers with sellers through interactive, social-style chatroom interfaces. The app includes powerful search and filtering features to reduce browsing time and help buyers easily find the most suitable property options.",
+            },
+          },
+          contact: {
+            kicker: "Contact",
+            title: "Get in Touch",
+            text: "Tell us about your product, launch timeline, or redesign goals and we will shape the right delivery plan with you.",
+            addressLabel: "Address",
+            phoneLabel: "Phone",
+          },
+          form: {
+            fullName: "Full Name",
+            fullNamePlaceholder: "First Name",
+            phone: "Phone Number",
+            phonePlaceholder: "Phone Number",
+            email: "Email",
+            emailPlaceholder: "Email",
+            message: "Message",
+            messagePlaceholder: "Message",
+            send: "Send",
+            validation: "Please complete all fields before sending.",
+            sending: "Sending your message...",
+            success: "Your message was sent successfully.",
+            error: "Something went wrong while sending the form.",
+            sendingButton: "Sending...",
+          },
+          lightbox: {
+            dialog: "Project image preview",
+            close: "Close image preview",
+          },
+        },
+        ar: {
+          nav: {
+            primary: "التنقل الرئيسي",
+            toggle: "تبديل القائمة",
+            language: "مبدل اللغة",
+            home: "الرئيسية",
+            process: "كيف نعمل",
+            services: "خدماتنا",
+            works: "أعمالنا",
+            contact: "تواصل معنا",
+            cta: "ابدأ الآن",
+          },
+          hero: {
+            title: "اجعل تطبيقك<br />جاهزاً للنشر",
+            text: "في Adil ABU TURKEI inc نعد بتقديم أفضل التطبيقات والمواقع الحديثة لعملائنا.<br />ابقَ على تواصل واجعل تطبيقك جاهزاً للمتجر",
+            badges: "أزرار المتاجر",
+            prev: "الشريحة السابقة",
+            next: "الشريحة التالية",
+            slides: "الشرائح",
+            slide1: "الشريحة 1",
+            slide2: "الشريحة 2",
+            slide3: "الشريحة 3",
+          },
+          process: {
+            title: "كيف نعمل لتحويل أفكارك إلى واقع",
+            step1: {
+              title: "الاجتماع",
+              text: "نبدأ باجتماع استكشافي لفهم احتياجات العميل وتحديد أهدافه وجمع جميع متطلبات المشروع.",
+            },
+            step2: {
+              title: "إرسال العرض",
+              text: "نرسل عرضًا احترافيًا يتضمن أبرز النقاط والأفكار الرئيسية ونطاق المشروع والمخرجات المتوقعة والجدول الزمني والتسعير.",
+            },
+            step3: {
+              title: "الحصول على الموافقة",
+              text: "ننتظر مراجعة العميل للعرض ثم نعقد اجتماعًا نهائيًا لمناقشة الملاحظات وتأكيد تفاصيل المشروع والانتقال إلى الخطوات التالية.",
+            },
+            step4: {
+              title: "بدء العمل",
+              text: "نبدأ العمل على المشروع وفق تفضيلات العميل، ونحوّل أهدافه ورؤيته إلى حل عملي حقيقي.",
+            },
+            step5: {
+              title: "العرض التجريبي",
+              text: "نعرض التقدم المحقق على مراحل لضمان رضا العميل وتوافقه مع اتجاه المشروع.",
+            },
+            step6: {
+              title: "الرفع إلى المتجر",
+              text: "نجهز النسخة النهائية ونكمل أصول النشر ثم نرفع المنتج إلى المتاجر ليصبح جاهزًا للتوزيع.",
+            },
+          },
+          services: {
+            kicker: "القدرات",
+            title: "خدماتنا",
+            items: {
+              mobile: { chip: "تطوير", title: "تطوير تطبيقات الجوال" },
+              website: { chip: "ويب", title: "تطوير المواقع الإلكترونية" },
+              dashboard: { chip: "بيانات", title: "تطوير لوحات التحكم" },
+              database: { chip: "خلفية", title: "تصميم قواعد البيانات" },
+              uiux: { chip: "تصميم", title: "تصميم واجهات وتجربة المستخدم" },
+              branding: { chip: "هوية", title: "الهوية البصرية والعلامة التجارية" },
+              graphic: { chip: "إبداع", title: "التصميم الجرافيكي والتسويقي" },
+              social: { chip: "نمو", title: "إدارة وإعلانات وسائل التواصل الاجتماعي" },
+            },
+          },
+          works: {
+            kicker: "معرض الأعمال",
+            title: "أعمالنا",
+            projects: {
+              glowlabs: "GlowLabs هو تطبيق سوق متعدد البائعين يضم شاشات لوحة تحكم حديثة وتجارب واجهات متجر وإدارة تجارة مبنية للاستخدام الفعلي.",
+              nicosiaFood: "تطبيق توصيل طعام صُمم لعرض المتاجر وقوائم الأطعمة للعملاء في نيقوسيا من خلال واجهة غنية وحديثة وسهلة الاستخدام.",
+              oschool: "مدرسة إلكترونية للتعلم الرقمي وإدارة المدارس تم تطويرها باستخدام تقنيات ويب حديثة لتبسيط وتحسين الإدارة المدرسية والعمل التعليمي التقليدي.",
+              magellan: "تطبيق عقاري متقدم صُمم لعرض العقارات وربط المشترين بالبائعين عبر واجهات محادثة تفاعلية بطابع اجتماعي. يتضمن التطبيق أدوات بحث وتصفية قوية لتقليل وقت التصفح ومساعدة المشترين على العثور بسهولة على أفضل الخيارات المناسبة.",
+            },
+          },
+          contact: {
+            kicker: "تواصل",
+            title: "تواصل معنا",
+            text: "أخبرنا عن منتجك أو موعد الإطلاق أو أهداف إعادة التصميم وسنضع معك خطة التنفيذ المناسبة.",
+            addressLabel: "العنوان",
+            phoneLabel: "الهاتف",
+          },
+          form: {
+            fullName: "الاسم الكامل",
+            fullNamePlaceholder: "الاسم الأول",
+            phone: "رقم الهاتف",
+            phonePlaceholder: "رقم الهاتف",
+            email: "البريد الإلكتروني",
+            emailPlaceholder: "البريد الإلكتروني",
+            message: "الرسالة",
+            messagePlaceholder: "الرسالة",
+            send: "إرسال",
+            validation: "يرجى إكمال جميع الحقول قبل الإرسال.",
+            sending: "جارٍ إرسال رسالتك...",
+            success: "تم إرسال رسالتك بنجاح.",
+            error: "حدث خطأ أثناء إرسال النموذج.",
+            sendingButton: "جارٍ الإرسال...",
+          },
+          lightbox: {
+            dialog: "معاينة صورة المشروع",
+            close: "إغلاق معاينة الصورة",
+          },
+        },
+      };
+
+      const getTranslation = (lang, path) => path.split(".").reduce((acc, key) => acc?.[key], translations[lang]);
+      const htmlRoot = document.documentElement;
+      const langButtons = Array.from(document.querySelectorAll("[data-lang-switch]"));
+      const i18nTextNodes = Array.from(document.querySelectorAll("[data-i18n]"));
+      const i18nHtmlNodes = Array.from(document.querySelectorAll("[data-i18n-html]"));
+      const i18nPlaceholderNodes = Array.from(document.querySelectorAll("[data-i18n-placeholder]"));
+      const i18nAriaNodes = Array.from(document.querySelectorAll("[data-i18n-aria]"));
+      const savedLanguage = window.localStorage.getItem("preferredLanguage");
+      let currentLanguage = savedLanguage === "ar" ? "ar" : "en";
+
+      const applyLanguage = (lang) => {
+        currentLanguage = lang;
+        htmlRoot.lang = lang;
+        htmlRoot.dir = lang === "ar" ? "rtl" : "ltr";
+        window.localStorage.setItem("preferredLanguage", lang);
+
+        i18nTextNodes.forEach((node) => {
+          const value = getTranslation(lang, node.dataset.i18n);
+          if (typeof value === "string") {
+            node.textContent = value;
+          }
+        });
+
+        i18nHtmlNodes.forEach((node) => {
+          const value = getTranslation(lang, node.dataset.i18nHtml);
+          if (typeof value === "string") {
+            node.innerHTML = value;
+          }
+        });
+
+        i18nPlaceholderNodes.forEach((node) => {
+          const value = getTranslation(lang, node.dataset.i18nPlaceholder);
+          if (typeof value === "string") {
+            node.setAttribute("placeholder", value);
+          }
+        });
+
+        i18nAriaNodes.forEach((node) => {
+          const value = getTranslation(lang, node.dataset.i18nAria);
+          if (typeof value === "string") {
+            node.setAttribute("aria-label", value);
+          }
+        });
+
+        langButtons.forEach((button) => {
+          const isActive = button.dataset.langSwitch === lang;
+          button.classList.toggle("is-active", isActive);
+          button.setAttribute("aria-pressed", String(isActive));
+        });
+      };
+
+      langButtons.forEach((button) => {
+        button.addEventListener("click", () => {
+          const nextLang = button.dataset.langSwitch;
+          if (nextLang === "en" || nextLang === "ar") {
+            applyLanguage(nextLang);
+          }
+        });
+      });
+
+      applyLanguage(currentLanguage);
+
       const headerToggle = document.querySelector(".site-nav-toggle");
       const headerMenu = document.querySelector(".site-nav-menu");
       const headerMenuLinks = Array.from(document.querySelectorAll(".site-nav-menu a"));
@@ -2154,20 +2582,20 @@
       form?.addEventListener("submit", async (event) => {
         event.preventDefault();
         if (!form.reportValidity()) {
-          status.textContent = "Please complete all fields before sending.";
+          status.textContent = getTranslation(currentLanguage, "form.validation");
           return;
         }
 
         const submitButton = form.querySelector('button[type="submit"]');
-        const originalLabel = submitButton?.textContent || "Send";
+        const originalLabel = getTranslation(currentLanguage, "form.send");
         const formData = new FormData(form);
 
         try {
           if (submitButton) {
             submitButton.disabled = true;
-            submitButton.textContent = "Sending...";
+            submitButton.textContent = getTranslation(currentLanguage, "form.sendingButton");
           }
-          status.textContent = "Sending your message...";
+          status.textContent = getTranslation(currentLanguage, "form.sending");
 
           const response = await fetch(form.action, {
             method: "POST",
@@ -2184,11 +2612,11 @@
           }
 
           form.reset();
-          status.textContent = "Your message was sent successfully.";
+          status.textContent = getTranslation(currentLanguage, "form.success");
         } catch (error) {
-          status.textContent = error instanceof Error
+          status.textContent = error instanceof Error && error.message
             ? error.message
-            : "Something went wrong while sending the form.";
+            : getTranslation(currentLanguage, "form.error");
         } finally {
           if (submitButton) {
             submitButton.disabled = false;

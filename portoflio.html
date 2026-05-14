@@ -1,0 +1,2376 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AMRO AND THE PARTNERS</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@600;700&family=Cormorant+Garamond:wght@600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #ffffff;
+      --surface: #f7f8fb;
+      --surface-strong: #eef1f6;
+      --text: #111827;
+      --muted: #5f6b7a;
+      --line: #dfe5ee;
+      --theme-primary: #9866F7;
+      --theme-primary-hover: #7d48ee;
+      --theme-primary-soft: #f1eaff;
+      --hero-gradient-start: #c78cff;
+      --hero-gradient-end: #6f73ff;
+      --accent: var(--theme-primary);
+      --accent-soft: var(--theme-primary-soft);
+      --shadow: 0 18px 40px rgba(15, 23, 42, 0.08);
+      --radius: 0px;
+      --site-width: 980px;
+      --transition: 240ms ease;
+      --font-ui: Avenir, "Avenir Next", "Segoe UI", Helvetica, Arial, sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--font-ui);
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button,
+    input,
+    textarea {
+      font: inherit;
+    }
+
+    .container {
+      width: min(var(--site-width), calc(100% - 40px));
+      margin: 0 auto;
+    }
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 40;
+      background: rgba(255, 255, 255, 0.96);
+      border-bottom: 1px solid #e5e7eb;
+      backdrop-filter: blur(10px);
+    }
+
+    .site-header .container {
+      width: min(1280px, calc(100% - 32px));
+    }
+
+    .site-nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      min-height: 78px;
+    }
+
+    .site-brand {
+      display: inline-flex;
+      align-items: center;
+      min-width: 0;
+      flex: 0 0 auto;
+    }
+
+    .site-brand img {
+      display: block;
+      width: auto;
+      height: clamp(34px, 4vw, 52px);
+    }
+
+    .site-nav-links {
+      display: flex;
+      align-items: center;
+      gap: 34px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .site-nav-links a {
+      color: #4b5563;
+      font-size: 15px;
+      line-height: 1.2;
+      font-weight: 500;
+      transition: color var(--transition);
+    }
+
+    .site-nav-links a:hover,
+    .site-nav-links a:focus-visible {
+      color: var(--accent);
+      outline: none;
+    }
+
+    .site-nav-links a.is-active {
+      color: var(--accent);
+    }
+
+    .site-nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .lang-switcher {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px;
+      border: 1px solid #e5e7eb;
+      border-radius: 999px;
+      background: #f8fafc;
+    }
+
+    .lang-switcher button {
+      min-width: 42px;
+      height: 34px;
+      padding: 0 12px;
+      border: 0;
+      border-radius: 999px;
+      background: transparent;
+      color: #475569;
+      cursor: pointer;
+      font-size: 12px;
+      line-height: 1;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      transition: background-color var(--transition), color var(--transition);
+    }
+
+    .lang-switcher button.is-active {
+      background: #fff;
+      color: #111827;
+      box-shadow: 0 2px 6px rgba(15, 23, 42, 0.1);
+    }
+
+    .site-cta {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 44px;
+      padding: 0 18px;
+      border-radius: 12px;
+      background: var(--accent);
+      color: #fff;
+      font-size: 14px;
+      line-height: 1;
+      font-weight: 600;
+      transition: background-color var(--transition), transform var(--transition);
+    }
+
+    .site-cta:hover,
+    .site-cta:focus-visible {
+      background: var(--theme-primary-hover);
+      transform: translateY(-1px);
+      outline: none;
+    }
+
+    .site-nav-toggle {
+      display: none;
+      width: 44px;
+      height: 44px;
+      padding: 0;
+      border: 1px solid #d1d5db;
+      border-radius: 10px;
+      background: #fff;
+      color: #6b7280;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+    }
+
+    .site-nav-toggle svg {
+      width: 22px;
+      height: 22px;
+      fill: currentColor;
+    }
+
+    .site-nav-toggle .icon-close {
+      display: none;
+    }
+
+    .site-nav-toggle[aria-expanded="true"] .icon-menu {
+      display: none;
+    }
+
+    .site-nav-toggle[aria-expanded="true"] .icon-close {
+      display: block;
+    }
+
+    .site-nav-menu {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 28px;
+      flex: 1 1 auto;
+    }
+
+    html[dir="rtl"] body {
+      direction: rtl;
+    }
+
+    html[dir="rtl"] .site-nav {
+      flex-direction: row-reverse;
+    }
+
+    html[dir="rtl"] .site-nav-menu,
+    html[dir="rtl"] .site-nav-links,
+    html[dir="rtl"] .site-nav-actions {
+      flex-direction: row-reverse;
+    }
+
+    #home,
+    #process,
+    #services,
+    #works,
+    #contact {
+      scroll-margin-top: 104px;
+    }
+
+    .hero {
+      padding: 0;
+    }
+
+    .hero-grid {
+      display: block;
+      min-height: auto;
+      width: 100%;
+      max-width: 100%;
+    }
+
+    .hero-visual {
+      position: relative;
+      margin: 0;
+      width: 100%;
+      background: #fff;
+    }
+
+    .hero-visual img {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+
+    .hero-overlay {
+      position: absolute;
+      top: clamp(18px, 4vw, 44px);
+      left: clamp(28px, 4.5vw, 48px);
+      z-index: 2;
+      max-width: min(1080px, 92vw);
+      color: #fff;
+      text-align: left;
+      direction: ltr;
+      unicode-bidi: isolate;
+    }
+
+    .hero-overlay-title {
+      margin: 0;
+      color: #fff;
+      font-family: "Cormorant Garamond", Georgia, "Times New Roman", serif;
+      font-size: clamp(56px, 10vw, 122px);
+      line-height: 0.84;
+      letter-spacing: -0.045em;
+      font-weight: 700;
+      text-wrap: nowrap;
+      direction: ltr;
+      unicode-bidi: isolate;
+    }
+
+    .hero-overlay-line {
+      display: block;
+    }
+
+    .hero-overlay-line--second {
+      display: flex;
+      align-items: baseline;
+      gap: clamp(8px, 1.3vw, 18px);
+    }
+
+    .hero-overlay-accent {
+      background: linear-gradient(90deg, var(--hero-gradient-start) 0%, var(--hero-gradient-end) 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero-overlay-rule {
+      width: 40px;
+      height: 2px;
+      margin: clamp(12px, 2.2vw, 24px) 0 clamp(10px, 1.8vw, 20px);
+      background: rgba(255, 255, 255, 0.58);
+    }
+
+    .hero-overlay-subtitle {
+      margin: 0;
+      color: rgba(255, 255, 255, 0.92);
+      font-size: clamp(15px, 2vw, 24px);
+      line-height: 1.25;
+      font-weight: 400;
+      letter-spacing: -0.02em;
+      direction: ltr;
+      unicode-bidi: isolate;
+    }
+
+    .section-title {
+      margin: 0;
+      font-size: 30px;
+      line-height: 1.2;
+      font-weight: 500;
+      text-align: center;
+    }
+
+    .process {
+      padding: 92px 0 72px;
+      background: transparent;
+    }
+
+    .process .container {
+      width: min(1180px, calc(100% - 40px));
+    }
+
+    .process .section-title {
+      color: #111827;
+      margin-bottom: 48px;
+    }
+
+    .process-timeline {
+      position: relative;
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      column-gap: 48px;
+      row-gap: 48px;
+      align-items: start;
+    }
+
+    .process-step {
+      position: relative;
+      z-index: 1;
+      width: min(100%, 428px);
+      min-height: 184px;
+      padding: 18px 64px 18px 20px;
+      border-radius: 24px;
+      background: var(--accent);
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .process-step--left {
+      justify-self: start;
+    }
+
+    .process-step--right {
+      justify-self: end;
+      margin-top: 80px;
+    }
+
+    .process-step__icon {
+      position: absolute;
+      top: 18px;
+      right: 18px;
+      width: 48px;
+      height: 46px;
+      object-fit: contain;
+    }
+
+    html[dir="rtl"] .process-step {
+      padding: 18px 20px 18px 64px;
+    }
+
+    html[dir="rtl"] .process-step__icon {
+      right: auto;
+      left: 18px;
+    }
+
+    .process-step__title {
+      margin: 0 0 8px;
+      max-width: 258px;
+      color: #fff;
+      font-family: "Cairo", var(--font-ui);
+      font-size: clamp(21px, 2.2vw, 24px);
+      line-height: 1;
+      font-weight: 600;
+      letter-spacing: -0.03em;
+    }
+
+    .process-step__text {
+      margin: 0;
+      max-width: 346px;
+      color: #fff;
+      font-family: "Cairo", var(--font-ui);
+      font-size: clamp(13px, 1.05vw, 16px);
+      line-height: 1.5;
+      font-weight: 600;
+    }
+
+    .process-connectors {
+      position: absolute;
+      z-index: 0;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+    }
+
+    .process-connectors line {
+      stroke: var(--accent);
+      stroke-width: 4;
+      stroke-linecap: round;
+      opacity: 0.95;
+    }
+
+    .services {
+      padding: 86px 0 82px;
+      background: #edf2f8;
+    }
+
+    .services-head {
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      gap: 42px;
+      align-items: end;
+      margin-bottom: 36px;
+    }
+
+    html[dir="rtl"] .services-head {
+      direction: rtl;
+    }
+
+    .services-kicker {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin: 0 0 14px;
+      color: #314259;
+      font-size: 12px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      font-weight: 700;
+    }
+
+    html[dir="rtl"] .services-kicker,
+    html[dir="rtl"] .contact-kicker {
+      flex-direction: row-reverse;
+    }
+
+    html[dir="rtl"] .contact-kicker {
+      align-self: end;
+      justify-self: start;
+      margin-inline-start: 0;
+    }
+
+    .services-kicker::before {
+      content: "";
+      width: 34px;
+      height: 2px;
+      background: var(--accent);
+    }
+
+    .services-title {
+      margin: 0;
+      font-size: 44px;
+      line-height: 1.04;
+      letter-spacing: -0.03em;
+      font-weight: 700;
+      color: #111827;
+      max-width: 560px;
+    }
+
+    html[dir="rtl"] .section-title,
+    html[dir="rtl"] .services-title,
+    html[dir="rtl"] .works-copy,
+    html[dir="rtl"] .contact-copy,
+    html[dir="rtl"] .contact-detail,
+    html[dir="rtl"] .field {
+      text-align: right;
+    }
+
+    html[dir="rtl"] .section-title,
+    html[dir="rtl"] .services-title,
+    html[dir="rtl"] .contact-copy h2 {
+      font-family: "Cairo", var(--font-ui);
+    }
+
+    .hero-overlay-line--second {
+      justify-content: flex-start;
+    }
+
+    html[dir="rtl"] .hero-overlay-line--second {
+      justify-content: flex-start;
+    }
+
+    .services-intro {
+      margin: 0;
+      color: #475569;
+      font-size: 17px;
+      line-height: 1.78;
+      max-width: 380px;
+      justify-self: end;
+    }
+
+    .service-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .service-card {
+      position: relative;
+      min-height: 342px;
+      margin: 0;
+      overflow: hidden;
+      background: #1f2f47;
+      border: 1px solid rgba(255, 255, 255, 0.34);
+      box-shadow: 0 18px 36px rgba(17, 24, 39, 0.18);
+      isolation: isolate;
+      transition: transform 280ms ease, box-shadow 280ms ease;
+    }
+
+    .service-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 22px 42px rgba(17, 24, 39, 0.26);
+    }
+
+    .service-card img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      transition: transform 420ms ease;
+    }
+
+    .service-card:hover img {
+      transform: scale(1.06);
+    }
+
+    .service-card::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      background: linear-gradient(180deg, rgba(13, 20, 33, 0.14) 20%, rgba(13, 20, 33, 0.84) 84%);
+    }
+
+    .service-card figcaption {
+      position: absolute;
+      inset: auto 0 0;
+      z-index: 2;
+      padding: 18px 16px 16px;
+      display: grid;
+      gap: 10px;
+    }
+
+    .service-card .chip {
+      width: fit-content;
+      padding: 7px 10px;
+      background: rgba(246, 163, 0, 0.94);
+      color: #101827;
+      font-size: 11px;
+      line-height: 1;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      font-weight: 700;
+    }
+
+    .service-card h3 {
+      margin: 0;
+      color: #fff;
+      font-size: 19px;
+      line-height: 1.35;
+      font-weight: 600;
+      max-width: 220px;
+    }
+
+    .works-showcase {
+      position: relative;
+      background: #fff;
+      padding: 0;
+    }
+
+    .works-showcase .container {
+      width: min(1440px, 100%);
+      margin: 0 auto;
+    }
+
+    .works-section-head {
+      background: #fff;
+      padding: 80px 80px 0;
+    }
+
+    .works-project {
+      --works-accent: var(--accent);
+      background: #fff;
+      margin: 0 80px 26px;
+      border: 1px solid #e6ebf2;
+      border-radius: 26px;
+      overflow: hidden;
+      box-shadow: 0 22px 44px rgba(15, 23, 42, 0.06);
+    }
+
+    .works-project--food {
+      --works-accent: var(--accent);
+    }
+
+    .works-project--oschool {
+      --works-accent: var(--accent);
+    }
+
+    .works-project--magellan {
+      --works-accent: var(--accent);
+    }
+
+    .works-mainsection {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+      align-items: center;
+      gap: 48px;
+      padding: 48px;
+      min-height: 360px;
+      border-bottom: 1px solid #eef2f7;
+    }
+
+    html[dir="rtl"] .works-mainsection {
+      direction: rtl;
+    }
+
+    .works-copy {
+      display: grid;
+      gap: 22px;
+      max-width: 560px;
+    }
+
+    .works-copy h2 {
+      margin: 0;
+      font-family: Inter, "Segoe UI", Helvetica, Arial, sans-serif;
+      font-size: clamp(34px, 4.4vw, 56px);
+      line-height: 1.12;
+      font-weight: 700;
+      color: #0f172a;
+    }
+
+    .works-copy p {
+      margin: 0;
+      font-family: Inter, "Segoe UI", Helvetica, Arial, sans-serif;
+      font-size: 18px;
+      line-height: 1.6;
+      color: #334155;
+    }
+
+    .works-kpis {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .works-kpi {
+      margin: 0;
+      padding: 8px 12px;
+      border-radius: 999px;
+      border: 1px solid color-mix(in srgb, var(--works-accent) 34%, #d8deea);
+      background: color-mix(in srgb, var(--works-accent) 8%, #fff);
+      color: #0f172a;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    .works-rail {
+      position: relative;
+      padding: 0 48px 48px;
+    }
+
+    .works-rail-track {
+      display: flex;
+      gap: 18px;
+      width: 100%;
+      overflow-x: auto;
+      overflow-y: hidden;
+      padding: 0 4px 8px;
+      margin: 0;
+      scroll-behavior: smooth;
+      scroll-snap-type: x proximity;
+      scrollbar-width: thin;
+      scrollbar-color: rgba(152, 102, 247, 0.45) transparent;
+    }
+
+    .works-rail-card {
+      flex: 0 0 min(340px, 72vw);
+      margin: 0;
+      border-radius: 14px;
+      border: 1px solid #dce4ef;
+      background: #f8fafc;
+      overflow: hidden;
+      box-shadow: 0 12px 26px rgba(15, 23, 42, 0.08);
+      scroll-snap-align: start;
+    }
+
+    .works-rail-card--portrait {
+      aspect-ratio: 9 / 16;
+      flex-basis: min(280px, 62vw);
+    }
+
+    .works-rail-card--landscape {
+      aspect-ratio: 16 / 9;
+      flex-basis: min(560px, 86vw);
+    }
+
+    .works-rail-card img {
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: cover;
+      object-position: center;
+      cursor: zoom-in;
+    }
+
+    .works-rail-control {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 44px;
+      height: 44px;
+      border: 0;
+      border-radius: 999px;
+      background: rgba(17, 24, 39, 0.8);
+      color: #fff;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      z-index: 2;
+      transition: background 180ms ease, transform 180ms ease;
+    }
+
+    .works-rail-control:hover {
+      background: rgba(17, 24, 39, 0.92);
+      transform: translateY(-50%) scale(1.04);
+    }
+
+    .works-rail-control:focus-visible {
+      outline: 2px solid var(--theme-primary);
+      outline-offset: 3px;
+    }
+
+    .works-rail-control--prev {
+      left: 6px;
+    }
+
+    .works-rail-control--next {
+      right: 6px;
+    }
+
+    .works-rail-control svg {
+      width: 18px;
+      height: 18px;
+      stroke: currentColor;
+      stroke-width: 2.4;
+      fill: none;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    html[dir="rtl"] .works-rail-control--prev {
+      left: auto;
+      right: 6px;
+    }
+
+    html[dir="rtl"] .works-rail-control--next {
+      right: auto;
+      left: 6px;
+    }
+
+    .works-lightbox {
+      width: min(94vw, 1400px);
+      max-width: 1400px;
+      padding: 0;
+      border: 0;
+      background: transparent;
+    }
+
+    .works-lightbox::backdrop {
+      background: rgba(15, 23, 42, 0.84);
+      backdrop-filter: blur(8px);
+    }
+
+    .works-lightbox-frame {
+      position: relative;
+      padding: 18px;
+      border-radius: 16px;
+      background: rgba(255, 255, 255, 0.08);
+      box-shadow: 0 28px 60px rgba(0, 0, 0, 0.28);
+    }
+
+    .works-lightbox-close {
+      position: absolute;
+      top: 14px;
+      right: 14px;
+      width: 42px;
+      height: 42px;
+      border: 0;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.78);
+      color: #fff;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      z-index: 1;
+    }
+
+    .works-lightbox-close svg {
+      width: 18px;
+      height: 18px;
+      stroke: currentColor;
+      stroke-width: 2;
+      fill: none;
+    }
+
+    .works-lightbox img {
+      width: 100%;
+      max-height: 86vh;
+      display: block;
+      object-fit: contain;
+      object-position: center;
+      border-radius: 12px;
+      background: #fff;
+    }
+
+    .contact {
+      padding: 88px 0 96px;
+      background: #fff;
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: minmax(300px, 360px) minmax(0, 635px);
+      justify-content: space-between;
+      gap: 72px;
+      align-items: start;
+    }
+
+    html[dir="rtl"] .contact-grid {
+      direction: rtl;
+    }
+
+    .contact-copy {
+      display: grid;
+      gap: 26px;
+      align-content: start;
+      padding-top: 10px;
+    }
+
+    .contact-kicker {
+      margin: 0;
+      display: inline-flex;
+      width: fit-content;
+      align-items: center;
+      gap: 12px;
+      color: var(--accent);
+      font-size: 12px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      font-weight: 700;
+    }
+
+    .contact-kicker::before {
+      content: "";
+      width: 34px;
+      height: 2px;
+      background: var(--accent);
+    }
+
+    .contact-copy h2 {
+      margin: 0;
+      max-width: 320px;
+      font-size: 44px;
+      line-height: 1.06;
+      letter-spacing: -0.03em;
+      font-weight: 700;
+      color: #111827;
+    }
+
+    .contact-copy p {
+      margin: 0;
+      max-width: 320px;
+      color: #475569;
+      font-size: 17px;
+      line-height: 1.8;
+    }
+
+    .contact-meta {
+      display: grid;
+      gap: 14px;
+    }
+
+    .contact-detail {
+      margin: 0;
+      color: #111827;
+      font-size: 15px;
+      line-height: 1.7;
+    }
+
+    .contact-detail span {
+      display: block;
+      margin-bottom: 2px;
+      color: #7b8794;
+      font-size: 11px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      font-weight: 700;
+    }
+
+    .contact-links {
+      display: flex;
+      gap: 10px;
+      margin-top: 4px;
+    }
+
+    .contact-links a {
+      width: 42px;
+      height: 42px;
+      border: 1px solid #d8e0ea;
+      border-radius: 999px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      color: #111827;
+      background: #fff;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      transition: border-color var(--transition), color var(--transition), transform var(--transition), background-color var(--transition);
+    }
+
+    .contact-links a:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+      background: var(--accent-soft);
+      transform: translateY(-1px);
+    }
+
+    .contact-form-card {
+      width: 100%;
+    }
+
+    .contact-form {
+      width: 100%;
+      padding: 0;
+    }
+
+    .field-row {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 22px;
+      margin-bottom: 0;
+    }
+
+    .field {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-bottom: 26px;
+    }
+
+    .field label {
+      font-size: 12px;
+      line-height: 1.2;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      font-weight: 700;
+      color: #7b8794;
+    }
+
+    .field input,
+    .field textarea {
+      width: 100%;
+      border: 0;
+      border-bottom: 1px solid #0f172a;
+      background: transparent;
+      color: #0f172a;
+      padding: 0 0 12px;
+      transition: border-color var(--transition), box-shadow var(--transition);
+      border-radius: 0;
+    }
+
+    html[dir="rtl"] .field input,
+    html[dir="rtl"] .field textarea {
+      text-align: right;
+    }
+
+    .field input {
+      min-height: 42px;
+    }
+
+    .field textarea {
+      min-height: 140px;
+      resize: vertical;
+      padding-top: 4px;
+    }
+
+    .field input:focus,
+    .field textarea:focus {
+      outline: none;
+      border-bottom-width: 2px;
+      border-color: var(--accent);
+      box-shadow: none;
+    }
+
+    .field input::placeholder,
+    .field textarea::placeholder {
+      color: #94a3b8;
+    }
+
+    .contact-form button {
+      min-width: 168px;
+      min-height: 48px;
+      border: 0;
+      background: #111827;
+      color: #fff;
+      cursor: pointer;
+      transition: transform var(--transition), background var(--transition);
+    }
+
+    .contact-form button:hover {
+      background: #1f2937;
+      transform: translateY(-1px);
+    }
+
+    .form-status {
+      margin-top: 16px;
+      min-height: 24px;
+      color: #64748b;
+      font-size: 14px;
+    }
+
+    .site-footer {
+      padding: 0 0 40px;
+    }
+
+    .site-footer p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 14px;
+      text-align: center;
+    }
+
+    @media (max-width: 1040px) {
+      .site-nav {
+        min-height: 72px;
+      }
+
+      .site-nav-toggle {
+        display: inline-flex;
+      }
+
+      .site-nav-menu {
+        position: absolute;
+        top: calc(100% + 8px);
+        left: 16px;
+        right: 16px;
+        display: none;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 18px;
+        padding: 20px;
+        background: #fff;
+        border: 1px solid #e5e7eb;
+        border-radius: 18px;
+        box-shadow: 0 20px 40px rgba(15, 23, 42, 0.08);
+      }
+
+      .site-nav-menu.is-open {
+        display: flex;
+      }
+
+      .site-nav-links {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 14px;
+      }
+
+      .site-nav-actions {
+        width: 100%;
+      }
+
+      .lang-switcher {
+        align-self: flex-start;
+      }
+
+      .site-cta {
+        width: 100%;
+      }
+
+      .container.hero-grid {
+        width: 100%;
+      }
+
+      .hero-grid,
+      .contact-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero {
+        padding-bottom: 60px;
+      }
+
+      .contact-copy,
+      .contact-form-card {
+        padding-left: 0;
+        padding-top: 40px;
+      }
+
+      .hero-overlay {
+        left: 24px;
+        right: auto;
+        max-width: none;
+      }
+
+      .contact-copy h2,
+      .contact-copy p {
+        width: auto;
+      }
+
+      .service-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 28px;
+      }
+
+      .process-timeline {
+        grid-template-columns: 1fr;
+        row-gap: 28px;
+      }
+
+      .process-step,
+      .process-step--left,
+      .process-step--right {
+        width: 100%;
+        max-width: none;
+        min-height: auto;
+        margin-top: 0;
+        justify-self: stretch;
+      }
+
+      .process-step {
+        padding: 24px 88px 24px 24px;
+      }
+
+      .process-step__title {
+        max-width: 100%;
+      }
+
+      .process-step__text {
+        max-width: 100%;
+      }
+
+      .process-connectors {
+        display: none;
+      }
+
+      .services-head {
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
+
+      html[dir="rtl"] .services-head {
+        text-align: right;
+      }
+
+      .services-intro {
+        justify-self: start;
+        max-width: 100%;
+      }
+
+      .service-card,
+      .contact-form {
+        width: 100%;
+      }
+
+      .works-project {
+        margin-inline: 32px;
+      }
+
+      .works-mainsection {
+        grid-template-columns: 1fr;
+        height: auto;
+        padding: 32px;
+        gap: 28px;
+      }
+
+      .works-section-head {
+        padding: 56px 32px 0;
+      }
+
+      .works-rail {
+        padding: 0 32px 40px;
+      }
+
+      .field-row {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 720px) {
+      .site-brand {
+        font-size: 18px;
+        white-space: normal;
+      }
+
+      .hero-overlay {
+        top: 12px;
+        left: 16px;
+        right: auto;
+      }
+
+      .hero-overlay-title {
+        font-size: clamp(34px, 9vw, 56px);
+        line-height: 0.88;
+        text-wrap: wrap;
+      }
+
+      .hero-overlay-line--second {
+        gap: 8px;
+      }
+
+      .hero-overlay-rule {
+        margin: 10px 0 10px;
+      }
+
+      .hero-overlay-subtitle {
+        font-size: 14px;
+        line-height: 1.35;
+      }
+
+      .service-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .services {
+        padding: 66px 0 62px;
+      }
+
+      .process {
+        padding: 72px 0 56px;
+      }
+
+      .process .section-title {
+        margin-bottom: 36px;
+      }
+
+      .process-step {
+        padding: 20px 72px 20px 20px;
+        border-radius: 24px;
+      }
+
+      .process-step__icon {
+        top: 18px;
+        right: 18px;
+        width: 56px;
+        height: 56px;
+      }
+
+      .process-step__title {
+        font-size: 24px;
+        line-height: 1.15;
+        margin-bottom: 12px;
+      }
+
+      .process-step__text {
+        font-size: 16px;
+        line-height: 1.6;
+      }
+
+      .services-title {
+        font-size: 36px;
+      }
+
+      .contact-copy,
+      .contact-form-card {
+        padding-top: 28px;
+      }
+
+      .works-section-head {
+        padding: 48px 20px 0;
+      }
+
+      .works-project {
+        margin-inline: 20px;
+        border-radius: 20px;
+      }
+
+      .works-mainsection {
+        padding: 24px 20px;
+        gap: 20px;
+      }
+
+      .works-rail {
+        padding: 0 20px 40px;
+      }
+
+      .works-rail-control {
+        width: 38px;
+        height: 38px;
+      }
+
+      .works-copy p {
+        font-size: 16px;
+      }
+
+      .works-rail-card {
+        flex-basis: 74vw;
+      }
+
+      .works-rail-card--portrait {
+        flex-basis: 64vw;
+      }
+
+      .works-rail-card--landscape {
+        flex-basis: 92vw;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container">
+      <nav class="site-nav" aria-label="Primary navigation" data-i18n-aria="nav.primary">
+        <a class="site-brand" href="#home" aria-label="Amro and the Partners home">
+          <img src="assets/portoflio/logo.png" alt="Amro and the Partners" />
+        </a>
+
+        <button
+          class="site-nav-toggle"
+          type="button"
+          aria-expanded="false"
+          aria-controls="site-nav-menu"
+          aria-label="Toggle navigation"
+          data-i18n-aria="nav.toggle"
+        >
+          <svg class="icon-menu" viewBox="0 0 20 20" aria-hidden="true">
+            <path fill-rule="evenodd" d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd"></path>
+          </svg>
+          <svg class="icon-close" viewBox="0 0 20 20" aria-hidden="true">
+            <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path>
+          </svg>
+        </button>
+
+        <div class="site-nav-menu" id="site-nav-menu">
+          <ul class="site-nav-links">
+            <li><a class="is-active" href="#home" data-i18n="nav.home">Home</a></li>
+            <li><a href="#process" data-i18n="nav.process">How We Work</a></li>
+            <li><a href="#services" data-i18n="nav.services">Services</a></li>
+            <li><a href="#works" data-i18n="nav.works">Our Works</a></li>
+            <li><a href="#contact" data-i18n="nav.contact">Contact</a></li>
+          </ul>
+
+          <div class="site-nav-actions">
+            <div class="lang-switcher" aria-label="Language switcher" data-i18n-aria="nav.language">
+              <button type="button" class="is-active" data-lang-switch="en" aria-pressed="true">EN</button>
+              <button type="button" data-lang-switch="ar" aria-pressed="false">AR</button>
+            </div>
+            <a class="site-cta" href="#contact" data-i18n="nav.cta">Get started</a>
+          </div>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="home">
+      <div class="container hero-grid">
+        <figure class="hero-visual">
+          <div class="hero-overlay" aria-hidden="true">
+            <h1 class="hero-overlay-title">
+              <span class="hero-overlay-line">Amro and</span>
+              <span class="hero-overlay-line hero-overlay-line--second">
+                <span>the</span>
+                <span class="hero-overlay-accent">Partners</span>
+              </span>
+            </h1>
+            <div class="hero-overlay-rule"></div>
+            <p class="hero-overlay-subtitle">Programming, Design, Marketing &amp; Social Media</p>
+          </div>
+          <img src="assets/portoflio/mainHero.png" alt="Portfolio main hero" />
+        </figure>
+      </div>
+    </section>
+
+    <section class="process" id="process">
+      <div class="container">
+        <h2 class="section-title" data-i18n="process.title">How we work to transfer your ideas</h2>
+        <div class="process-timeline">
+          <svg class="process-connectors" aria-hidden="true"></svg>
+
+          <article class="process-step process-step--left">
+            <img class="process-step__icon" src="assets/portoflio/meeting_white.png" alt="" width="75" height="71" />
+            <h3 class="process-step__title" data-i18n="process.step1.title">Meet</h3>
+            <p class="process-step__text" data-i18n="process.step1.text">Start with a discovery meeting to understand the client needs, identify their goals, and gather the full project requirements.</p>
+          </article>
+
+          <article class="process-step process-step--right">
+            <img class="process-step__icon" src="assets/portoflio/proposal_white.png" alt="" width="75" height="71" />
+            <h3 class="process-step__title" data-i18n="process.step2.title">Send Proposal</h3>
+            <p class="process-step__text" data-i18n="process.step2.text">Send a professional proposal to the client that includes the key highlights, main ideas, project scope, expected deliverables, timeline, and pricing details.</p>
+          </article>
+
+          <article class="process-step process-step--left">
+            <img class="process-step__icon" src="assets/portoflio/approve_white.png" alt="" width="75" height="71" />
+            <h3 class="process-step__title" data-i18n="process.step3.title">Get Approval</h3>
+            <p class="process-step__text" data-i18n="process.step3.text">Wait for the client to review and consider the proposal, then schedule a final meeting to discuss feedback, confirm the project details, and move forward with the next steps.</p>
+          </article>
+
+          <article class="process-step process-step--right">
+            <img class="process-step__icon" src="assets/portoflio/working_white.png" alt="" width="75" height="71" />
+            <h3 class="process-step__title" data-i18n="process.step4.title">Start Working</h3>
+            <p class="process-step__text" data-i18n="process.step4.text">We start working on the project based on the client preferences, turning their goals and vision into a real, practical solution.</p>
+          </article>
+
+          <article class="process-step process-step--left">
+            <img class="process-step__icon" src="assets/portoflio/demo_white.png" alt="" width="75" height="71" />
+            <h3 class="process-step__title" data-i18n="process.step5.title">Demo</h3>
+            <p class="process-step__text" data-i18n="process.step5.text">Demonstrate the progress achieved so far in stages or batches to ensure the client is satisfied and aligned with the project direction.</p>
+          </article>
+
+          <article class="process-step process-step--right">
+            <img class="process-step__icon" src="assets/portoflio/store_white.png" alt="" width="75" height="71" />
+            <h3 class="process-step__title" data-i18n="process.step6.title">Publish to Store</h3>
+            <p class="process-step__text" data-i18n="process.step6.text">Prepare the final release build, complete the listing assets, and publish the product to the stores so the app is ready for distribution.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="services" id="services">
+      <div class="container">
+        <div class="services-head">
+          <div>
+            <p class="services-kicker" data-i18n="services.kicker">Capabilities</p>
+            <h2 class="services-title" data-i18n="services.title">Our Services</h2>
+          </div>
+        </div>
+        <div class="service-grid">
+          <figure class="service-card">
+            <img src="assets/services/mobile-app.png" alt="Mobile App Development" width="286" height="335" />
+            <figcaption>
+              <span class="chip" data-i18n="services.items.mobile.chip">Build</span>
+              <h3 data-i18n="services.items.mobile.title">Mobile App Development</h3>
+            </figcaption>
+          </figure>
+          <figure class="service-card">
+            <img src="assets/services/website-development.png" alt="Website Development" width="286" height="335" />
+            <figcaption>
+              <span class="chip" data-i18n="services.items.website.chip">Web</span>
+              <h3 data-i18n="services.items.website.title">Website Development</h3>
+            </figcaption>
+          </figure>
+          <figure class="service-card">
+            <img src="assets/services/dashboard-development.png" alt="Dashboard Development" width="286" height="335" />
+            <figcaption>
+              <span class="chip" data-i18n="services.items.dashboard.chip">Data</span>
+              <h3 data-i18n="services.items.dashboard.title">Dashboard Development</h3>
+            </figcaption>
+          </figure>
+          <figure class="service-card">
+            <img src="assets/services/database-design.png" alt="Database Design" width="286" height="335" />
+            <figcaption>
+              <span class="chip" data-i18n="services.items.database.chip">Backend</span>
+              <h3 data-i18n="services.items.database.title">Database Design</h3>
+            </figcaption>
+          </figure>
+          <figure class="service-card">
+            <img src="assets/services/ui-ux-design.png" alt="UI/UX Design" width="286" height="335" />
+            <figcaption>
+              <span class="chip" data-i18n="services.items.uiux.chip">Design</span>
+              <h3 data-i18n="services.items.uiux.title">UI/UX Design</h3>
+            </figcaption>
+          </figure>
+          <figure class="service-card">
+            <img src="assets/services/branding-identity.png" alt="Branding and Visual Identity" width="286" height="335" />
+            <figcaption>
+              <span class="chip" data-i18n="services.items.branding.chip">Brand</span>
+              <h3 data-i18n="services.items.branding.title">Branding &amp; Visual Identity</h3>
+            </figcaption>
+          </figure>
+          <figure class="service-card">
+            <img src="assets/services/graphic-marketing.png" alt="Graphic and Marketing Design" width="286" height="335" />
+            <figcaption>
+              <span class="chip" data-i18n="services.items.graphic.chip">Creative</span>
+              <h3 data-i18n="services.items.graphic.title">Graphic &amp; Marketing Design</h3>
+            </figcaption>
+          </figure>
+          <figure class="service-card">
+            <img src="assets/services/social-media.png" alt="Social Media Management and Advertising" width="286" height="335" />
+            <figcaption>
+              <span class="chip" data-i18n="services.items.social.chip">Growth</span>
+              <h3 data-i18n="services.items.social.title">Social Media Management &amp; Advertising</h3>
+            </figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <section class="works-showcase" id="works">
+      <div class="container">
+        <div class="services-head works-section-head">
+          <div>
+            <p class="services-kicker" data-i18n="works.kicker">Portfolio</p>
+            <h2 class="services-title" data-i18n="works.title">Our Works</h2>
+          </div>
+        </div>
+
+        <div class="works-project works-project--food">
+          <article class="works-mainsection">
+            <div class="works-copy">
+              <h2>Nicosia Food</h2>
+              <p data-i18n="works.projects.nicosiaFood">
+                A food delivery app designed to showcase store catalogs and food listings to customers
+                in Nicosia through a rich, modern, and user-friendly interface.
+              </p>
+              <div class="works-kpis" aria-label="Nicosia Food highlights">
+                <p class="works-kpi">Fast Checkout</p>
+                <p class="works-kpi">Rich Catalogs</p>
+                <p class="works-kpi">Mobile First</p>
+              </div>
+            </div>
+          </article>
+
+          <div class="works-rail">
+            <button class="works-rail-control works-rail-control--prev" type="button" aria-label="Scroll project gallery left">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M15 18l-6-6 6-6"></path>
+              </svg>
+            </button>
+            <div class="works-rail-track">
+              <figure class="works-rail-card works-rail-card--portrait">
+                <img src="assets/food/foodHero.png" alt="Nicosia Food hero visual" />
+              </figure>
+              <figure class="works-rail-card works-rail-card--portrait">
+                <img src="assets/food/foodHistory.jpg" alt="Nicosia Food order history screen" />
+              </figure>
+              <figure class="works-rail-card works-rail-card--portrait">
+                <img src="assets/food/foodLocation.jpg" alt="Nicosia Food location selection screen" />
+              </figure>
+              <figure class="works-rail-card works-rail-card--portrait">
+                <img src="assets/food/foodLogin.jpg" alt="Nicosia Food login screen" />
+              </figure>
+              <figure class="works-rail-card works-rail-card--portrait">
+                <img src="assets/food/foodMap.jpg" alt="Nicosia Food map screen" />
+              </figure>
+              <figure class="works-rail-card works-rail-card--portrait">
+                <img src="assets/food/foodProfile.jpg" alt="Nicosia Food profile screen" />
+              </figure>
+              <figure class="works-rail-card works-rail-card--portrait">
+                <img src="assets/food/foodRegister.jpg" alt="Nicosia Food register screen" />
+              </figure>
+            </div>
+            <button class="works-rail-control works-rail-control--next" type="button" aria-label="Scroll project gallery right">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M9 6l6 6-6 6"></path>
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        <div class="works-project works-project--oschool">
+          <article class="works-mainsection">
+            <div class="works-copy">
+              <h2>Oschool</h2>
+              <p data-i18n="works.projects.oschool">
+                Electronic School for digital learning and school management developed using modern web
+                technologies to streamline and enhance traditional school administration and edcutional work.
+              </p>
+              <div class="works-kpis" aria-label="Oschool highlights">
+                <p class="works-kpi">Admin Dashboard</p>
+                <p class="works-kpi">Analytics</p>
+                <p class="works-kpi">School Workflow</p>
+              </div>
+            </div>
+          </article>
+
+          <div class="works-rail">
+            <button class="works-rail-control works-rail-control--prev" type="button" aria-label="Scroll project gallery left">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M15 18l-6-6 6-6"></path>
+              </svg>
+            </button>
+            <div class="works-rail-track">
+              <figure class="works-rail-card works-rail-card--landscape">
+                <img src="assets/oschool/schoolHero.png" alt="Oschool hero visual" />
+              </figure>
+              <figure class="works-rail-card works-rail-card--landscape">
+                <img src="assets/oschool/oschool1.png" alt="Oschool dashboard overview screen" />
+              </figure>
+              <figure class="works-rail-card works-rail-card--landscape">
+                <img src="assets/oschool/oschool2.png" alt="Oschool admin panel screen" />
+              </figure>
+              <figure class="works-rail-card works-rail-card--landscape">
+                <img src="assets/oschool/oschool3.png" alt="Oschool school analytics screen" />
+              </figure>
+              <figure class="works-rail-card works-rail-card--landscape">
+                <img src="assets/oschool/oschool4.png" alt="Oschool classroom management screen" />
+              </figure>
+              <figure class="works-rail-card works-rail-card--landscape">
+                <img src="assets/oschool/oschool5.png" alt="Oschool student records screen" />
+              </figure>
+              <figure class="works-rail-card works-rail-card--landscape">
+                <img src="assets/oschool/oschool6.png" alt="Oschool attendance management screen" />
+              </figure>
+              <figure class="works-rail-card works-rail-card--landscape">
+                <img src="assets/oschool/oschool7.png" alt="Oschool finance and reporting screen" />
+              </figure>
+              <figure class="works-rail-card works-rail-card--landscape">
+                <img src="assets/oschool/oschool8.png" alt="Oschool timetable management screen" />
+              </figure>
+              <figure class="works-rail-card works-rail-card--landscape">
+                <img src="assets/oschool/oschool9.png" alt="Oschool communication and portal screen" />
+              </figure>
+            </div>
+            <button class="works-rail-control works-rail-control--next" type="button" aria-label="Scroll project gallery right">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M9 6l6 6-6 6"></path>
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        <div class="works-project works-project--magellan">
+          <article class="works-mainsection">
+            <div class="works-copy">
+              <h2>Magellan</h2>
+              <p data-i18n="works.projects.magellan">
+                An advanced real estate application designed to list properties and connect buyers with
+                sellers through interactive, social-style chatroom interfaces. The app includes powerful
+                search and filtering features to reduce browsing time and help buyers easily find the
+                most suitable property options.
+              </p>
+              <div class="works-kpis" aria-label="Magellan highlights">
+                <p class="works-kpi">Verified Listings</p>
+                <p class="works-kpi">Chat Discovery</p>
+                <p class="works-kpi">Smart Filters</p>
+              </div>
+            </div>
+          </article>
+
+          <div class="works-rail">
+            <button class="works-rail-control works-rail-control--prev" type="button" aria-label="Scroll project gallery left">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M15 18l-6-6 6-6"></path>
+              </svg>
+            </button>
+            <div class="works-rail-track">
+              <figure class="works-rail-card works-rail-card--portrait">
+                <img src="assets/magellan/heroMagellan.png" alt="Magellan hero visual" />
+              </figure>
+              <figure class="works-rail-card works-rail-card--portrait">
+                <img src="assets/magellan/5.jpg" alt="Magellan home feed screen" />
+              </figure>
+              <figure class="works-rail-card works-rail-card--portrait">
+                <img src="assets/magellan/m1.jpg" alt="Magellan real estate listing screen" />
+              </figure>
+              <figure class="works-rail-card works-rail-card--portrait">
+                <img src="assets/magellan/m2.jpg" alt="Magellan chatroom interface screen" />
+              </figure>
+              <figure class="works-rail-card works-rail-card--portrait">
+                <img src="assets/magellan/m3.jpg" alt="Magellan property detail screen" />
+              </figure>
+              <figure class="works-rail-card works-rail-card--portrait">
+                <img src="assets/magellan/m4.jpg" alt="Magellan property filter screen" />
+              </figure>
+              <figure class="works-rail-card works-rail-card--portrait">
+                <img src="assets/magellan/m5.jpg" alt="Magellan saved property screen" />
+              </figure>
+              <figure class="works-rail-card works-rail-card--portrait">
+                <img src="assets/magellan/m6.jpg" alt="Magellan buyer message thread screen" />
+              </figure>
+              <figure class="works-rail-card works-rail-card--portrait">
+                <img src="assets/magellan/m7.jpg" alt="Magellan interactive feed screen" />
+              </figure>
+              <figure class="works-rail-card works-rail-card--portrait">
+                <img src="assets/magellan/m8.jpg" alt="Magellan featured property screen" />
+              </figure>
+              <figure class="works-rail-card works-rail-card--portrait">
+                <img src="assets/magellan/m9.png" alt="Magellan dashboard overview screen" />
+              </figure>
+            </div>
+            <button class="works-rail-control works-rail-control--next" type="button" aria-label="Scroll project gallery right">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M9 6l6 6-6 6"></path>
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="contact" id="contact">
+      <div class="container contact-grid">
+        <div class="contact-copy">
+          <p class="contact-kicker" data-i18n="contact.kicker">Contact</p>
+          <h2 data-i18n="contact.title">Get in Touch</h2>
+          <p data-i18n="contact.text">
+            Tell us about your product, launch timeline, or redesign goals and we will shape the right
+            delivery plan with you.
+          </p>
+          <div class="contact-meta">
+            <p class="contact-detail">
+              <span data-i18n="contact.phoneLabel">Phone</span>
+              <a href="tel:+971547742944">+971556441299</a><br />
+              <a href="tel:+971547742944">+971547742944</a><br />
+              <a href="tel:+971588108443">+971588108334</a>
+              
+            </p>
+          </div>
+          <div class="contact-links">
+            <a href="#contact-form" aria-label="Jump to contact form">FM</a>
+            <a href="#contact-form" aria-label="Start project discussion">PR</a>
+            <a href="#contact-form" aria-label="Request quote">QT</a>
+          </div>
+        </div>
+
+        <div class="contact-form-card">
+          <form class="contact-form" id="contact-form" action="https://api.web3forms.com/submit" method="POST" novalidate>
+            <input type="hidden" name="access_key" value="a5c7a679-d155-4d0d-8d34-e56812472c62" />
+            <input type="hidden" name="subject" value="New website inquiry from AMRO AND THE PARTNERS" />
+            <input type="hidden" name="from_name" value="AMRO AND THE PARTNERS" />
+            <input type="checkbox" name="botcheck" tabindex="-1" autocomplete="off" style="display: none;" />
+            <div class="field-row">
+              <div class="field">
+                <label for="first-name" data-i18n="form.fullName">Full Name</label>
+                <input id="first-name" name="firstName" type="text" placeholder="First Name" data-i18n-placeholder="form.fullNamePlaceholder" required />
+              </div>
+              <div class="field">
+                <label for="phone-number" data-i18n="form.phone">Phone Number</label>
+                <input id="phone-number" name="phone" type="tel" placeholder="Phone Number" data-i18n-placeholder="form.phonePlaceholder" required />
+              </div>
+            </div>
+
+            <div class="field">
+              <label for="email-address" data-i18n="form.email">Email</label>
+              <input id="email-address" name="email" type="email" placeholder="Email" data-i18n-placeholder="form.emailPlaceholder" required />
+            </div>
+
+            <div class="field">
+              <label for="message" data-i18n="form.message">Message</label>
+              <textarea id="message" name="message" placeholder="Message" data-i18n-placeholder="form.messagePlaceholder" required></textarea>
+            </div>
+
+            <button type="submit" data-i18n="form.send">Send</button>
+            <div class="form-status" aria-live="polite"></div>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <dialog class="works-lightbox" aria-label="Project image preview" data-i18n-aria="lightbox.dialog">
+    <div class="works-lightbox-frame">
+      <button class="works-lightbox-close" type="button" aria-label="Close image preview" data-i18n-aria="lightbox.close">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M6 6L18 18M18 6L6 18" />
+        </svg>
+      </button>
+      <img src="" alt="" />
+    </div>
+  </dialog>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>AMRO AND THE PARTNERS</p>
+    </div>
+  </footer>
+
+  <script>
+    (() => {
+      const translations = {
+        en: {
+          nav: {
+            primary: "Primary navigation",
+            toggle: "Toggle navigation",
+            language: "Language switcher",
+            home: "Home",
+            process: "How We Work",
+            services: "Services",
+            works: "Our Works",
+            contact: "Contact",
+            cta: "Get started",
+          },
+          hero: {
+            title: "Get your APP,<br />Ready for distribution",
+            text: "In Adil ABU TURKEI inc we promise to deliver the best modern apps -<br />websites to our clients.<br />Stay on touch and get you app ready on the store",
+            badges: "App store badges",
+            prev: "Previous slide",
+            next: "Next slide",
+            slides: "Slides",
+            slide1: "Slide 1",
+            slide2: "Slide 2",
+            slide3: "Slide 3",
+          },
+          process: {
+            title: "How we work to transfer your ideas",
+            step1: {
+              title: "Meet",
+              text: "Start with a discovery meeting to understand the client needs, identify their goals, and gather the full project requirements.",
+            },
+            step2: {
+              title: "Send Proposal",
+              text: "Send a professional proposal to the client that includes the key highlights, main ideas, project scope, expected deliverables, timeline, and pricing details.",
+            },
+            step3: {
+              title: "Get Approval",
+              text: "Wait for the client to review and consider the proposal, then schedule a final meeting to discuss feedback, confirm the project details, and move forward with the next steps.",
+            },
+            step4: {
+              title: "Start Working",
+              text: "We start working on the project based on the client preferences, turning their goals and vision into a real, practical solution.",
+            },
+            step5: {
+              title: "Demo",
+              text: "Demonstrate the progress achieved so far in stages or batches to ensure the client is satisfied and aligned with the project direction.",
+            },
+            step6: {
+              title: "Publish to Store",
+              text: "Prepare the final release build, complete the listing assets, and publish the product to the stores so the app is ready for distribution.",
+            },
+          },
+          services: {
+            kicker: "Capabilities",
+            title: "Our Services",
+            items: {
+              mobile: { chip: "Build", title: "Mobile App Development" },
+              website: { chip: "Web", title: "Website Development" },
+              dashboard: { chip: "Data", title: "Dashboard Development" },
+              database: { chip: "Backend", title: "Database Design" },
+              uiux: { chip: "Design", title: "UI/UX Design" },
+              branding: { chip: "Brand", title: "Branding & Visual Identity" },
+              graphic: { chip: "Creative", title: "Graphic & Marketing Design" },
+              social: { chip: "Growth", title: "Social Media Management & Advertising" },
+            },
+          },
+          works: {
+            kicker: "Portfolio",
+            title: "Our Works",
+            projects: {
+              nicosiaFood: "A food delivery app designed to showcase store catalogs and food listings to customers in Nicosia through a rich, modern, and user-friendly interface.",
+              oschool: "Electronic School for digital learning and school management developed using modern web technologies to streamline and enhance traditional school administration and edcutional work.",
+              magellan: "An advanced real estate application designed to list properties and connect buyers with sellers through interactive, social-style chatroom interfaces. The app includes powerful search and filtering features to reduce browsing time and help buyers easily find the most suitable property options.",
+            },
+          },
+          contact: {
+            kicker: "Contact",
+            title: "Get in Touch",
+            text: "Tell us about your product, launch timeline, or redesign goals and we will shape the right delivery plan with you.",
+            addressLabel: "Address",
+            phoneLabel: "Phone",
+          },
+          form: {
+            fullName: "Full Name",
+            fullNamePlaceholder: "First Name",
+            phone: "Phone Number",
+            phonePlaceholder: "Phone Number",
+            email: "Email",
+            emailPlaceholder: "Email",
+            message: "Message",
+            messagePlaceholder: "Message",
+            send: "Send",
+            validation: "Please complete all fields before sending.",
+            sending: "Sending your message...",
+            success: "Your message was sent successfully.",
+            error: "Something went wrong while sending the form.",
+            sendingButton: "Sending...",
+          },
+          lightbox: {
+            dialog: "Project image preview",
+            close: "Close image preview",
+          },
+        },
+        ar: {
+          nav: {
+            primary: "التنقل الرئيسي",
+            toggle: "تبديل القائمة",
+            language: "مبدل اللغة",
+            home: "الرئيسية",
+            process: "كيف نعمل",
+            services: "خدماتنا",
+            works: "أعمالنا",
+            contact: "تواصل معنا",
+            cta: "ابدأ الآن",
+          },
+          hero: {
+            title: "اجعل تطبيقك<br />جاهزاً للنشر",
+            text: "في Adil ABU TURKEI inc نعد بتقديم أفضل التطبيقات والمواقع الحديثة لعملائنا.<br />ابقَ على تواصل واجعل تطبيقك جاهزاً للمتجر",
+            badges: "أزرار المتاجر",
+            prev: "الشريحة السابقة",
+            next: "الشريحة التالية",
+            slides: "الشرائح",
+            slide1: "الشريحة 1",
+            slide2: "الشريحة 2",
+            slide3: "الشريحة 3",
+          },
+          process: {
+            title: "كيف نعمل لتحويل أفكارك إلى واقع",
+            step1: {
+              title: "الاجتماع",
+              text: "نبدأ باجتماع استكشافي لفهم احتياجات العميل وتحديد أهدافه وجمع جميع متطلبات المشروع.",
+            },
+            step2: {
+              title: "إرسال العرض",
+              text: "نرسل عرضًا احترافيًا يتضمن أبرز النقاط والأفكار الرئيسية ونطاق المشروع والمخرجات المتوقعة والجدول الزمني والتسعير.",
+            },
+            step3: {
+              title: "الحصول على الموافقة",
+              text: "ننتظر مراجعة العميل للعرض ثم نعقد اجتماعًا نهائيًا لمناقشة الملاحظات وتأكيد تفاصيل المشروع والانتقال إلى الخطوات التالية.",
+            },
+            step4: {
+              title: "بدء العمل",
+              text: "نبدأ العمل على المشروع وفق تفضيلات العميل، ونحوّل أهدافه ورؤيته إلى حل عملي حقيقي.",
+            },
+            step5: {
+              title: "العرض التجريبي",
+              text: "نعرض التقدم المحقق على مراحل لضمان رضا العميل وتوافقه مع اتجاه المشروع.",
+            },
+            step6: {
+              title: "النشر على المتجر",
+              text: "نجهز النسخة النهائية ونكمل أصول النشر ثم نرفع المنتج إلى المتاجر ليصبح جاهزًا للتوزيع.",
+            },
+          },
+          services: {
+            kicker: "القدرات",
+            title: "خدماتنا",
+            items: {
+              mobile: { chip: "تطوير", title: "تطوير تطبيقات الجوال" },
+              website: { chip: "ويب", title: "تطوير المواقع الإلكترونية" },
+              dashboard: { chip: "بيانات", title: "تطوير لوحات التحكم" },
+              database: { chip: "خلفية", title: "تصميم قواعد البيانات" },
+              uiux: { chip: "تصميم", title: "تصميم واجهات وتجربة المستخدم" },
+              branding: { chip: "هوية", title: "الهوية البصرية والعلامة التجارية" },
+              graphic: { chip: "إبداع", title: "التصميم الجرافيكي والتسويقي" },
+              social: { chip: "نمو", title: "إدارة وإعلانات وسائل التواصل الاجتماعي" },
+            },
+          },
+          works: {
+            kicker: "معرض الأعمال",
+            title: "أعمالنا",
+            projects: {
+              nicosiaFood: "تطبيق توصيل طعام صُمم لعرض المتاجر وقوائم الأطعمة للعملاء في نيقوسيا من خلال واجهة غنية وحديثة وسهلة الاستخدام.",
+              oschool: "مدرسة إلكترونية للتعلم الرقمي وإدارة المدارس تم تطويرها باستخدام تقنيات ويب حديثة لتبسيط وتحسين الإدارة المدرسية والعمل التعليمي التقليدي.",
+              magellan: "تطبيق عقاري متقدم صُمم لعرض العقارات وربط المشترين بالبائعين عبر واجهات محادثة تفاعلية بطابع اجتماعي. يتضمن التطبيق أدوات بحث وتصفية قوية لتقليل وقت التصفح ومساعدة المشترين على العثور بسهولة على أفضل الخيارات المناسبة.",
+            },
+          },
+          contact: {
+            kicker: "تواصل",
+            title: "تواصل معنا",
+            text: "أخبرنا عن منتجك أو موعد الإطلاق أو أهداف إعادة التصميم وسنضع معك خطة التنفيذ المناسبة.",
+            addressLabel: "العنوان",
+            phoneLabel: "الهاتف",
+          },
+          form: {
+            fullName: "الاسم الكامل",
+            fullNamePlaceholder: "الاسم الأول",
+            phone: "رقم الهاتف",
+            phonePlaceholder: "رقم الهاتف",
+            email: "البريد الإلكتروني",
+            emailPlaceholder: "البريد الإلكتروني",
+            message: "الرسالة",
+            messagePlaceholder: "الرسالة",
+            send: "إرسال",
+            validation: "يرجى إكمال جميع الحقول قبل الإرسال.",
+            sending: "جارٍ إرسال رسالتك...",
+            success: "تم إرسال رسالتك بنجاح.",
+            error: "حدث خطأ أثناء إرسال النموذج.",
+            sendingButton: "جارٍ الإرسال...",
+          },
+          lightbox: {
+            dialog: "معاينة صورة المشروع",
+            close: "إغلاق معاينة الصورة",
+          },
+        },
+      };
+
+      const getTranslation = (lang, path) => path.split(".").reduce((acc, key) => acc?.[key], translations[lang]);
+      const htmlRoot = document.documentElement;
+      const langButtons = Array.from(document.querySelectorAll("[data-lang-switch]"));
+      const i18nTextNodes = Array.from(document.querySelectorAll("[data-i18n]"));
+      const i18nHtmlNodes = Array.from(document.querySelectorAll("[data-i18n-html]"));
+      const i18nPlaceholderNodes = Array.from(document.querySelectorAll("[data-i18n-placeholder]"));
+      const i18nAriaNodes = Array.from(document.querySelectorAll("[data-i18n-aria]"));
+      const savedLanguage = window.localStorage.getItem("preferredLanguage");
+      let currentLanguage = savedLanguage === "ar" ? "ar" : "en";
+      const processTimeline = document.querySelector(".process-timeline");
+      const processConnectorSvg = processTimeline?.querySelector(".process-connectors");
+      const processSteps = Array.from(document.querySelectorAll(".process-step"));
+
+      const drawProcessConnectors = () => {
+        if (!processTimeline || !processConnectorSvg) return;
+        if (window.innerWidth <= 1040 || processSteps.length < 2) {
+          processConnectorSvg.innerHTML = "";
+          processConnectorSvg.setAttribute("viewBox", "0 0 0 0");
+          return;
+        }
+
+        const timelineRect = processTimeline.getBoundingClientRect();
+        const timelineWidth = Math.ceil(processTimeline.clientWidth);
+        const timelineHeight = Math.ceil(processTimeline.scrollHeight);
+        processConnectorSvg.setAttribute("viewBox", `0 0 ${timelineWidth} ${timelineHeight}`);
+
+        const lines = [];
+        for (let index = 0; index < processSteps.length - 1; index += 1) {
+          const currentRect = processSteps[index].getBoundingClientRect();
+          const nextRect = processSteps[index + 1].getBoundingClientRect();
+          const currentIsLeft = index % 2 === 0;
+
+          const x1 = currentIsLeft
+            ? currentRect.right - timelineRect.left - 12
+            : currentRect.left - timelineRect.left + 12;
+          const y1 = currentRect.top - timelineRect.top + currentRect.height * 0.72;
+          const x2 = currentIsLeft
+            ? nextRect.left - timelineRect.left + 12
+            : nextRect.right - timelineRect.left - 12;
+          const y2 = nextRect.top - timelineRect.top + nextRect.height * 0.28;
+
+          lines.push(`<line x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}"></line>`);
+        }
+
+        processConnectorSvg.innerHTML = lines.join("");
+      };
+
+      const applyLanguage = (lang) => {
+        currentLanguage = lang;
+        htmlRoot.lang = lang;
+        htmlRoot.dir = lang === "ar" ? "rtl" : "ltr";
+        window.localStorage.setItem("preferredLanguage", lang);
+
+        i18nTextNodes.forEach((node) => {
+          const value = getTranslation(lang, node.dataset.i18n);
+          if (typeof value === "string") {
+            node.textContent = value;
+          }
+        });
+
+        i18nHtmlNodes.forEach((node) => {
+          const value = getTranslation(lang, node.dataset.i18nHtml);
+          if (typeof value === "string") {
+            node.innerHTML = value;
+          }
+        });
+
+        i18nPlaceholderNodes.forEach((node) => {
+          const value = getTranslation(lang, node.dataset.i18nPlaceholder);
+          if (typeof value === "string") {
+            node.setAttribute("placeholder", value);
+          }
+        });
+
+        i18nAriaNodes.forEach((node) => {
+          const value = getTranslation(lang, node.dataset.i18nAria);
+          if (typeof value === "string") {
+            node.setAttribute("aria-label", value);
+          }
+        });
+
+        langButtons.forEach((button) => {
+          const isActive = button.dataset.langSwitch === lang;
+          button.classList.toggle("is-active", isActive);
+          button.setAttribute("aria-pressed", String(isActive));
+        });
+
+        window.requestAnimationFrame(drawProcessConnectors);
+      };
+
+      langButtons.forEach((button) => {
+        button.addEventListener("click", () => {
+          const nextLang = button.dataset.langSwitch;
+          if (nextLang === "en" || nextLang === "ar") {
+            applyLanguage(nextLang);
+          }
+        });
+      });
+
+      applyLanguage(currentLanguage);
+      window.addEventListener("load", drawProcessConnectors);
+      window.addEventListener("resize", drawProcessConnectors);
+      document.fonts?.ready?.then(drawProcessConnectors);
+
+      const headerToggle = document.querySelector(".site-nav-toggle");
+      const headerMenu = document.querySelector(".site-nav-menu");
+      const headerMenuLinks = Array.from(document.querySelectorAll(".site-nav-menu a"));
+      const headerNavLinks = Array.from(document.querySelectorAll(".site-nav-links a"));
+      const headerSections = headerNavLinks
+        .map((link) => {
+          const href = link.getAttribute("href");
+          if (!href || !href.startsWith("#")) return null;
+          const section = document.querySelector(href);
+          if (!section) return null;
+          return { link, section };
+        })
+        .filter(Boolean);
+
+      const closeHeaderMenu = () => {
+        if (!headerToggle || !headerMenu) return;
+        headerToggle.setAttribute("aria-expanded", "false");
+        headerMenu.classList.remove("is-open");
+      };
+
+      const setActiveHeaderLink = (targetId) => {
+        headerNavLinks.forEach((link) => {
+          const isActive = link.getAttribute("href") === `#${targetId}`;
+          link.classList.toggle("is-active", isActive);
+          link.setAttribute("aria-current", isActive ? "page" : "false");
+        });
+      };
+
+      headerToggle?.addEventListener("click", () => {
+        if (!headerMenu) return;
+        const isOpen = headerToggle.getAttribute("aria-expanded") === "true";
+        headerToggle.setAttribute("aria-expanded", String(!isOpen));
+        headerMenu.classList.toggle("is-open", !isOpen);
+      });
+
+      headerMenuLinks.forEach((link) => {
+        link.addEventListener("click", () => {
+          if (window.innerWidth <= 1040) {
+            closeHeaderMenu();
+          }
+        });
+      });
+
+      headerNavLinks.forEach((link) => {
+        link.addEventListener("click", () => {
+          const targetId = link.getAttribute("href")?.replace("#", "");
+          if (targetId) {
+            setActiveHeaderLink(targetId);
+          }
+        });
+      });
+
+      if (headerSections.length) {
+        const updateActiveSection = () => {
+          const headerHeight = document.querySelector(".site-header")?.offsetHeight || 0;
+          const marker = headerHeight + 120;
+          let activeId = headerSections[0].section.id;
+
+          for (const item of headerSections) {
+            if (item.section.offsetTop <= window.scrollY + marker) {
+              activeId = item.section.id;
+            }
+          }
+
+          setActiveHeaderLink(activeId);
+        };
+
+        window.addEventListener("scroll", updateActiveSection, { passive: true });
+        window.addEventListener("load", updateActiveSection);
+        window.addEventListener("resize", updateActiveSection);
+        updateActiveSection();
+      }
+
+      window.addEventListener("resize", () => {
+        if (window.innerWidth > 1040) {
+          closeHeaderMenu();
+        }
+      });
+
+      const slider = document.querySelector("[data-slider]");
+      if (slider) {
+        const slides = Array.from(slider.querySelectorAll(".slide"));
+        const dots = Array.from(slider.querySelectorAll(".slider-dots button"));
+        const prevButton = slider.querySelector(".slider-arrow.prev");
+        const nextButton = slider.querySelector(".slider-arrow.next");
+        let activeIndex = 0;
+        let timerId;
+
+        const render = (nextIndex) => {
+          if (slides.length < 2) return;
+          const targetIndex = (nextIndex + slides.length) % slides.length;
+          if (targetIndex === activeIndex) return;
+          const currentSlide = slides[activeIndex];
+          const nextSlide = slides[targetIndex];
+          currentSlide.classList.remove("is-active", "is-soft-slam-enter");
+          nextSlide.classList.remove("is-soft-slam-enter");
+          nextSlide.classList.add("is-active");
+          void nextSlide.offsetWidth;
+          nextSlide.classList.add("is-soft-slam-enter");
+          activeIndex = targetIndex;
+          dots.forEach((dot, index) => {
+            dot.setAttribute("aria-current", String(index === activeIndex));
+          });
+        };
+
+        slides.forEach((slide) => {
+          slide.addEventListener("animationend", () => {
+            slide.classList.remove("is-soft-slam-enter");
+          });
+        });
+
+        const syncDots = () => {
+          dots.forEach((dot, index) => {
+            dot.setAttribute("aria-current", String(index === activeIndex));
+          });
+        };
+
+        const restart = () => {
+          window.clearInterval(timerId);
+          timerId = window.setInterval(() => {
+            render(activeIndex + 1);
+          }, 5200);
+        };
+
+        prevButton?.addEventListener("click", () => {
+          render(activeIndex - 1);
+          restart();
+        });
+
+        nextButton?.addEventListener("click", () => {
+          render(activeIndex + 1);
+          restart();
+        });
+
+        dots.forEach((dot, index) => {
+          dot.addEventListener("click", () => {
+            render(index);
+            restart();
+          });
+        });
+
+        syncDots();
+        restart();
+      }
+
+      const worksRails = Array.from(document.querySelectorAll(".works-rail"));
+      worksRails.forEach((rail) => {
+        const track = rail.querySelector(".works-rail-track");
+        const prevButton = rail.querySelector(".works-rail-control--prev");
+        const nextButton = rail.querySelector(".works-rail-control--next");
+        if (!track) return;
+
+        const getStep = () => {
+          const firstCard = track.querySelector(".works-rail-card");
+          if (!firstCard) return Math.max(track.clientWidth * 0.8, 280);
+          const trackStyle = window.getComputedStyle(track);
+          const gap = Number.parseFloat(trackStyle.columnGap || trackStyle.gap || "0") || 0;
+          return firstCard.getBoundingClientRect().width + gap;
+        };
+
+        prevButton?.addEventListener("click", () => {
+          track.scrollBy({ left: -getStep(), behavior: "smooth" });
+        });
+
+        nextButton?.addEventListener("click", () => {
+          track.scrollBy({ left: getStep(), behavior: "smooth" });
+        });
+      });
+
+      const worksLightbox = document.querySelector(".works-lightbox");
+      const worksLightboxImage = worksLightbox?.querySelector("img");
+      const worksLightboxClose = worksLightbox?.querySelector(".works-lightbox-close");
+      const worksGalleryImages = Array.from(
+        document.querySelectorAll(".works-rail-card img")
+      );
+
+      const closeWorksLightbox = () => {
+        worksLightbox?.close();
+      };
+
+      worksGalleryImages.forEach((image) => {
+        image.addEventListener("click", () => {
+          if (!worksLightbox || !worksLightboxImage) return;
+          worksLightboxImage.src = image.currentSrc || image.src;
+          worksLightboxImage.alt = image.alt || "Project gallery image";
+          worksLightbox.showModal();
+        });
+      });
+
+      worksLightboxClose?.addEventListener("click", closeWorksLightbox);
+
+      worksLightbox?.addEventListener("click", (event) => {
+        const frame = worksLightbox.querySelector(".works-lightbox-frame");
+        if (frame && !frame.contains(event.target)) {
+          closeWorksLightbox();
+        }
+      });
+
+      worksLightbox?.addEventListener("close", () => {
+        if (worksLightboxImage) {
+          worksLightboxImage.src = "";
+          worksLightboxImage.alt = "";
+        }
+      });
+
+      const form = document.querySelector(".contact-form");
+      const status = document.querySelector(".form-status");
+      form?.addEventListener("submit", async (event) => {
+        event.preventDefault();
+        if (!form.reportValidity()) {
+          status.textContent = getTranslation(currentLanguage, "form.validation");
+          return;
+        }
+
+        const submitButton = form.querySelector('button[type="submit"]');
+        const originalLabel = getTranslation(currentLanguage, "form.send");
+        const formData = new FormData(form);
+
+        try {
+          if (submitButton) {
+            submitButton.disabled = true;
+            submitButton.textContent = getTranslation(currentLanguage, "form.sendingButton");
+          }
+          status.textContent = getTranslation(currentLanguage, "form.sending");
+
+          const response = await fetch(form.action, {
+            method: "POST",
+            body: formData,
+            headers: {
+              Accept: "application/json",
+            },
+          });
+
+          const result = await response.json();
+
+          if (!response.ok || result.success !== true) {
+            throw new Error(result.message || "Submission failed.");
+          }
+
+          form.reset();
+          status.textContent = getTranslation(currentLanguage, "form.success");
+        } catch (error) {
+          status.textContent = error instanceof Error && error.message
+            ? error.message
+            : getTranslation(currentLanguage, "form.error");
+        } finally {
+          if (submitButton) {
+            submitButton.disabled = false;
+            submitButton.textContent = originalLabel;
+          }
+        }
+      });
+    })();
+  </script>
+</body>
+</html>

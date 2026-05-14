@@ -677,21 +677,30 @@
 
     .works-kpis {
       display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
+      flex-wrap: nowrap;
+      gap: 8px;
+      overflow-x: auto;
+      overflow-y: hidden;
+      scrollbar-width: none;
+    }
+
+    .works-kpis::-webkit-scrollbar {
+      display: none;
     }
 
     .works-kpi {
       margin: 0;
-      padding: 8px 12px;
+      padding: 8px 10px;
       border-radius: 999px;
       border: 1px solid color-mix(in srgb, var(--works-accent) 34%, #d8deea);
-      background: color-mix(in srgb, var(--works-accent) 8%, #fff);
+      background: white;
       color: #0f172a;
-      font-size: 12px;
-      font-weight: 700;
-      letter-spacing: 0.06em;
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.04em;
       text-transform: uppercase;
+      white-space: nowrap;
+      flex: 0 0 auto;
     }
 
     .works-rail {
@@ -798,16 +807,6 @@
       fill: none;
       stroke-linecap: round;
       stroke-linejoin: round;
-    }
-
-    html[dir="rtl"] .works-rail-control--prev {
-      left: auto;
-      right: 6px;
-    }
-
-    html[dir="rtl"] .works-rail-control--next {
-      right: auto;
-      left: 6px;
     }
 
     .works-lightbox {
@@ -1342,8 +1341,21 @@
       }
 
       .works-copy p {
-        font-size: 16px;
+        font-size: 14px;
       }
+
+      .works-kpis {
+        gap: 6px;
+        flex-direction: column;
+      }
+
+      .works-kpi {
+        background-color: white;
+        padding: 6px 8px;
+        font-size: 10px;
+        letter-spacing: 0.02em;
+      }
+      
 
       .works-rail-card {
         flex-basis: 74vw;
@@ -1556,9 +1568,9 @@
                 in Nicosia through a rich, modern, and user-friendly interface.
               </p>
               <div class="works-kpis" aria-label="Nicosia Food highlights">
-                <p class="works-kpi">Fast Checkout</p>
-                <p class="works-kpi">Rich Catalogs</p>
-                <p class="works-kpi">Mobile First</p>
+                <p class="works-kpi" data-i18n="works.tags.fastCheckout">Fast Checkout</p>
+                <p class="works-kpi" data-i18n="works.tags.richCatalogs">Rich Catalogs</p>
+                <p class="works-kpi" data-i18n="works.tags.mobileFirst">Mobile First</p>
               </div>
             </div>
           </article>
@@ -1609,9 +1621,9 @@
                 technologies to streamline and enhance traditional school administration and edcutional work.
               </p>
               <div class="works-kpis" aria-label="Oschool highlights">
-                <p class="works-kpi">Admin Dashboard</p>
-                <p class="works-kpi">Analytics</p>
-                <p class="works-kpi">School Workflow</p>
+                <p class="works-kpi" data-i18n="works.tags.adminDashboard">Admin Dashboard</p>
+                <p class="works-kpi" data-i18n="works.tags.analytics">Analytics</p>
+                <p class="works-kpi" data-i18n="works.tags.schoolWorkflow">School Workflow</p>
               </div>
             </div>
           </article>
@@ -1663,9 +1675,9 @@
                 most suitable property options.
               </p>
               <div class="works-kpis" aria-label="Magellan highlights">
-                <p class="works-kpi">Verified Listings</p>
-                <p class="works-kpi">Chat Discovery</p>
-                <p class="works-kpi">Smart Filters</p>
+                <p class="works-kpi" data-i18n="works.tags.verifiedListings">Verified Listings</p>
+                <p class="works-kpi" data-i18n="works.tags.chatDiscovery">Chat Discovery</p>
+                <p class="works-kpi" data-i18n="works.tags.smartFilters">Smart Filters</p>
               </div>
             </div>
           </article>
@@ -1862,6 +1874,17 @@
           works: {
             kicker: "Portfolio",
             title: "Our Works",
+            tags: {
+              fastCheckout: "Fast Checkout",
+              richCatalogs: "Rich Catalogs",
+              mobileFirst: "Mobile First",
+              adminDashboard: "Admin Dashboard",
+              analytics: "Analytics",
+              schoolWorkflow: "School Workflow",
+              verifiedListings: "Verified Listings",
+              chatDiscovery: "Chat Discovery",
+              smartFilters: "Smart Filters",
+            },
             projects: {
               nicosiaFood: "A food delivery app designed to showcase store catalogs and food listings to customers in Nicosia through a rich, modern, and user-friendly interface.",
               oschool: "Electronic School for digital learning and school management developed using modern web technologies to streamline and enhance traditional school administration and edcutional work.",
@@ -1956,6 +1979,17 @@
           works: {
             kicker: "معرض الأعمال",
             title: "أعمالنا",
+            tags: {
+              fastCheckout: "دفع سريع",
+              richCatalogs: "كتالوجات غنية",
+              mobileFirst: "موبايل أولاً",
+              adminDashboard: "لوحة إدارة",
+              analytics: "تحليلات",
+              schoolWorkflow: "سير العمل المدرسي",
+              verifiedListings: "عروض موثقة",
+              chatDiscovery: "اكتشاف بالمحادثة",
+              smartFilters: "فلاتر ذكية",
+            },
             projects: {
               nicosiaFood: "تطبيق توصيل طعام صُمم لعرض المتاجر وقوائم الأطعمة للعملاء في نيقوسيا من خلال واجهة غنية وحديثة وسهلة الاستخدام.",
               oschool: "مدرسة إلكترونية للتعلم الرقمي وإدارة المدارس تم تطويرها باستخدام تقنيات ويب حديثة لتبسيط وتحسين الإدارة المدرسية والعمل التعليمي التقليدي.",

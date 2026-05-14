@@ -1072,6 +1072,192 @@
       font-size: 14px;
     }
 
+    .motion-ready .hero-overlay-line,
+    .motion-ready .hero-overlay-rule,
+    .motion-ready .hero-overlay-subtitle {
+      opacity: 0;
+      transform: translateY(22px);
+      transition: opacity 760ms cubic-bezier(0.22, 1, 0.36, 1), transform 760ms cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    .motion-ready.motion-start .hero-overlay-line,
+    .motion-ready.motion-start .hero-overlay-rule,
+    .motion-ready.motion-start .hero-overlay-subtitle {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .motion-ready.motion-start .hero-overlay-line:nth-child(2) {
+      transition-delay: 120ms;
+    }
+
+    .motion-ready.motion-start .hero-overlay-rule {
+      transition-delay: 240ms;
+      transform-origin: left center;
+      animation: ruleGrow 820ms 240ms cubic-bezier(0.22, 1, 0.36, 1) both;
+    }
+
+    .motion-ready.motion-start .hero-overlay-subtitle {
+      transition-delay: 360ms;
+    }
+
+    .motion-ready .hero-overlay-accent {
+      background-size: 220% 100%;
+      animation: accentSweep 5.2s ease-in-out infinite;
+    }
+
+    .motion-ready [data-motion] {
+      opacity: 0;
+      transform: translateY(34px);
+      transition:
+        opacity 720ms cubic-bezier(0.22, 1, 0.36, 1),
+        transform 720ms cubic-bezier(0.22, 1, 0.36, 1),
+        box-shadow 280ms ease,
+        border-color 280ms ease;
+      transition-delay: var(--motion-delay, 0ms);
+      will-change: opacity, transform;
+    }
+
+    .motion-ready [data-motion="from-left"] {
+      transform: translateX(-42px);
+    }
+
+    .motion-ready [data-motion="from-right"] {
+      transform: translateX(42px);
+    }
+
+    .motion-ready [data-motion="scale-in"] {
+      transform: translateY(24px) scale(0.96);
+    }
+
+    .motion-ready [data-motion].is-visible {
+      opacity: 1;
+      transform: translate(0, 0) scale(1);
+    }
+
+    .motion-ready .process-step.is-visible {
+      box-shadow: 0 22px 52px rgba(152, 102, 247, 0.28);
+    }
+
+    .motion-ready .process-connectors line {
+      stroke-dasharray: var(--line-length, 1);
+      stroke-dashoffset: var(--line-length, 1);
+      transition: stroke-dashoffset 900ms cubic-bezier(0.22, 1, 0.36, 1);
+      transition-delay: var(--motion-delay, 0ms);
+    }
+
+    .motion-ready .process-timeline.is-visible .process-connectors line {
+      stroke-dashoffset: 0;
+    }
+
+    .motion-ready .works-project.is-visible {
+      border-color: color-mix(in srgb, var(--works-accent) 28%, #e6ebf2);
+    }
+
+    .motion-ready .works-project.is-visible .works-kpi {
+      animation: kpiPulse 1200ms cubic-bezier(0.22, 1, 0.36, 1) both;
+      animation-delay: var(--motion-delay, 0ms);
+    }
+
+    .motion-ready .works-rail-track.motion-nudge {
+      animation: railNudge 1100ms cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    .motion-ready .contact-form-card.is-visible {
+      animation: contactFocus 1100ms cubic-bezier(0.22, 1, 0.36, 1) both;
+    }
+
+    @keyframes accentSweep {
+      0%,
+      100% {
+        background-position: 0% 50%;
+      }
+      50% {
+        background-position: 100% 50%;
+      }
+    }
+
+    @keyframes ruleGrow {
+      from {
+        transform: scaleX(0);
+      }
+      to {
+        transform: scaleX(1);
+      }
+    }
+
+    @keyframes kpiPulse {
+      0% {
+        transform: translateY(8px);
+      }
+      45% {
+        transform: translateY(-2px);
+        border-color: var(--works-accent);
+      }
+      100% {
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes railNudge {
+      0%,
+      100% {
+        transform: translateX(0);
+      }
+      42% {
+        transform: translateX(-24px);
+      }
+    }
+
+    html[dir="rtl"] .motion-ready .works-rail-track.motion-nudge {
+      animation-name: railNudgeRtl;
+    }
+
+    @keyframes railNudgeRtl {
+      0%,
+      100% {
+        transform: translateX(0);
+      }
+      42% {
+        transform: translateX(24px);
+      }
+    }
+
+    @keyframes contactFocus {
+      0% {
+        filter: drop-shadow(0 0 0 rgba(152, 102, 247, 0));
+      }
+      55% {
+        filter: drop-shadow(0 22px 34px rgba(152, 102, 247, 0.16));
+      }
+      100% {
+        filter: drop-shadow(0 0 0 rgba(152, 102, 247, 0));
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+
+      *,
+      *::before,
+      *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        scroll-behavior: auto !important;
+        transition-duration: 0.01ms !important;
+      }
+
+      .motion-ready [data-motion],
+      .motion-ready .hero-overlay-line,
+      .motion-ready .hero-overlay-rule,
+      .motion-ready .hero-overlay-subtitle {
+        opacity: 1;
+        transform: none;
+      }
+    }
+
     .site-footer {
       padding: 0 0 40px;
     }
@@ -2037,6 +2223,23 @@
       const processTimeline = document.querySelector(".process-timeline");
       const processConnectorSvg = processTimeline?.querySelector(".process-connectors");
       const processSteps = Array.from(document.querySelectorAll(".process-step"));
+      const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+      if (!prefersReducedMotion) {
+        document.body.classList.add("motion-ready");
+        window.requestAnimationFrame(() => {
+          document.body.classList.add("motion-start");
+        });
+      }
+
+      const prepareProcessConnectorMotion = () => {
+        if (prefersReducedMotion || !processConnectorSvg) return;
+        Array.from(processConnectorSvg.querySelectorAll("line")).forEach((line, index) => {
+          const length = Math.ceil(line.getTotalLength());
+          line.style.setProperty("--line-length", length);
+          line.style.setProperty("--motion-delay", `${260 + index * 130}ms`);
+        });
+      };
 
       const drawProcessConnectors = () => {
         if (!processTimeline || !processConnectorSvg) return;
@@ -2070,6 +2273,70 @@
         }
 
         processConnectorSvg.innerHTML = lines.join("");
+        prepareProcessConnectorMotion();
+      };
+
+      const setupMarketingMotion = () => {
+        if (prefersReducedMotion || !("IntersectionObserver" in window)) return;
+
+        const motionGroups = [
+          { selector: ".process .section-title", type: "scale-in", delay: 0 },
+          { selector: ".process-step--left", type: "from-left", delay: 90 },
+          { selector: ".process-step--right", type: "from-right", delay: 90 },
+          { selector: ".services-kicker, .services-title", type: "rise", delay: 0 },
+          { selector: ".service-card", type: "scale-in", delay: 70 },
+          { selector: ".works-project", type: "rise", delay: 0 },
+          { selector: ".works-copy > *", type: "from-left", delay: 80 },
+          { selector: ".works-rail-card", type: "scale-in", delay: 45 },
+          { selector: ".contact-copy > *, .contact-form-card", type: "rise", delay: 80 },
+          { selector: ".field, .contact-form button", type: "rise", delay: 65 },
+        ];
+
+        motionGroups.forEach(({ selector, type, delay }) => {
+          Array.from(document.querySelectorAll(selector)).forEach((node, index) => {
+            if (!node.dataset.motion) {
+              node.dataset.motion = type;
+            }
+            node.style.setProperty("--motion-delay", `${Math.min(index * delay, 480)}ms`);
+          });
+        });
+
+        const revealObserver = new IntersectionObserver((entries) => {
+          entries.forEach((entry) => {
+            if (!entry.isIntersecting) return;
+            entry.target.classList.add("is-visible");
+            revealObserver.unobserve(entry.target);
+          });
+        }, {
+          rootMargin: "0px 0px -12% 0px",
+          threshold: 0.18,
+        });
+
+        Array.from(document.querySelectorAll("[data-motion], .process-timeline")).forEach((node) => {
+          revealObserver.observe(node);
+        });
+
+        const railObserver = new IntersectionObserver((entries) => {
+          entries.forEach((entry) => {
+            if (!entry.isIntersecting) return;
+            const track = entry.target.querySelector(".works-rail-track");
+            if (track && !track.dataset.motionNudged) {
+              track.dataset.motionNudged = "true";
+              track.classList.add("motion-nudge");
+              track.addEventListener("animationend", () => {
+                track.classList.remove("motion-nudge");
+              }, { once: true });
+            }
+            railObserver.unobserve(entry.target);
+          });
+        }, {
+          rootMargin: "0px 0px -24% 0px",
+          threshold: 0.35,
+        });
+
+        Array.from(document.querySelectorAll(".works-rail")).forEach((rail) => {
+          railObserver.observe(rail);
+        });
       };
 
       const applyLanguage = (lang) => {
@@ -2128,6 +2395,7 @@
       window.addEventListener("load", drawProcessConnectors);
       window.addEventListener("resize", drawProcessConnectors);
       document.fonts?.ready?.then(drawProcessConnectors);
+      setupMarketingMotion();
 
       const headerToggle = document.querySelector(".site-nav-toggle");
       const headerMenu = document.querySelector(".site-nav-menu");

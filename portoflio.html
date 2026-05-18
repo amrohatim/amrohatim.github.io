@@ -527,77 +527,97 @@
 
     .service-grid {
       display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
-      gap: 18px;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 36px;
+      
     }
 
     .service-card {
       position: relative;
-      min-height: 342px;
+      min-height: 320px;
+      aspect-ratio: 320 / 206;
       margin: 0;
       overflow: hidden;
-      background: #1f2f47;
-      border: 1px solid rgba(255, 255, 255, 0.34);
-      box-shadow: 0 18px 36px rgba(17, 24, 39, 0.18);
+      border: 0;
+      border-radius: 8px;
+      background: #9b6dfd;
       isolation: isolate;
-      transition: transform 280ms ease, box-shadow 280ms ease;
+      transition: transform 280ms ease, box-shadow 280ms ease, filter 280ms ease;
     }
 
     .service-card:hover {
       transform: translateY(-6px);
-      box-shadow: 0 22px 42px rgba(17, 24, 39, 0.26);
+      filter: saturate(1.04);
     }
 
     .service-card img {
       position: absolute;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
+      left: clamp(24px, 4vw, 55px);
+      top: 50%;
+      width: clamp(144px, 28%, 193px);
+      height: auto;
+      max-height: min(81%, 297px);
+      transform: translateY(-50%);
+      object-fit: contain;
       object-position: center;
       transition: transform 420ms ease;
     }
 
     .service-card:hover img {
-      transform: scale(1.06);
-    }
-
-    .service-card::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      z-index: 1;
-      background: linear-gradient(180deg, rgba(13, 20, 33, 0.14) 20%, rgba(13, 20, 33, 0.84) 84%);
+      transform: translateY(-50%) scale(1.2);
     }
 
     .service-card figcaption {
       position: absolute;
-      inset: auto 0 0;
-      z-index: 2;
-      padding: 18px 16px 16px;
-      display: grid;
-      gap: 10px;
+      top: 50%;
+      left: clamp(220px, 46%, 320px);
+      right: clamp(24px, 5vw, 58px);
+      z-index: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 22px;
+      transform: translateY(-50%);
     }
 
     .service-card .chip {
-      width: fit-content;
-      padding: 7px 10px;
-      background: rgba(246, 163, 0, 0.94);
-      color: #101827;
-      font-size: 11px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 114px;
+      min-height: 42px;
+      padding: 0 22px;
+      border-radius: 4px;
+      background: #f3f1f1;
+      color: #9b6dfd;
+      font-family: Inter, var(--font-ui);
+      font-size: 24px;
       line-height: 1;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
       font-weight: 700;
+      letter-spacing: 0;
+      text-transform: none;
     }
 
     .service-card h3 {
       margin: 0;
-      color: #fff;
-      font-size: 19px;
-      line-height: 1.35;
-      font-weight: 600;
-      max-width: 220px;
+      color: #fefefe;
+      font-family: Inter, var(--font-ui);
+      font-size: 24px;
+      line-height: 1.18;
+      font-weight: 700;
+      max-width: 360px;
+      text-wrap: balance;
+    }
+
+    html[dir="rtl"] .service-card img {
+      left: auto;
+      right: clamp(24px, 4vw, 55px);
+    }
+
+    html[dir="rtl"] .service-card figcaption {
+      left: clamp(24px, 5vw, 58px);
+      right: clamp(220px, 46%, 320px);
+      align-items: flex-end;
     }
 
     .works-showcase {
@@ -1348,7 +1368,7 @@
 
       .service-grid {
         grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: 28px;
+        gap: 30px;
       }
 
       .process-timeline {
@@ -1394,6 +1414,20 @@
       .service-card,
       .contact-form {
         width: 100%;
+      }
+
+      .service-card {
+        min-height: 280px;
+      }
+
+      .service-card figcaption {
+        left: 42%;
+        right: 28px;
+      }
+
+      html[dir="rtl"] .service-card figcaption {
+        left: 28px;
+        right: 42%;
       }
 
       .works-project {
@@ -1453,6 +1487,44 @@
 
       .service-grid {
         grid-template-columns: 1fr;
+      }
+
+      .service-card {
+        min-height: 0;
+        aspect-ratio: 699 / 366;
+      }
+
+      .service-card img {
+        left: 24px;
+        width: min(32vw, 168px);
+      }
+
+      .service-card figcaption {
+        left: min(42vw, 210px);
+        right: 20px;
+        gap: 16px;
+      }
+
+      .service-card .chip {
+        min-width: 88px;
+        min-height: 36px;
+        padding: 0 16px;
+        font-size: 18px;
+      }
+
+      .service-card h3 {
+        font-size: 18px;
+        max-width: 240px;
+      }
+
+      html[dir="rtl"] .service-card img {
+        left: auto;
+        right: 24px;
+      }
+
+      html[dir="rtl"] .service-card figcaption {
+        left: 20px;
+        right: min(42vw, 210px);
       }
 
       .services {
@@ -1677,56 +1749,56 @@
         </div>
         <div class="service-grid">
           <figure class="service-card">
-            <img src="assets/services/mobile-app.png" alt="Mobile App Development" width="286" height="335" />
+            <img src="assets/services/app-development.png" alt="Mobile App Development" width="193" height="297" />
             <figcaption>
               <span class="chip" data-i18n="services.items.mobile.chip">Build</span>
               <h3 data-i18n="services.items.mobile.title">Mobile App Development</h3>
             </figcaption>
           </figure>
           <figure class="service-card">
-            <img src="assets/services/website-development.png" alt="Website Development" width="286" height="335" />
+            <img src="assets/services/web-development.png" alt="Website Development" width="193" height="297" />
             <figcaption>
               <span class="chip" data-i18n="services.items.website.chip">Web</span>
               <h3 data-i18n="services.items.website.title">Website Development</h3>
             </figcaption>
           </figure>
           <figure class="service-card">
-            <img src="assets/services/dashboard-development.png" alt="Dashboard Development" width="286" height="335" />
+            <img src="assets/services/dash-development.png" alt="Dashboard Development" width="193" height="297" />
             <figcaption>
               <span class="chip" data-i18n="services.items.dashboard.chip">Data</span>
               <h3 data-i18n="services.items.dashboard.title">Dashboard Development</h3>
             </figcaption>
           </figure>
           <figure class="service-card">
-            <img src="assets/services/database-design.png" alt="Database Design" width="286" height="335" />
+            <img src="assets/services/data-design.png" alt="Database Design" width="193" height="297" />
             <figcaption>
               <span class="chip" data-i18n="services.items.database.chip">Backend</span>
               <h3 data-i18n="services.items.database.title">Database Design</h3>
             </figcaption>
           </figure>
           <figure class="service-card">
-            <img src="assets/services/ui-ux-design.png" alt="UI/UX Design" width="286" height="335" />
+            <img src="assets/services/ui-design.png" alt="UI/UX Design" width="193" height="297" />
             <figcaption>
               <span class="chip" data-i18n="services.items.uiux.chip">Design</span>
               <h3 data-i18n="services.items.uiux.title">UI/UX Design</h3>
             </figcaption>
           </figure>
           <figure class="service-card">
-            <img src="assets/services/branding-identity.png" alt="Branding and Visual Identity" width="286" height="335" />
+            <img src="assets/services/brand-design.png" alt="Branding and Visual Identity" width="193" height="297" />
             <figcaption>
               <span class="chip" data-i18n="services.items.branding.chip">Brand</span>
               <h3 data-i18n="services.items.branding.title">Branding &amp; Visual Identity</h3>
             </figcaption>
           </figure>
           <figure class="service-card">
-            <img src="assets/services/graphic-marketing.png" alt="Graphic and Marketing Design" width="286" height="335" />
+            <img src="assets/services/graphic-design.png" alt="Graphic and Marketing Design" width="193" height="297" />
             <figcaption>
               <span class="chip" data-i18n="services.items.graphic.chip">Creative</span>
               <h3 data-i18n="services.items.graphic.title">Graphic &amp; Marketing Design</h3>
             </figcaption>
           </figure>
           <figure class="service-card">
-            <img src="assets/services/social-media.png" alt="Social Media Management and Advertising" width="286" height="335" />
+            <img src="assets/services/social-design.png" alt="Social Media Management and Advertising" width="193" height="297" />
             <figcaption>
               <span class="chip" data-i18n="services.items.social.chip">Growth</span>
               <h3 data-i18n="services.items.social.title">Social Media Management &amp; Advertising</h3>

@@ -1,0 +1,1233 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tomasz Gajda Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Nunito:wght@700&family=Open+Sans:wght@300;400&family=Raleway:wght@700;800&family=Roboto:wght@400&family=Varela&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --page-width: 1920px;
+      --light: #d7d7d7;
+      --dark: #0c0c0c;
+      --ink: #000;
+      --muted: #909090;
+      --panel: #1d1d1d;
+      --line: #111;
+      --soft-text: #f7f7f7;
+      --field: #8b8b8b;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      min-width: 320px;
+      background: #fff;
+      color: var(--ink);
+      font-family: "Montserrat", sans-serif;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button,
+    input,
+    textarea {
+      font: inherit;
+    }
+
+    .page {
+      width: min(100%, var(--page-width));
+      margin: 0 auto;
+      overflow: clip;
+      background:
+        radial-gradient(circle at center, rgba(0, 0, 0, 0.06) 0, rgba(255, 255, 255, 0) 48%),
+        #fff;
+    }
+
+    .section-box {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 107px;
+      min-width: 404px;
+      padding: 0 48px;
+      border: 8px solid #111;
+      font-size: 30px;
+      font-weight: 700;
+      letter-spacing: 0.355em;
+      text-transform: uppercase;
+    }
+
+    .mini-separator {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 14px;
+      width: 170px;
+      margin: 0 auto;
+      color: #111;
+    }
+
+    .mini-separator::before,
+    .mini-separator::after {
+      content: "";
+      width: 56px;
+      border-top: 2px solid currentColor;
+    }
+
+    .mini-separator span {
+      font-size: 18px;
+      letter-spacing: 0.2em;
+      transform: translateY(-1px);
+    }
+
+    .hero {
+      position: relative;
+      min-height: 1022px;
+      background: var(--dark);
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0 39% 0 0;
+      background: var(--light);
+      clip-path: polygon(0 0, 88% 0, 74% 100%, 0 100%);
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      top: -210px;
+      right: -210px;
+      width: 980px;
+      height: 1450px;
+      background: #000;
+      transform: rotate(9.67deg);
+    }
+
+    .hero-inner {
+      position: relative;
+      z-index: 2;
+      min-height: 1022px;
+      padding: 60px 76px 0;
+    }
+
+    .brand-mark {
+      position: absolute;
+      top: 72px;
+      left: 271px;
+      width: 62px;
+      height: 52px;
+      color: #111;
+    }
+
+    .brand-mark svg {
+      width: 100%;
+      height: 100%;
+      overflow: visible;
+    }
+
+    .nav {
+      position: absolute;
+      top: 65px;
+      right: 292px;
+      display: flex;
+      align-items: center;
+      gap: 22px;
+      color: #fff;
+      font-size: 17px;
+      font-weight: 700;
+      z-index: 3;
+    }
+
+    .nav a {
+      min-width: 130px;
+      text-align: center;
+    }
+
+    .nav .contact-pill {
+      min-width: 147px;
+      min-height: 46px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border: 4px solid #fff;
+      border-radius: 999px;
+      background: #fff;
+      color: #111;
+      font-size: 15px;
+    }
+
+    .hero-copy {
+      position: relative;
+      z-index: 3;
+      width: 560px;
+      padding: 286px 0 0 194px;
+    }
+
+    .hero-copy .intro {
+      margin: 0 0 18px;
+      font-family: "Raleway", sans-serif;
+      font-size: 40px;
+      line-height: 1.18;
+      font-weight: 700;
+    }
+
+    .hero-copy h1 {
+      margin: 0 0 8px;
+      font-family: "Raleway", sans-serif;
+      font-size: clamp(52px, 4.2vw, 80px);
+      line-height: 1.08;
+      font-weight: 700;
+    }
+
+    .hero-copy .role {
+      margin: 0;
+      color: var(--muted);
+      font-size: 25px;
+      line-height: 1.2;
+      font-weight: 800;
+    }
+
+    .socials {
+      display: flex;
+      gap: 31px;
+      margin-top: 126px;
+    }
+
+    .social {
+      width: 61px;
+      height: 56px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: #c4c4c4;
+      color: #111;
+      box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+    }
+
+    .social svg {
+      width: 24px;
+      height: 24px;
+      fill: currentColor;
+    }
+
+    .hero-portrait {
+      position: absolute;
+      right: 270px;
+      bottom: 0;
+      z-index: 3;
+      width: min(34.4vw, 660px);
+    }
+
+    .it-berries {
+      position: relative;
+      min-height: 313px;
+      padding: 49px 102px 54px;
+      background: #1d1d1d;
+      color: #fff;
+      overflow: hidden;
+    }
+
+    .it-berries h2 {
+      margin: 0 0 18px;
+      font-size: 30px;
+      line-height: 1.24;
+      letter-spacing: 0.185em;
+      text-transform: uppercase;
+    }
+
+    .it-berries p {
+      position: relative;
+      z-index: 2;
+      max-width: 1148px;
+      margin: 0;
+      font-family: "Open Sans", sans-serif;
+      font-size: 15px;
+      line-height: 1.3868;
+      text-align: justify;
+    }
+
+    .read-link,
+    .explore-link,
+    .portfolio-link,
+    .submit-link {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 28px;
+      font-size: 15px;
+      line-height: 1.2;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+    }
+
+    .read-link::before,
+    .read-link::after,
+    .explore-link::before,
+    .explore-link::after,
+    .portfolio-link::before,
+    .portfolio-link::after,
+    .submit-link::before,
+    .submit-link::after {
+      content: "";
+      width: 32px;
+      border-top: 2px solid currentColor;
+      transform: rotate(90deg);
+    }
+
+    .read-link {
+      margin-top: 26px;
+      color: #fff;
+    }
+
+    .it-badge {
+      position: absolute;
+      right: 76px;
+      top: -96px;
+      font-family: "Varela", sans-serif;
+      font-size: 280px;
+      line-height: 1;
+      font-weight: 400;
+      letter-spacing: 0.013em;
+      color: rgba(0, 0, 0, 0.85);
+      transform: rotate(23.89deg);
+      border: 18px solid rgba(0, 0, 0, 0.85);
+      padding: 24px 44px 16px;
+    }
+
+    .about {
+      padding: 142px 0 158px;
+      text-align: center;
+      background:
+        radial-gradient(circle at center, rgba(0, 0, 0, 0.1) 0, rgba(255, 255, 255, 0) 60%),
+        #fff;
+    }
+
+    .about p.lead,
+    .contact p.lead {
+      max-width: 763px;
+      margin: 69px auto 0;
+      font-family: "Open Sans", sans-serif;
+      font-size: 15px;
+      line-height: 1.3868;
+      color: #050505;
+    }
+
+    .explore-link {
+      margin-top: 67px;
+      color: #111;
+    }
+
+    .about .mini-separator {
+      margin-top: 73px;
+    }
+
+    .services {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 86px 67px;
+      width: min(1112px, calc(100% - 80px));
+      margin: 146px auto 0;
+      text-align: left;
+    }
+
+    .service {
+      display: grid;
+      grid-template-columns: 84px 1fr;
+      gap: 0 18px;
+      align-items: start;
+    }
+
+    .service.is-centered {
+      grid-column: 1 / -1;
+      width: 487px;
+      margin: 26px auto 0;
+    }
+
+    .service-icon {
+      width: 74px;
+      height: 74px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      color: #111;
+    }
+
+    .service-icon svg {
+      width: 74px;
+      height: 74px;
+      stroke: currentColor;
+      fill: none;
+      stroke-width: 1.8;
+    }
+
+    .service h3 {
+      margin: 0 0 12px;
+      font-size: 22px;
+      line-height: 1.23;
+      letter-spacing: 0.185em;
+      text-transform: uppercase;
+    }
+
+    .service p {
+      margin: 0;
+      font-family: "Open Sans", sans-serif;
+      font-size: 14px;
+      line-height: 1.36;
+      text-align: justify;
+    }
+
+    .skills {
+      padding: 142px 0 210px;
+      text-align: center;
+      background:
+        radial-gradient(circle at center, rgba(0, 0, 0, 0.08) 0, rgba(255, 255, 255, 0) 54%),
+        #fff;
+    }
+
+    .skills-wrap {
+      width: min(1004px, calc(100% - 80px));
+      margin: 0 auto;
+      text-align: left;
+    }
+
+    .skills .section-box {
+      min-width: 404px;
+    }
+
+    .skill-group {
+      margin-top: 118px;
+    }
+
+    .skills-wrap .skill-group:not(:first-child) {
+      display: none;
+    }
+
+    .skill-group h3 {
+      margin: 0 0 58px;
+      font-size: 30px;
+      line-height: 1.24;
+      letter-spacing: 0.185em;
+      text-transform: uppercase;
+    }
+
+    .skill-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 86px 58px;
+      justify-items: center;
+    }
+
+    .skill {
+      width: 180px;
+      text-align: center;
+    }
+
+    .skill-logo {
+      width: 100px;
+      height: 100px;
+      margin: 0 auto 20px;
+      object-fit: contain;
+    }
+
+    .skill-logo.flag,
+    .skill-logo.code-logo {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 54px;
+      line-height: 1;
+    }
+
+    .skill-logo.code-logo {
+      position: relative;
+      width: 100px;
+      height: 100px;
+      color: #5d88c3;
+      font-weight: 700;
+      font-family: "Raleway", sans-serif;
+      background: #dbe4f0;
+      clip-path: polygon(25% 8%, 75% 8%, 100% 50%, 75% 92%, 25% 92%, 0 50%);
+    }
+
+    .skill span {
+      display: block;
+      font-size: 18px;
+      line-height: 1.2;
+      letter-spacing: 0.04em;
+      text-transform: none;
+      overflow-wrap: anywhere;
+    }
+
+    .portfolio {
+      background: #1a1a1a;
+      color: #fff;
+      min-height: 1305px;
+    }
+
+    .portfolio-header {
+      position: relative;
+      height: 321px;
+      background:
+        linear-gradient(rgba(0, 0, 0, 0.32), rgba(0, 0, 0, 0.32)),
+        url("./assets/goni/mountains-header.png") center/cover no-repeat;
+    }
+
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
+
+    .portfolio-filter {
+      display: flex;
+      justify-content: center;
+      gap: 34px;
+      padding: 32px 0 16px;
+      color: #7c7c7c;
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    .portfolio-filter a {
+      min-width: 149px;
+      text-align: center;
+    }
+
+    .portfolio-filter a:first-child {
+      color: #fff;
+    }
+
+    .portfolio-filter-line {
+      width: min(587px, calc(100% - 48px));
+      margin: 0 auto 30px;
+      border-top: 1px solid #aaa;
+      position: relative;
+    }
+
+    .portfolio-filter-line::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: -1px;
+      width: 201px;
+      border-top: 1px solid #fff;
+    }
+
+    .portfolio-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 0;
+    }
+
+    .project {
+      min-height: 401px;
+      background-size: cover;
+      background-position: center;
+      position: relative;
+    }
+
+    .project.eatsome {
+      background-image: url("./assets/goni/img2.png");
+    }
+
+    .project.neon-top {
+      background-image: url("./assets/goni/img1.png");
+    }
+
+    .project.car-top {
+      background-image: url("./assets/goni/img3.png");
+    }
+
+    .project.neon-bottom {
+      background-image: url("./assets/goni/img4.png");
+    }
+
+    .project.car-bottom {
+      background-image: url("./assets/goni/img5.png");
+    }
+
+    .project.neon-last {
+      background-image: url("./assets/goni/img6.png");
+    }
+
+    .project-overlay {
+      text-align: center;
+      color: #fff;
+    }
+
+    .project-overlay .eyebrow {
+      margin: 0 0 10px;
+      font-size: 10px;
+      font-style: italic;
+      font-weight: 600;
+      letter-spacing: 0.095em;
+    }
+
+    .project-overlay h3 {
+      margin: 0 0 12px;
+      font-size: 25px;
+      line-height: 1.28;
+      letter-spacing: 0.205em;
+    }
+
+    .project-overlay p {
+      margin: 0 0 12px;
+      font-size: 10px;
+      line-height: 1.2;
+      font-weight: 500;
+      letter-spacing: -0.015em;
+    }
+
+    .project-actions {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 18px;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.095em;
+      text-transform: uppercase;
+    }
+
+    .project-actions a {
+      display: inline-flex;
+      align-items: center;
+      gap: 18px;
+    }
+
+    .project-actions a::before,
+    .project-actions a::after {
+      content: "";
+      width: 27px;
+      border-top: 2px solid currentColor;
+      transform: rotate(90deg);
+    }
+
+    .portfolio-footer {
+      padding: 12px 0 11px;
+      text-align: center;
+      font-size: 20px;
+      font-weight: 600;
+      background: #1a1a1a;
+    }
+
+    .contact {
+      padding: 142px 0 81px;
+      text-align: center;
+      background:
+        radial-gradient(circle at center, rgba(0, 0, 0, 0.08) 0, rgba(255, 255, 255, 0) 58%),
+        #fff;
+    }
+
+    .contact .mini-separator {
+      margin-top: 34px;
+    }
+
+    .contact-form {
+      width: min(609px, calc(100% - 60px));
+      margin: 110px auto 0;
+      display: grid;
+      gap: 44px;
+      text-align: left;
+    }
+
+    .field {
+      display: grid;
+      gap: 10px;
+      position: relative;
+    }
+
+    .field::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 5px;
+      height: 48px;
+      background: #000;
+    }
+
+    .field::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      height: 5px;
+      background: #000;
+    }
+
+    .field label {
+      padding-left: 19px;
+      color: var(--field);
+      font-size: 14px;
+      line-height: 1.22;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    .field input,
+    .field textarea {
+      width: 100%;
+      border: 0;
+      background: transparent;
+      padding: 2px 18px 14px;
+      outline: none;
+      color: #111;
+      font-size: 16px;
+    }
+
+    .field textarea {
+      min-height: 136px;
+      resize: none;
+    }
+
+    .submit-link {
+      margin: 22px auto 0;
+      color: #111;
+      font-size: 16px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      background: transparent;
+      border: 0;
+      cursor: pointer;
+    }
+
+    .footer {
+      background: #1a1a1a;
+      color: #fff;
+      text-align: center;
+      min-height: 326px;
+      padding: 64px 20px 94px;
+    }
+
+    .back-top {
+      display: inline-flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
+      font-size: 15px;
+      font-weight: 700;
+      letter-spacing: 0.185em;
+      text-transform: uppercase;
+    }
+
+    .back-top .arrow {
+      font-size: 24px;
+      line-height: 1;
+      transform: rotate(-90deg);
+    }
+
+    .footer-socials {
+      display: flex;
+      justify-content: center;
+      gap: 28px;
+      margin: 30px 0 24px;
+    }
+
+    .footer-socials a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 30px;
+      height: 30px;
+      color: rgba(255, 255, 255, 0.92);
+    }
+
+    .footer-socials svg {
+      width: 24px;
+      height: 24px;
+      fill: currentColor;
+    }
+
+    .footer p {
+      margin: 0;
+      font-family: "Nunito", sans-serif;
+      font-size: 18px;
+      line-height: 1.4;
+    }
+
+    @media (max-width: 1400px) {
+      .hero-inner {
+        padding-inline: 36px;
+      }
+
+      .brand-mark {
+        left: 90px;
+      }
+
+      .hero-copy {
+        padding-left: 76px;
+      }
+
+      .nav {
+        right: 80px;
+      }
+
+      .hero-portrait {
+        right: 80px;
+      }
+    }
+
+    @media (max-width: 1100px) {
+      .hero {
+        min-height: auto;
+      }
+
+      .hero::before,
+      .hero::after {
+        display: none;
+      }
+
+      .hero-inner {
+        min-height: auto;
+        padding: 28px 20px 0;
+        background: linear-gradient(180deg, var(--light) 0 58%, #000 58% 100%);
+      }
+
+      .brand-mark,
+      .nav,
+      .hero-copy,
+      .hero-portrait {
+        position: static;
+      }
+
+      .brand-mark {
+        margin: 0 auto 28px;
+      }
+
+      .nav {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 12px;
+        margin-bottom: 52px;
+        color: #fff;
+      }
+
+      .nav a {
+        min-width: auto;
+      }
+
+      .hero-copy {
+        width: 100%;
+        padding: 0;
+        text-align: center;
+      }
+
+      .socials {
+        justify-content: center;
+        margin-top: 48px;
+      }
+
+      .hero-portrait {
+        width: min(88vw, 420px);
+        margin: 44px auto 0;
+      }
+
+      .it-berries {
+        padding-inline: 24px;
+      }
+
+      .it-badge {
+        display: none;
+      }
+
+      .services,
+      .skill-grid,
+      .portfolio-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media (max-width: 760px) {
+      .page {
+        width: 100%;
+      }
+
+      .section-box,
+      .portfolio-header .section-box {
+        min-width: 0;
+        width: calc(100% - 32px);
+        padding: 20px 14px;
+        min-height: 84px;
+        font-size: 22px;
+        letter-spacing: 0.18em;
+      }
+
+      .hero-copy .intro {
+        font-size: 28px;
+      }
+
+      .hero-copy h1 {
+        font-size: 44px;
+      }
+
+      .hero-copy .role {
+        font-size: 18px;
+      }
+
+      .socials {
+        gap: 16px;
+      }
+
+      .it-berries,
+      .about,
+      .skills,
+      .contact {
+        padding-left: 16px;
+        padding-right: 16px;
+      }
+
+      .services,
+      .skill-grid,
+      .portfolio-grid {
+        grid-template-columns: 1fr;
+        width: 100%;
+      }
+
+      .service,
+      .service.is-centered {
+        width: 100%;
+        margin: 0;
+      }
+
+      .service {
+        grid-template-columns: 1fr;
+      }
+
+      .service-icon {
+        margin-bottom: 16px;
+      }
+
+      .skills-wrap {
+        width: 100%;
+      }
+
+      .skill {
+        width: 100%;
+      }
+
+      .skill span {
+        font-size: 18px;
+      }
+
+      .portfolio-filter {
+        gap: 12px;
+        flex-wrap: wrap;
+      }
+
+      .project {
+        min-height: 260px;
+      }
+
+      .portfolio-footer {
+        font-size: 16px;
+      }
+
+      .contact-form {
+        width: 100%;
+        margin-top: 76px;
+      }
+
+      .footer p {
+        font-size: 15px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header class="hero" id="top">
+      <div class="hero-inner">
+        <a class="brand-mark" href="#top" aria-label="Tomasz Gajda">
+          <svg viewBox="0 0 64 54" aria-hidden="true">
+            <path d="M4 14H28V19H19V34H13V19H4V14Z" fill="currentColor"/>
+            <path d="M23 27L33 17H39L29 27L39 37H33L23 27Z" fill="currentColor"/>
+            <path d="M42 17H60V22H48V28H56V33H42V17Z" fill="currentColor"/>
+            <circle cx="8" cy="17" r="2" fill="currentColor"/>
+          </svg>
+        </a>
+
+        <nav class="nav" aria-label="Primary">
+          <a href="#about">About me</a>
+          <a href="#skills">Skills</a>
+          <a href="#portfolio">Portfolio</a>
+          <a class="contact-pill" href="#contact">Contact me</a>
+        </nav>
+
+        <div class="hero-copy">
+          <p class="intro">Hi, I am</p>
+          <h1>Gith Osman</h1>
+          <p class="role">Architect</p>
+
+          <div class="socials" aria-label="Social links">
+            <a class="social" href="mailto:tomasz@example.com" aria-label="Email">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M4 6H20A2 2 0 0 1 22 8V16A2 2 0 0 1 20 18H4A2 2 0 0 1 2 16V8A2 2 0 0 1 4 6ZM4 8L12 13L20 8"/>
+              </svg>
+            </a>
+            <a class="social" href="https://github.com" target="_blank" rel="noreferrer" aria-label="GitHub">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M12 2C6.48 2 2 6.58 2 12.24C2 16.77 4.87 20.61 8.84 21.97C9.34 22.06 9.52 21.75 9.52 21.49V19.77C6.73 20.39 6.14 18.56 6.14 18.56C5.68 17.35 5 17.03 5 17.03C4.07 16.38 5.07 16.4 5.07 16.4C6.1 16.47 6.64 17.48 6.64 17.48C7.56 19.09 9.05 18.63 9.64 18.36C9.73 17.67 10 17.2 10.29 16.93C8.07 16.67 5.73 15.78 5.73 11.79C5.73 10.65 6.13 9.72 6.79 9C6.69 8.74 6.34 7.68 6.89 6.24C6.89 6.24 7.74 5.96 9.49 7.18C10.3 6.95 11.17 6.83 12.04 6.82C12.91 6.83 13.78 6.95 14.59 7.18C16.34 5.96 17.19 6.24 17.19 6.24C17.74 7.68 17.39 8.74 17.29 9C17.95 9.72 18.35 10.65 18.35 11.79C18.35 15.79 16 16.66 13.78 16.92C14.15 17.25 14.48 17.92 14.48 18.95V21.49C14.48 21.76 14.66 22.07 15.17 21.97C19.13 20.61 22 16.77 22 12.24C22 6.58 17.52 2 12 2Z" fill="currentColor"/>
+              </svg>
+            </a>
+            <a class="social" href="https://linkedin.com" target="_blank" rel="noreferrer" aria-label="LinkedIn">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M6.94 8.5A1.72 1.72 0 1 0 6.94 5.06A1.72 1.72 0 0 0 6.94 8.5ZM5.44 10H8.44V19H5.44V10ZM10.44 10H13.32V11.23H13.36C13.76 10.47 14.74 9.67 16.19 9.67C19.21 9.67 19.77 11.63 19.77 14.18V19H16.77V14.75C16.77 13.74 16.75 12.43 15.35 12.43C13.93 12.43 13.71 13.55 13.71 14.67V19H10.44V10Z" fill="currentColor"/>
+              </svg>
+            </a>
+          </div>
+        </div>
+
+        <img class="hero-portrait" src="./assets/goni/hero-portrait.png" alt="Portrait of Tomasz Gajda">
+      </div>
+    </header>
+
+    <section class="it-berries" aria-labelledby="it-berries-title">
+      <h2 id="it-berries-title">ARCHITECTURE</h2>
+      <p>
+        I am an architecture graduate with a strong passion for design and planning, focusing on the functional aspects of buildings and connecting them
+        with aesthetics through simple, logical, and creative approaches. I strive to achieve sustainability in buildings from all perspectives: economy,
+        environment, and people. My goal is to make buildings more efficient and full of life.
+      </p>
+      <a class="read-link" href="#about">Read more</a>
+      <div class="it-badge" aria-hidden="true">IT</div>
+    </section>
+
+    <main>
+      <section class="about" id="about" aria-labelledby="about-title">
+        <div class="section-box" id="about-title">About me</div>
+        <p class="lead">
+          I believe that architecture is not merely form, but an integrated system that influences both people and the environment. Therefore, I ensure that
+          my projects reflect a clear understanding and well-considered design decisions.
+        </p>
+        <a class="explore-link" href="#skills">Explore</a>
+        <div class="mini-separator" aria-hidden="true"><span>〰</span></div>
+
+        <div class="services">
+          <article class="service">
+            <div class="service-icon" aria-hidden="true">
+              <svg viewBox="0 0 64 64">
+                <rect x="10" y="18" width="44" height="28" rx="2"></rect>
+                <path d="M18 24H46"></path>
+                <path d="M18 30H34"></path>
+                <path d="M18 36H28"></path>
+                <path d="M38 34L44 28L48 32"></path>
+                <path d="M22 50H42"></path>
+              </svg>
+            </div>
+            <div>
+              <h3>Architectural Design</h3>
+              <p>
+                Designing villas and architectural concepts with a focus on functionality, owner requirements, budget awareness, and environmental response.
+              </p>
+            </div>
+          </article>
+
+          <article class="service">
+            <div class="service-icon" aria-hidden="true">
+              <svg viewBox="0 0 64 64">
+                <path d="M24 16L44 24V42L24 50L12 42V24L24 16Z"></path>
+                <path d="M24 16V34L44 24"></path>
+                <path d="M24 34L12 24"></path>
+                <path d="M24 34V50"></path>
+                <path d="M12 42L24 34L44 42"></path>
+              </svg>
+            </div>
+            <div>
+              <h3>3D Modeling &amp; Visualization</h3>
+              <p>
+                Developing 3D architectural models and presentation visuals using Rhino, Grasshopper, and rendering tools to communicate massing, facades,
+                and spatial ideas clearly.
+              </p>
+            </div>
+          </article>
+
+          <article class="service is-centered">
+            <div class="service-icon" aria-hidden="true">
+              <svg viewBox="0 0 64 64">
+                <path d="M18 12H40L48 20V50A2 2 0 0 1 46 52H18A2 2 0 0 1 16 50V14A2 2 0 0 1 18 12Z"></path>
+                <path d="M40 12V20H48"></path>
+                <path d="M22 28H42"></path>
+                <path d="M22 36H38"></path>
+                <path d="M22 44H34"></path>
+                <path d="M50 30V46"></path>
+                <path d="M46 34H54"></path>
+                <path d="M46 42H54"></path>
+              </svg>
+            </div>
+            <div>
+              <h3>Technical Documentation</h3>
+              <p>
+                Preparing working drawings, sections, elevations, construction details, and code-conscious documentation with AutoCAD, Revit, and practical
+                site understanding.
+              </p>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="skills" id="skills" aria-labelledby="skills-title">
+        <div class="section-box" id="skills-title">Skills</div>
+        <div class="skills-wrap">
+          <div class="skill-group">
+            <div class="skill-grid">
+              <div class="skill">
+                <img class="skill-logo" src="./assets/goni/Revit.png" alt="Revit">
+                <span>Revit</span>
+              </div>
+              <div class="skill">
+                <img class="skill-logo" src="./assets/goni/Lumion.png" alt="Lumion">
+                <span>Lumion</span>
+              </div>
+              <div class="skill">
+                <img class="skill-logo" src="./assets/goni/Sustainable_Design___Green_Building_Principles.png" alt="Sustainable_Design___Green_Building_Principles">
+                <span>LEED</span>
+              </div>
+              <div class="skill">
+                <img class="skill-logo" src="./assets/goni/Rihno.png" alt="Rihno">
+                <span>Rihno</span>
+              </div>
+              <div class="skill">
+                <img class="skill-logo" src="./assets/goni/Grasshopper.jpg" alt="Grasshopper">
+                <span>Grasshopper</span>
+              </div>
+              <div class="skill">
+                <img class="skill-logo" src="./assets/goni/Autocad.png" alt="Autocad">
+                <span>Autocad</span>
+              </div>
+              <div class="skill">
+                <img class="skill-logo" src="./assets/goni/Canva.png" alt="Canva">
+                <span>Canva</span>
+              </div>
+              <div class="skill">
+                <img class="skill-logo" src="./assets/goni/Enscape.png" alt="Enscape">
+                <span>Enscape</span>
+              </div>
+            </div>
+          </div>
+
+     
+
+        </div>
+      </section>
+
+      <section class="portfolio" id="portfolio" aria-labelledby="portfolio-title">
+        <div class="portfolio-header">
+          <h2 class="sr-only" id="portfolio-title">Portfolio</h2>
+        </div>
+
+        <div class="portfolio-filter" aria-label="Portfolio filters">
+          <a href="#portfolio">All</a>
+          <a href="#portfolio">Coded</a>
+          <a href="#portfolio">Designed</a>
+        </div>
+        <div class="portfolio-filter-line" aria-hidden="true"></div>
+
+        <div class="portfolio-grid">
+          <article class="project neon-top" aria-label="Abstract neon project"></article>
+          <article class="project eatsome" aria-label="Eatsome project"></article>
+          <article class="project car-top" aria-label="Car project"></article>
+          <article class="project neon-bottom" aria-label="Abstract neon project"></article>
+          <article class="project car-bottom" aria-label="Car project"></article>
+          <article class="project neon-last" aria-label="Abstract neon project"></article>
+        </div>
+
+        <div class="portfolio-footer">And many more to come!</div>
+      </section>
+
+      <section class="contact" id="contact" aria-labelledby="contact-title">
+        <div class="section-box" id="contact-title">Contact</div>
+        <p class="lead">
+          Nulla in velit a metus rhoncus tempus. Nulla congue nulla vel sem varius finibus. Sed ornare sit amet lorem sed viverra. In vel urna quis libero
+          viverra facilisis ut ac est.
+        </p>
+        <div class="mini-separator" aria-hidden="true"><span>〰</span></div>
+
+        <form class="contact-form">
+          <div class="field">
+            <label for="name">Enter your name*</label>
+            <input id="name" name="name" type="text" autocomplete="name">
+          </div>
+          <div class="field">
+            <label for="email">Enter your email*</label>
+            <input id="email" name="email" type="email" autocomplete="email">
+          </div>
+          <div class="field">
+            <label for="phone">Phone number</label>
+            <input id="phone" name="phone" type="tel" autocomplete="tel">
+          </div>
+          <div class="field">
+            <label for="message">Your message*</label>
+            <textarea id="message" name="message"></textarea>
+          </div>
+          <button class="submit-link" type="submit">Submit</button>
+        </form>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <a class="back-top" href="#top">
+        <span class="arrow">➜</span>
+        <span>Back to top</span>
+      </a>
+
+      <div class="footer-socials" aria-label="Social links">
+        <a href="https://facebook.com" target="_blank" rel="noreferrer" aria-label="Facebook">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M13.5 21V12.75H16.27L16.69 9.53H13.5V7.47C13.5 6.54 13.76 5.91 15.09 5.91H16.8V3.03C15.97 2.94 15.13 2.9 14.29 2.91C11.8 2.91 10.1 4.43 10.1 7.23V9.53H7.31V12.75H10.1V21H13.5Z" fill="currentColor"/>
+          </svg>
+        </a>
+        <a href="https://linkedin.com" target="_blank" rel="noreferrer" aria-label="LinkedIn">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M6.94 8.5A1.72 1.72 0 1 0 6.94 5.06A1.72 1.72 0 0 0 6.94 8.5ZM5.44 10H8.44V19H5.44V10ZM10.44 10H13.32V11.23H13.36C13.76 10.47 14.74 9.67 16.19 9.67C19.21 9.67 19.77 11.63 19.77 14.18V19H16.77V14.75C16.77 13.74 16.75 12.43 15.35 12.43C13.93 12.43 13.71 13.55 13.71 14.67V19H10.44V10Z" fill="currentColor"/>
+          </svg>
+        </a>
+        <a href="https://instagram.com" target="_blank" rel="noreferrer" aria-label="Instagram">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M7 3H17A4 4 0 0 1 21 7V17A4 4 0 0 1 17 21H7A4 4 0 0 1 3 17V7A4 4 0 0 1 7 3ZM7 5A2 2 0 0 0 5 7V17A2 2 0 0 0 7 19H17A2 2 0 0 0 19 17V7A2 2 0 0 0 17 5H7ZM18 6.5A1 1 0 1 1 17 7.5A1 1 0 0 1 18 6.5ZM12 7A5 5 0 1 1 7 12A5 5 0 0 1 12 7ZM12 9A3 3 0 1 0 15 12A3 3 0 0 0 12 9Z" fill="currentColor"/>
+          </svg>
+        </a>
+        <a href="mailto:tomasz@example.com" aria-label="Email">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M4 6H20A2 2 0 0 1 22 8V16A2 2 0 0 1 20 18H4A2 2 0 0 1 2 16V8A2 2 0 0 1 4 6ZM4 8L12 13L20 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
+      </div>
+
+      <p>@2020 Tomasz Gajda All Rights Reserved.</p>
+    </footer>
+  </div>
+</body>
+</html>

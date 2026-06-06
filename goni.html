@@ -491,9 +491,10 @@
     .portfolio-header {
       position: relative;
       height: 321px;
-      background:
-        linear-gradient(rgba(0, 0, 0, 0.32), rgba(0, 0, 0, 0.32)),
-        url("./assets/goni/mountains-header.png") center/cover no-repeat;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: transparent;
     }
 
     .sr-only {
@@ -508,45 +509,27 @@
       border: 0;
     }
 
-    .portfolio-filter {
-      display: flex;
+    .portfolio-title-box {
+      display: inline-flex;
+      align-items: center;
       justify-content: center;
-      gap: 34px;
-      padding: 32px 0 16px;
-      color: #7c7c7c;
-      font-size: 14px;
-      font-weight: 600;
-    }
-
-    .portfolio-filter a {
-      min-width: 149px;
-      text-align: center;
-    }
-
-    .portfolio-filter a:first-child {
-      color: #fff;
-    }
-
-    .portfolio-filter-line {
-      width: min(587px, calc(100% - 48px));
-      margin: 0 auto 30px;
-      border-top: 1px solid #aaa;
-      position: relative;
-    }
-
-    .portfolio-filter-line::before {
-      content: "";
-      position: absolute;
-      left: 0;
-      top: -1px;
-      width: 201px;
-      border-top: 1px solid #fff;
+      min-height: 107px;
+      min-width: 482px;
+      padding: 0 48px;
+      border: 8px solid #d7d7d7;
+      color: #d7d7d7;
+      font-size: 30px;
+      font-weight: 700;
+      letter-spacing: 0.355em;
+      text-transform: uppercase;
+      background: transparent;
     }
 
     .portfolio-grid {
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 0;
+      gap: 3px;
+      background: #1a1a1a;
     }
 
     .project {
@@ -1145,16 +1128,8 @@
 
       <section class="portfolio" id="portfolio" aria-labelledby="portfolio-title">
         <div class="portfolio-header">
-          <h2 class="sr-only" id="portfolio-title">Portfolio</h2>
+          <h2 class="portfolio-title-box" id="portfolio-title">Portfolio</h2>
         </div>
-
-        <div class="portfolio-filter" aria-label="Portfolio filters">
-          <a href="#portfolio">All</a>
-          <a href="#portfolio">Coded</a>
-          <a href="#portfolio">Designed</a>
-        </div>
-        <div class="portfolio-filter-line" aria-hidden="true"></div>
-
         <div class="portfolio-grid">
           <article class="project neon-top" aria-label="Abstract neon project"></article>
           <article class="project eatsome" aria-label="Eatsome project"></article>

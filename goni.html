@@ -525,6 +525,58 @@
       background: transparent;
     }
 
+    .portfolio-featured {
+      width: min(1120px, calc(100% - 64px));
+      margin: 0 auto 44px;
+      padding: 0 0 28px;
+      border-bottom: 1px solid rgba(215, 215, 215, 0.28);
+      color: #d7d7d7;
+    }
+
+    .portfolio-featured .eyebrow {
+      margin: 0 0 12px;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.24em;
+      text-transform: uppercase;
+      color: rgba(215, 215, 215, 0.68);
+    }
+
+    .portfolio-featured h3 {
+      margin: 0 0 12px;
+      font-size: 42px;
+      line-height: 1;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #fff;
+    }
+
+    .portfolio-featured p {
+      max-width: 640px;
+      margin: 0 0 18px;
+      font-size: 16px;
+      line-height: 1.7;
+      color: rgba(215, 215, 215, 0.84);
+    }
+
+    .portfolio-featured .read-more-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.24em;
+      text-transform: uppercase;
+      color: #fff;
+      text-decoration: none;
+    }
+
+    .portfolio-featured .read-more-link::after {
+      content: "→";
+      font-size: 15px;
+      line-height: 1;
+    }
+
     .portfolio-grid {
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -846,6 +898,14 @@
         display: none;
       }
 
+      .portfolio-featured {
+        width: calc(100% - 48px);
+      }
+
+      .portfolio-featured h3 {
+        font-size: 36px;
+      }
+
       .services,
       .skill-grid,
       .portfolio-grid {
@@ -897,6 +957,20 @@
       .portfolio-grid {
         grid-template-columns: 1fr;
         width: 100%;
+      }
+
+      .portfolio-featured {
+        width: 100%;
+        margin-bottom: 28px;
+        padding-bottom: 22px;
+      }
+
+      .portfolio-featured h3 {
+        font-size: 28px;
+      }
+
+      .portfolio-featured p {
+        font-size: 15px;
       }
 
       .service,
@@ -1129,6 +1203,15 @@
       <section class="portfolio" id="portfolio" aria-labelledby="portfolio-title">
         <div class="portfolio-header">
           <h2 class="portfolio-title-box" id="portfolio-title">Portfolio</h2>
+        </div>
+        <div class="portfolio-featured" aria-labelledby="modern-villa-title">
+          <p class="eyebrow">First Project</p>
+          <h3 id="modern-villa-title">Modern Villa</h3>
+          <p>
+            A contemporary residential project defined by layered massing, vertical glazing, and a calm facade language that balances privacy, daylight, and
+            outdoor living.
+          </p>
+          <a class="read-more-link" href="./modernVilla.html">Read More</a>
         </div>
         <div class="portfolio-grid">
           <article class="project neon-top" aria-label="Abstract neon project"></article>

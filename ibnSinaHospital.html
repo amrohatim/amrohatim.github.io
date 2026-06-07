@@ -1,0 +1,713 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>IBN SINA GENERAL HOSPITAL</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #eef6f7;
+      --paper: #fbfeff;
+      --panel: #e1eef0;
+      --line: #c9dde0;
+      --text: #172125;
+      --muted: #607377;
+      --accent: #8cbcc3;
+      --accent-strong: #5d9ea8;
+      --accent-soft: #d7edf0;
+      --shadow: 0 24px 60px rgba(23, 33, 37, 0.08);
+      --radius-lg: 34px;
+      --radius-md: 22px;
+      --page-width: 1512px;
+      --content-width: 1380px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      background:
+        radial-gradient(circle at top left, rgba(255, 255, 255, 0.95), transparent 30%),
+        linear-gradient(180deg, #f3f9fa 0%, #ebf3f4 100%);
+      color: var(--text);
+      font-family: "Manrope", sans-serif;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+    }
+
+    .page {
+      width: min(100%, var(--page-width));
+      margin: 0 auto;
+      overflow: clip;
+    }
+
+    .shell {
+      width: min(var(--content-width), calc(100% - 64px));
+      margin: 0 auto;
+    }
+
+    .topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      padding: 28px 0 22px;
+      border-bottom: 1px solid rgba(23, 33, 37, 0.08);
+    }
+
+    .project-id {
+      font-size: 13px;
+      line-height: 1;
+      font-weight: 700;
+      letter-spacing: 0.36em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .project-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 18px;
+      justify-content: flex-end;
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    .project-meta span {
+      position: relative;
+      padding-left: 18px;
+    }
+
+    .project-meta span::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 50%;
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      background: var(--accent-strong);
+      transform: translateY(-50%);
+    }
+
+    .hero {
+      padding: 38px 0 28px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: minmax(360px, 0.92fr) minmax(420px, 1.18fr);
+      gap: 30px;
+      align-items: stretch;
+    }
+
+    .hero-copy {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      min-height: 740px;
+      padding: 18px 10px 8px 0;
+    }
+
+    .eyebrow {
+      margin: 0 0 20px;
+      font-size: 13px;
+      line-height: 1;
+      font-weight: 700;
+      letter-spacing: 0.34em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .hero-copy h1,
+    .section-copy h2,
+    .analysis-copy h2 {
+      margin: 0;
+      font-family: "Cormorant Garamond", serif;
+      font-size: clamp(64px, 5.4vw, 78px);
+      line-height: 0.92;
+      font-weight: 600;
+      letter-spacing: -0.01em;
+      color: var(--text);
+    }
+
+    .analysis-copy h2 {
+      font-size: clamp(38px, 3.35vw, 46px);
+      line-height: 0.98;
+    }
+
+    .hero-copy .lead {
+      max-width: 470px;
+      margin: 24px 0 0;
+      font-size: 20px;
+      line-height: 1.6;
+      color: var(--muted);
+    }
+
+    .hero-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 34px;
+    }
+
+    .hero-tags span,
+    .scope-card .scope-chip {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 42px;
+      padding: 0 18px;
+      border-radius: 999px;
+      border: 1px solid rgba(23, 33, 37, 0.1);
+      background: rgba(255, 255, 255, 0.68);
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text);
+    }
+
+    .scope-card {
+      padding-top: 28px;
+      border-top: 1px solid rgba(23, 33, 37, 0.08);
+    }
+
+    .scope-card .scope-chip {
+      margin-bottom: 18px;
+      border-color: transparent;
+      background: var(--accent-soft);
+      color: #446972;
+    }
+
+    .scope-card h3 {
+      margin: 0 0 8px;
+      font-family: "Cormorant Garamond", serif;
+      font-size: 34px;
+      line-height: 1;
+      font-weight: 600;
+    }
+
+    .scope-card p {
+      margin: 0;
+      max-width: 470px;
+      font-size: 16px;
+      line-height: 1.65;
+      color: var(--muted);
+    }
+
+    .hero-visual {
+      position: relative;
+      min-height: 740px;
+      border-radius: 42px;
+      overflow: hidden;
+      background: #d6e5e7;
+      box-shadow: var(--shadow);
+    }
+
+    .hero-visual::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(180deg, rgba(13, 24, 30, 0.06) 0%, rgba(13, 24, 30, 0.32) 100%),
+        url("./assets/goni/Ibn sina/main_image.png") center/cover no-repeat;
+      transform: scale(1.02);
+    }
+
+    .hero-caption {
+      position: absolute;
+      left: 28px;
+      right: 28px;
+      bottom: 34px;
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 18px;
+      color: rgba(255, 255, 255, 0.94);
+      z-index: 2;
+    }
+
+    .hero-caption strong {
+      display: block;
+      font-size: 15px;
+      line-height: 1.2;
+      font-weight: 600;
+    }
+
+    .hero-caption span {
+      font-size: 13px;
+      line-height: 1.2;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.72);
+    }
+
+    .hero-index {
+      font-family: "Cormorant Garamond", serif;
+      font-size: 52px;
+      line-height: 1;
+      font-weight: 600;
+    }
+
+    .analysis-section {
+      padding: 34px 0 28px;
+    }
+
+    .analysis-grid {
+      background-color: transparent;
+      display: grid;
+      grid-template-columns: minmax(260px, 0.58fr) minmax(620px, 1.42fr);
+      gap: 24px;
+      align-items: start;
+    }
+
+    .analysis-copy {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      gap: 28px;
+      align-self: start;
+      border-radius: var(--radius-lg);
+    }
+
+    .analysis-copy p {
+      margin: 16px 0 0;
+      font-size: 16px;
+      line-height: 1.65;
+      color: var(--muted);
+    }
+
+    .analysis-points {
+      display: grid;
+      gap: 14px;
+    }
+
+    .analysis-points article {
+      padding: 16px 18px;
+      border-radius: 18px;
+      background: rgba(140, 188, 195, 0.12);
+    }
+
+    .analysis-points h3 {
+      margin: 0 0 6px;
+      font-size: 14px;
+      line-height: 1.2;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: #3f6770;
+    }
+
+    .analysis-points p {
+      margin: 0;
+      font-size: 14px;
+      line-height: 1.6;
+    }
+
+    .analysis-visual {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 18px;
+    }
+
+    .analysis-card {
+      padding: 14px;
+      border-radius: 22px;
+      background: var(--paper);
+      box-shadow: var(--shadow);
+    }
+
+    .analysis-card img {
+      width: 100%;
+      height: auto;
+      object-fit: contain;
+    }
+
+    .showcase-section {
+      padding: 16px 0 28px;
+    }
+
+    .showcase-header {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 24px;
+      margin-bottom: 28px;
+    }
+
+    .showcase-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 20px;
+    }
+
+    .showcase-card {
+      overflow: hidden;
+      min-height: 420px;
+      border-radius: var(--radius-md);
+      background: var(--paper);
+      box-shadow: var(--shadow);
+    }
+
+    .showcase-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .drawings-section {
+      padding: 32px 0 74px;
+    }
+
+    .drawings-header {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 24px;
+      margin-bottom: 32px;
+    }
+
+    .section-copy {
+      max-width: 920px;
+    }
+
+    .section-copy p {
+      margin: 16px 0 0;
+      font-size: 16px;
+      line-height: 1.65;
+      color: var(--muted);
+    }
+
+    .section-note {
+      max-width: 300px;
+      padding: 18px 20px;
+      border: 1px solid rgba(23, 33, 37, 0.08);
+      border-radius: 18px;
+      background: rgba(255, 255, 255, 0.66);
+      font-size: 14px;
+      line-height: 1.55;
+      color: var(--muted);
+    }
+
+    .drawings-grid {
+      display: grid;
+      grid-template-columns: 1.05fr 0.95fr;
+      gap: 20px;
+    }
+
+    .drawings-column {
+      display: grid;
+      gap: 20px;
+    }
+
+    .drawing-card {
+      overflow: hidden;
+      border-radius: var(--radius-md);
+      background: var(--paper);
+      box-shadow: var(--shadow);
+    }
+
+    .drawing-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .drawing-card.large {
+      min-height: 700px;
+    }
+
+    .drawing-card.medium {
+      min-height: 390px;
+    }
+
+    .drawing-card.stack {
+      display: grid;
+      gap: 24px;
+      background: transparent;
+      box-shadow: none;
+      overflow: visible;
+    }
+
+    @media (max-width: 1180px) {
+      .shell {
+        width: calc(100% - 40px);
+      }
+
+      .hero-grid,
+      .analysis-grid,
+      .drawings-grid,
+      .analysis-visual {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-copy,
+      .hero-visual {
+        min-height: 0;
+      }
+
+      .hero-visual {
+        min-height: 620px;
+      }
+
+      .drawings-header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .showcase-header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .showcase-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .section-note {
+        max-width: 100%;
+      }
+
+      .drawing-card.large,
+      .drawing-card.medium {
+        min-height: 420px;
+      }
+    }
+
+    @media (max-width: 720px) {
+      .shell {
+        width: calc(100% - 24px);
+      }
+
+      .topbar {
+        padding: 20px 0 18px;
+      }
+
+      .project-meta {
+        gap: 10px;
+        justify-content: flex-start;
+      }
+
+      .hero {
+        padding: 24px 0 18px;
+      }
+
+      .hero-copy h1,
+      .section-copy h2,
+      .analysis-copy h2 {
+        font-size: 56px;
+      }
+
+      .hero-copy .lead,
+      .section-copy p,
+      .analysis-copy p {
+        font-size: 16px;
+      }
+
+      .showcase-card {
+        min-height: 320px;
+      }
+
+      .hero-visual {
+        min-height: 420px;
+        border-radius: 28px;
+      }
+
+      .hero-caption {
+        left: 20px;
+        right: 20px;
+        bottom: 24px;
+      }
+
+      .analysis-copy {
+        padding: 22px 20px 24px;
+      }
+
+      .drawings-section {
+        padding-bottom: 42px;
+      }
+
+      .drawing-card.large,
+      .drawing-card.medium {
+        min-height: 300px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <div class="shell">
+      <header class="topbar">
+        <div class="project-id">Project 02</div>
+        <div class="project-meta" aria-label="Project meta">
+          <span>Healthcare Design</span>
+          <span>Site Analysis</span>
+          <span>General Hospital</span>
+        </div>
+      </header>
+
+      <section class="hero" aria-labelledby="project-title">
+        <div class="hero-grid">
+          <div class="hero-copy">
+            <div>
+              <p class="eyebrow">Healthcare Architecture</p>
+              <h1 id="project-title">IBN SINA<br>GENERAL<br>HOSPITAL</h1>
+              <p class="lead">
+                A hospital concept structured around accessibility, environmental response, and a clear healing atmosphere where circulation, daylight, and
+                massing support patient care.
+              </p>
+              <div class="hero-tags">
+                <span>Healing</span>
+                <span>Clinical</span>
+                <span>Context Driven</span>
+              </div>
+            </div>
+
+            <div class="scope-card">
+              <h3>Architecture Can Heal</h3>
+              <p>
+                The project frames healthcare architecture as a calm and restorative environment, combining organized program zoning, site-informed
+                orientation, and a civic architectural presence.
+              </p>
+            </div>
+          </div>
+
+          <div class="hero-visual" aria-hidden="true">
+            <div class="hero-caption">
+              <div>
+                <strong>Aerial hospital massing / main project visualization</strong>
+                <span>Ibn Sina General Hospital</span>
+              </div>
+              <div class="hero-index">02</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="analysis-section" aria-labelledby="analysis-title">
+        <div class="analysis-grid">
+          <div class="analysis-copy">
+            <div>
+              <p class="eyebrow">Site Intelligence</p>
+              <h2  id="analysis-title">A medical campus shaped byaccess and environmental logic.</h2>
+              <p>
+                The analysis boards highlight how the hospital site connects to major streets, benefits from a large and flexible footprint, and can absorb
+                future medical growth while preserving visibility, circulation, and landscape quality.
+              </p>
+            </div>
+
+            <div class="analysis-points">
+              <article>
+                <h3>Location</h3>
+                <p>The site sits within a connected urban edge, allowing the hospital to read as a visible civic anchor with clear regional accessibility.</p>
+              </article>
+              <article>
+                <h3>Environmental Response</h3>
+                <p>Orientation, material strategy, roof reflectivity, and operable openings all support cooler, healthier internal conditions.</p>
+              </article>
+              <article>
+                <h3>Landscape Buffer</h3>
+                <p>Existing vegetation and planted edges help soften the clinical footprint while improving privacy, shade, and public perception.</p>
+              </article>
+            </div>
+          </div>
+
+          <div class="analysis-visual">
+            <figure class="analysis-card">
+              <img src="./assets/goni/Ibn sina/site_location.png" alt="Ibn Sina hospital site location and site analysis board">
+            </figure>
+            <figure class="analysis-card">
+              <img src="./assets/goni/Ibn sina/site_analysis.png" alt="Ibn Sina hospital land use and vegetation analysis board">
+            </figure>
+          </div>
+        </div>
+      </section>
+
+      <section class="showcase-section" aria-labelledby="showcase-title">
+        <div class="showcase-header">
+          <div class="section-copy">
+            <p class="eyebrow">Project Showcase</p>
+            <h2 id="showcase-title">Clinical massing and facade views presented through a cleaner architectural sequence.</h2>
+            <p>
+              These renderings extend the project narrative through exterior viewpoints that emphasize proportion, entry presence, facade rhythm, and the
+              hospital's visual identity within its site.
+            </p>
+          </div>
+          <div class="section-note">
+            Four curated perspectives present the hospital as a composed civic landmark rather than a purely technical object.
+          </div>
+        </div>
+
+        <div class="showcase-grid">
+          <figure class="showcase-card">
+            <img src="./assets/goni/Ibn sina/img1.png" alt="Exterior showcase rendering one for Ibn Sina General Hospital">
+          </figure>
+          <figure class="showcase-card">
+            <img src="./assets/goni/Ibn sina/img2.png" alt="Exterior showcase rendering two for Ibn Sina General Hospital">
+          </figure>
+          <figure class="showcase-card">
+            <img src="./assets/goni/Ibn sina/img3.png" alt="Exterior showcase rendering three for Ibn Sina General Hospital">
+          </figure>
+          <figure class="showcase-card">
+            <img src="./assets/goni/Ibn sina/img4.png" alt="Exterior showcase rendering four for Ibn Sina General Hospital">
+          </figure>
+        </div>
+      </section>
+
+      <section class="drawings-section" aria-labelledby="drawings-title">
+        <div class="drawings-header">
+          <div class="section-copy">
+            <p class="eyebrow">Technical Portfolio</p>
+            <h2 id="drawings-title">Plans, sections, and elevations organized like a composed hospital case study.</h2>
+            <p>
+              The drawings reveal a layered medical program with outpatient, inpatient, administration, and service components arranged through a disciplined
+              structural and circulation framework.
+            </p>
+          </div>
+          <div class="section-note">
+            The layout mixes a large master drawing with smaller supporting sheets so the presentation feels clinical, ordered, and premium rather than crowded.
+          </div>
+        </div>
+
+        <div class="drawings-grid">
+          <div class="drawings-column">
+            <figure class="drawing-card large">
+              <img src="./assets/goni/Ibn sina/drawing2.png" alt="Ground floor plan drawing for Ibn Sina General Hospital">
+            </figure>
+            <figure class="drawing-card medium">
+              <img src="./assets/goni/Ibn sina/drawing6.png" alt="Sections drawing for Ibn Sina General Hospital">
+            </figure>
+          </div>
+
+          <div class="drawings-column">
+            <figure class="drawing-card medium">
+              <img src="./assets/goni/Ibn sina/drawing1.png" alt="Site plan drawing for Ibn Sina General Hospital">
+            </figure>
+            <figure class="drawing-card medium">
+              <img src="./assets/goni/Ibn sina/drawing3.png" alt="First floor plan drawing for Ibn Sina General Hospital">
+            </figure>
+            <figure class="drawing-card medium">
+              <img src="./assets/goni/Ibn sina/drawing7.png" alt="Elevations drawing for Ibn Sina General Hospital">
+            </figure>
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
+</body>
+</html>

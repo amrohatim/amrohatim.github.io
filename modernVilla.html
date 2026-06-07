@@ -6,27 +6,39 @@
   <title>Modern Villa</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700&family=Poetsen+One&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg: #1a1a1a;
-      --olive: #b9d97e;
-      --olive-soft: #edffcd;
-      --white: #fff;
-      --text-dark: #494949;
-      --text-green: #95b063;
+      --bg: #f2eee7;
+      --paper: #faf7f1;
+      --panel: #e7e0d6;
+      --line: #d6cec1;
+      --text: #171512;
+      --muted: #6d655a;
+      --accent: #8a9a67;
+      --accent-soft: #dde5cb;
+      --shadow: 0 24px 60px rgba(23, 21, 18, 0.08);
+      --radius-lg: 32px;
+      --radius-md: 22px;
       --page-width: 1512px;
+      --content-width: 1380px;
     }
 
     * {
       box-sizing: border-box;
     }
 
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
       margin: 0;
-      background: var(--bg);
-      color: var(--white);
-      font-family: "Poppins", sans-serif;
+      background:
+        radial-gradient(circle at top left, rgba(255, 255, 255, 0.8), transparent 34%),
+        linear-gradient(180deg, #f4f0e9 0%, #efebe3 100%);
+      color: var(--text);
+      font-family: "Manrope", sans-serif;
       -webkit-font-smoothing: antialiased;
       text-rendering: optimizeLegibility;
     }
@@ -37,397 +49,563 @@
     }
 
     .page {
-      position: relative;
       width: min(100%, var(--page-width));
       margin: 0 auto;
-      background: var(--bg);
-      overflow: hidden;
+      background: transparent;
+      overflow: clip;
     }
 
-    .title-bar {
-      height: 114px;
+    .shell {
+      width: min(var(--content-width), calc(100% - 64px));
+      margin: 0 auto;
+    }
+
+    .topbar {
       display: flex;
       align-items: center;
-      background: var(--olive);
-      padding: 0 26px;
+      justify-content: space-between;
+      gap: 24px;
+      padding: 28px 0 24px;
+      border-bottom: 1px solid rgba(23, 21, 18, 0.08);
     }
 
-    .title-bar h1 {
-      margin: 0;
-      font-size: 60px;
-      line-height: 44px;
+    .project-id {
+      font-size: 13px;
+      line-height: 1;
       font-weight: 700;
-      color: var(--white);
+      letter-spacing: 0.36em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .project-meta {
+      display: flex;
+      gap: 18px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+      font-size: 13px;
+      line-height: 1.2;
+      color: var(--muted);
+    }
+
+    .project-meta span {
+      padding-left: 18px;
+      position: relative;
+    }
+
+    .project-meta span::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 50%;
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      background: var(--accent);
+      transform: translateY(-50%);
     }
 
     .hero {
-      position: relative;
-      height: 915px;
-      background:
-        linear-gradient(90deg, rgba(47, 47, 47, 0.6) 0%, rgba(185, 217, 126, 0.6) 100%),
-        url("./assets/goni/modern villa/main image.png") center/cover no-repeat;
+      padding: 42px 0 26px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: minmax(320px, 0.9fr) minmax(420px, 1.35fr);
+      gap: 28px;
+      align-items: stretch;
     }
 
     .hero-copy {
-      position: absolute;
-      left: 27px;
-      bottom: 54px;
-      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      min-height: 760px;
+      padding: 18px 8px 8px 0;
     }
 
-    .hero-copy h2 {
-      margin: 0 0 18px;
-      font-size: 48px;
-      line-height: 44px;
+    .eyebrow {
+      margin: 0 0 22px;
+      font-size: 13px;
+      line-height: 1;
       font-weight: 700;
-      color: var(--white);
+      letter-spacing: 0.34em;
+      text-transform: uppercase;
+      color: var(--muted);
     }
 
-    .hero-copy p {
+    .hero-copy h1,
+    .section-copy h2 {
       margin: 0;
-      font-size: 42px;
-      line-height: 44px;
-      font-weight: 500;
-      color: #e7ffba;
+      font-family: "Cormorant Garamond", serif;
+      font-size: clamp(68px, 6vw, 104px);
+      line-height: 0.9;
+      font-weight: 600;
+      letter-spacing: -0.03em;
+      color: var(--text);
     }
 
-    .content {
-      position: relative;
-      height: 1533px;
-      background: var(--bg);
+    .hero-copy .lead {
+      max-width: 420px;
+      margin: 24px 0 0;
+      font-size: 20px;
+      line-height: 1.55;
+      color: var(--muted);
     }
 
-    .feature-wrap {
-      position: relative;
-      min-height: 721px;
+    .hero-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 34px;
     }
 
-    .feature-image {
-      position: absolute;
-      left: 0;
-      top: 0;
-      width: 1189px;
-      height: 721px;
-      background: url("./assets/goni/modern villa/main image.png") center/cover no-repeat;
+    .hero-tags span,
+    .scope-card .scope-chip {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 42px;
+      padding: 0 18px;
+      border-radius: 999px;
+      border: 1px solid rgba(23, 21, 18, 0.1);
+      background: rgba(255, 255, 255, 0.66);
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text);
     }
 
     .scope-card {
-      position: absolute;
-      right: 0;
-      top: 121px;
-      width: 435px;
-      height: 479px;
-      padding: 56px 24px 24px;
-      background: var(--olive-soft);
-      border-radius: 20px 0 0 20px;
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-end;
-      z-index: 2;
+      padding-top: 28px;
+      border-top: 1px solid rgba(23, 21, 18, 0.08);
     }
 
-    .scope-card .mark {
-      position: absolute;
-      left: 24px;
-      top: 68px;
-      margin: 0;
-      font-family: "Poetsen One", sans-serif;
-      font-size: 90px;
-      line-height: 44px;
-      color: var(--olive);
+    .scope-card .scope-chip {
+      background: var(--accent-soft);
+      border-color: transparent;
+      color: #4e5a36;
+      margin-bottom: 18px;
     }
 
     .scope-card h3 {
-      margin: 0 0 12px;
-      font-size: 42px;
-      line-height: 44px;
+      margin: 0 0 8px;
+      font-family: "Cormorant Garamond", serif;
+      font-size: 34px;
+      line-height: 1;
       font-weight: 600;
-      color: var(--text-dark);
     }
 
     .scope-card p {
       margin: 0;
-      font-size: 32px;
-      line-height: 44px;
-      font-weight: 500;
-      color: var(--text-green);
+      max-width: 420px;
+      font-size: 16px;
+      line-height: 1.6;
+      color: var(--muted);
     }
 
-    .gallery-zone {
+    .hero-visual {
       position: relative;
-      height: 812px;
-      margin-top: 0;
-      background: var(--olive);
+      min-height: 760px;
+      border-radius: 40px;
       overflow: hidden;
+      background: #dcd5ca;
+      box-shadow: var(--shadow);
     }
 
-    .gallery-viewport {
+    .hero-visual::before {
+      content: "";
       position: absolute;
       inset: 0;
-      overflow-x: auto;
-      overflow-y: hidden;
-      scrollbar-width: none;
-      scroll-behavior: smooth;
+      background:
+        linear-gradient(180deg, rgba(16, 14, 12, 0.04) 0%, rgba(16, 14, 12, 0.3) 100%),
+        url("./assets/goni/modern villa/main image.png") center/cover no-repeat;
+      transform: scale(1.02);
     }
 
-    .gallery-track {
+    .hero-visual::after {
+      content: "";
       position: absolute;
-      left: 73px;
-      top: 59px;
+      left: 28px;
+      right: 28px;
+      bottom: 26px;
+      height: 1px;
+      background: rgba(255, 255, 255, 0.36);
+    }
+
+    .hero-caption {
+      position: absolute;
+      left: 28px;
+      right: 28px;
+      bottom: 46px;
       display: flex;
-      width: max-content;
-      padding-right: 73px;
-      gap: 1px;
-    }
-
-    .gallery-viewport::-webkit-scrollbar {
-      display: none;
-    }
-
-    .gallery-button {
-      position: absolute;
-      top: 50%;
-      z-index: 3;
-      width: 54px;
-      height: 54px;
-      border: 0;
-      border-radius: 999px;
-      background: rgba(26, 26, 26, 0.82);
-      color: #fff;
-      display: inline-flex;
       align-items: center;
-      justify-content: center;
-      font-size: 28px;
+      justify-content: space-between;
+      gap: 16px;
+      color: rgba(255, 255, 255, 0.92);
+      z-index: 2;
+    }
+
+    .hero-caption strong {
+      display: block;
+      font-size: 15px;
+      line-height: 1.2;
+      font-weight: 600;
+    }
+
+    .hero-caption span {
+      font-size: 13px;
+      line-height: 1.2;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.72);
+    }
+
+    .hero-index {
+      font-family: "Cormorant Garamond", serif;
+      font-size: 52px;
       line-height: 1;
-      cursor: pointer;
-      transform: translateY(-50%);
-      box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+      font-weight: 600;
     }
 
-    .gallery-button.prev {
-      left: 14px;
+    .gallery-section {
+      padding: 34px 0 64px;
     }
 
-    .gallery-button.next {
-      right: 14px;
+    .gallery-header {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 24px;
+      margin-bottom: 34px;
+    }
+
+    .section-copy {
+      max-width: 560px;
+    }
+
+    .section-copy p {
+      margin: 16px 0 0;
+      font-size: 16px;
+      line-height: 1.65;
+      color: var(--muted);
+    }
+
+    .gallery-note {
+      max-width: 260px;
+      padding: 18px 20px;
+      border: 1px solid rgba(23, 21, 18, 0.08);
+      border-radius: 18px;
+      background: rgba(255, 255, 255, 0.66);
+      font-size: 14px;
+      line-height: 1.55;
+      color: var(--muted);
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: 0.98fr 1.08fr;
+      grid-template-rows: 420px 320px;
+      gap: 24px;
     }
 
     .gallery-card {
-      width: 548px;
-      height: 662px;
-      border: 15px solid #fff;
-      border-radius: 50px;
+      position: relative;
       overflow: hidden;
-      background: #fff;
-      flex: 0 0 auto;
-      box-shadow: 0 18px 40px rgba(0, 0, 0, 0.18);
+      border-radius: var(--radius-md);
+      background: var(--panel);
+      box-shadow: 0 20px 48px rgba(23, 21, 18, 0.08);
     }
 
     .gallery-card img {
       width: 100%;
       height: 100%;
       object-fit: cover;
+      transition: transform 320ms ease;
     }
 
-    .gallery-card.is-wide {
-      width: 556px;
-      height: 670px;
+    .gallery-card:hover img {
+      transform: scale(1.02);
+    }
+
+    .gallery-card.tall {
+      grid-row: 1 / span 2;
+    }
+
+    .gallery-card.landscape {
+      min-height: 0;
+    }
+
+    .gallery-card.detail {
+      display: grid;
+      grid-template-columns: 0.92fr 1fr;
+      gap: 0;
+      background: #e8e1d6;
+    }
+
+    .detail-copy {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 28px 26px;
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.08));
+    }
+
+    .detail-copy .eyebrow {
+      margin-bottom: 12px;
+    }
+
+    .detail-copy h3 {
+      margin: 0;
+      font-family: "Cormorant Garamond", serif;
+      font-size: 40px;
+      line-height: 0.95;
+      font-weight: 600;
+      color: var(--text);
+    }
+
+    .detail-copy p {
+      margin: 14px 0 0;
+      font-size: 15px;
+      line-height: 1.6;
+      color: var(--muted);
+    }
+
+    .detail-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 20px;
+    }
+
+    .detail-meta span {
+      font-size: 12px;
+      line-height: 1;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .detail-image {
+      min-height: 100%;
+    }
+
+    .detail-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
     }
 
     @media (max-width: 1180px) {
-      .title-bar {
-        height: auto;
-        padding: 20px;
+      .shell {
+        width: calc(100% - 40px);
       }
 
-      .title-bar h1 {
-        font-size: 42px;
-        line-height: 1.05;
+      .hero-grid {
+        grid-template-columns: 1fr;
       }
 
-      .hero {
-        height: 64vw;
-        min-height: 460px;
+      .hero-copy,
+      .hero-visual {
+        min-height: 0;
       }
 
       .hero-copy {
-        left: 20px;
-        right: 20px;
-        bottom: 22px;
+        padding: 30px 24px 24px;
       }
 
-      .hero-copy h2 {
-        font-size: 34px;
-        line-height: 1.1;
-        margin-bottom: 10px;
+      .hero-visual {
+        min-height: 620px;
       }
 
-      .hero-copy p {
-        font-size: 24px;
-        line-height: 1.2;
+      .gallery-header {
+        flex-direction: column;
+        align-items: flex-start;
       }
 
-      .feature-wrap {
-        min-height: 0;
-        padding: 0 0 24px;
+      .gallery-note {
+        max-width: 100%;
       }
 
-      .feature-image,
-      .scope-card {
-        position: static;
-        width: auto;
+      .gallery-grid {
+        grid-template-columns: 1fr;
+        grid-template-rows: none;
       }
 
-      .feature-image {
-        height: 56vw;
-        min-height: 320px;
+      .gallery-card.tall {
+        grid-row: auto;
+        min-height: 520px;
       }
 
-      .scope-card {
-        height: auto;
-        border-radius: 0;
-        padding: 140px 24px 28px;
+      .gallery-card.landscape {
+        min-height: 360px;
       }
 
-      .scope-card .mark {
-        top: 52px;
+      .gallery-card.detail {
+        grid-template-columns: 1fr;
       }
 
-      .gallery-zone {
-        height: auto;
-        padding: 32px 20px 42px;
-        overflow: visible;
-      }
-
-      .gallery-viewport {
-        position: static;
-        overflow: visible;
-      }
-
-      .gallery-track {
-        position: static;
-        display: grid;
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: 20px;
-      }
-
-      .gallery-card,
-      .gallery-card.is-wide {
-        width: 100%;
-        height: 46vw;
-        min-height: 260px;
-        max-height: 520px;
-      }
-
-      .gallery-button {
-        display: none;
+      .detail-image {
+        min-height: 360px;
       }
     }
 
     @media (max-width: 720px) {
-      .title-bar h1 {
-        font-size: 30px;
+      .shell {
+        width: calc(100% - 24px);
+      }
+
+      .topbar {
+        padding: 20px 0 18px;
+      }
+
+      .project-meta {
+        gap: 10px;
+        justify-content: flex-start;
       }
 
       .hero {
-        min-height: 340px;
+        padding: 24px 0 16px;
       }
 
-      .hero-copy h2 {
-        font-size: 26px;
+      .hero-copy h1,
+      .section-copy h2 {
+        font-size: 58px;
       }
 
-      .hero-copy p {
-        font-size: 18px;
+      .hero-copy .lead {
+        font-size: 17px;
       }
 
-      .scope-card .mark {
-        font-size: 64px;
+      .hero-visual {
+        min-height: 420px;
+        border-radius: 26px;
       }
 
-      .scope-card h3 {
-        font-size: 28px;
-        line-height: 1.1;
+      .hero-caption {
+        left: 20px;
+        right: 20px;
+        bottom: 26px;
       }
 
-      .scope-card p {
-        font-size: 20px;
-        line-height: 1.25;
+      .gallery-section {
+        padding-bottom: 34px;
       }
 
-      .gallery-track {
-        grid-template-columns: 1fr;
+      .gallery-card.tall,
+      .gallery-card.landscape,
+      .detail-image {
+        min-height: 300px;
       }
 
-      .gallery-card,
-      .gallery-card.is-wide {
-        height: 62vw;
+      .detail-copy {
+        padding: 22px 20px;
+      }
+
+      .detail-copy h3 {
+        font-size: 32px;
       }
     }
   </style>
 </head>
 <body>
   <div class="page">
-    <div class="title-bar">
-      <h1>01 MODERN VILLA</h1>
-    </div>
+    <div class="shell">
+      <header class="topbar">
+        <div class="project-id">Project 01</div>
+        <div class="project-meta" aria-label="Project meta">
+          <span>Luxury Residence</span>
+          <span>3D Visualization</span>
+          <span>Exterior Study</span>
+        </div>
+      </header>
 
-    <section class="hero" aria-labelledby="villa-title">
-      <div class="hero-copy">
-        <h2 id="villa-title">MODERN VILLA</h2>
-        <p>LUXURY , ADVANCED AND CONVENIET</p>
-      </div>
-    </section>
+      <section class="hero" aria-labelledby="villa-title">
+        <div class="hero-grid">
+          <div class="hero-copy">
+            <div>
+              <p class="eyebrow">Residential Visualization</p>
+              <h1 id="villa-title">Modern<br>Villa</h1>
+              <p class="lead">
+                A minimalist residential concept presented through calm material contrast, vertical glazing, and precise massing intended to feel refined,
+                private, and quietly monumental.
+              </p>
+              <div class="hero-tags">
+                <span>Luxury</span>
+                <span>Advanced</span>
+                <span>Convenient</span>
+              </div>
+            </div>
 
-    <main class="content">
-      <section class="feature-wrap" aria-labelledby="scope-title">
-        <div class="feature-image" aria-hidden="true"></div>
+            <div class="scope-card">
+              <span class="scope-chip">Scope</span>
+              <h3>3D Modeling &amp; Rendering</h3>
+              <p>
+                Exterior-focused visualization package with facade studies, approach perspectives, and close-up composition frames for premium presentation.
+              </p>
+            </div>
+          </div>
 
-        <article class="scope-card">
-          <p class="mark">3D</p>
-          <h3 id="scope-title">Scope</h3>
-          <p>3D Modeling And rendering</p>
-        </article>
-      </section>
-
-      <section class="gallery-zone" aria-label="Villa gallery">
-        <button class="gallery-button prev" type="button" aria-label="Scroll gallery left" data-gallery-prev>&lsaquo;</button>
-        <button class="gallery-button next" type="button" aria-label="Scroll gallery right" data-gallery-next>&rsaquo;</button>
-        <div class="gallery-viewport">
-          <div class="gallery-track">
-            <figure class="gallery-card">
-              <img src="./assets/goni/modern villa/img3.png" alt="Modern villa exterior perspective">
-            </figure>
-            <figure class="gallery-card is-wide">
-              <img src="./assets/goni/modern villa/img4.png" alt="Modern villa front facade view">
-            </figure>
-            <figure class="gallery-card">
-              <img src="./assets/goni/modern villa/img1.png" alt="Modern villa side perspective">
-            </figure>
-            <figure class="gallery-card is-wide">
-              <img src="./assets/goni/modern villa/img2.png" alt="Modern villa close front view">
-            </figure>
+          <div class="hero-visual" aria-hidden="true">
+            <div class="hero-caption">
+              <div>
+                <strong>Front elevation / hero perspective</strong>
+                <span>Modern Villa</span>
+              </div>
+              <div class="hero-index">01</div>
+            </div>
           </div>
         </div>
       </section>
-    </main>
+
+      <section class="gallery-section" aria-labelledby="gallery-title">
+        <div class="gallery-header">
+          <div class="section-copy">
+            <p class="eyebrow">Curated Frames</p>
+            <h2 id="gallery-title">Vertical glass and calm massing shape this modern villa.</h2>
+            <p>
+              The villa unfolds through broad terraces, controlled openings, and a measured facade rhythm that balances privacy, daylight, and outdoor living.
+            </p>
+          </div>
+          <div class="gallery-note">
+            Exterior perspectives are arranged to alternate between overview, facade emphasis, and elevated detail so the project reads like a premium case
+            study rather than a raw image strip.
+          </div>
+        </div>
+
+        <div class="gallery-grid">
+          <figure class="gallery-card tall">
+            <img src="./assets/goni/modern villa/img4.png" alt="Modern villa front facade view">
+          </figure>
+
+          <figure class="gallery-card landscape">
+            <img src="./assets/goni/modern villa/img1.png" alt="Modern villa side perspective">
+          </figure>
+
+          <article class="gallery-card detail">
+            <div class="detail-copy">
+              <div>
+                <p class="eyebrow">Exterior Detail</p>
+                <h3>Vertical glazing, crisp geometry, and a restrained luxury palette.</h3>
+                <p>
+                  The design emphasizes vertical glazing, layered massing, and quiet material contrast to give the residence a clear contemporary identity.
+                </p>
+              </div>
+              <div class="detail-meta">
+                <span>Facade</span>
+                <span>Approach</span>
+                <span>Visualization</span>
+              </div>
+            </div>
+            <div class="detail-image">
+              <img src="./assets/goni/modern villa/img3.png" alt="Modern villa roof and front approach view">
+            </div>
+          </article>
+        </div>
+      </section>
+    </div>
   </div>
-  <script>
-    const galleryZone = document.querySelector(".gallery-viewport");
-    const prevButton = document.querySelector("[data-gallery-prev]");
-    const nextButton = document.querySelector("[data-gallery-next]");
-
-    if (galleryZone && prevButton && nextButton) {
-      const scrollAmount = () => Math.round(galleryZone.clientWidth * 0.72);
-
-      prevButton.addEventListener("click", () => {
-        galleryZone.scrollBy({ left: -scrollAmount(), behavior: "smooth" });
-      });
-
-      nextButton.addEventListener("click", () => {
-        galleryZone.scrollBy({ left: scrollAmount(), behavior: "smooth" });
-      });
-    }
-  </script>
 </body>
 </html>

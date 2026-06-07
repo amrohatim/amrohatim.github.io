@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Tomasz Gajda Portfolio</title>
+  <title>Gith Osman Portfolio</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Nunito:wght@700&family=Open+Sans:wght@300;400&family=Raleway:wght@700;800&family=Roboto:wght@400&family=Varela&display=swap" rel="stylesheet">
@@ -401,7 +401,7 @@
     }
 
     .skills {
-      padding: 142px 0 210px;
+      padding: 12px 0 210px;
       text-align: center;
       background:
         radial-gradient(circle at center, rgba(0, 0, 0, 0.08) 0, rgba(255, 255, 255, 0) 54%),
@@ -528,12 +528,24 @@
     .portfolio-featured {
       width: min(1120px, calc(100% - 64px));
       margin: 0 auto 44px;
-      padding: 0 0 28px;
+      padding: 0 0 34px;
       border-bottom: 1px solid rgba(215, 215, 215, 0.28);
       color: #d7d7d7;
+      display: grid;
+      grid-template-columns: minmax(260px, 0.88fr) minmax(360px, 1.12fr);
+      gap: 28px;
+      align-items: stretch;
     }
 
-    .portfolio-featured .eyebrow {
+    .portfolio-featured-copy {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      min-height: 520px;
+      padding: 18px 8px 8px 0;
+    }
+
+    .portfolio-featured-copy .eyebrow {
       margin: 0 0 12px;
       font-size: 12px;
       font-weight: 700;
@@ -542,21 +554,40 @@
       color: rgba(215, 215, 215, 0.68);
     }
 
-    .portfolio-featured h3 {
+    .portfolio-featured-copy h3 {
       margin: 0 0 12px;
-      font-size: 42px;
-      line-height: 1;
-      letter-spacing: 0.08em;
+      font-family: "Raleway", sans-serif;
+      font-size: clamp(42px, 5vw, 60px);
+      line-height: 0.94;
+      letter-spacing: 0.04em;
       text-transform: uppercase;
       color: #fff;
     }
 
-    .portfolio-featured p {
-      max-width: 640px;
-      margin: 0 0 18px;
-      font-size: 16px;
-      line-height: 1.7;
+    .portfolio-featured-copy p {
+      max-width: 420px;
+      margin: 18px 0 0;
+      font-size: 18px;
+      line-height: 1.6;
       color: rgba(215, 215, 215, 0.84);
+    }
+
+    .portfolio-featured-meta {
+      padding-top: 26px;
+      margin-top: 30px;
+      border-top: 1px solid rgba(215, 215, 215, 0.18);
+    }
+
+    .portfolio-featured-meta .eyebrow {
+      margin-bottom: 16px;
+    }
+
+    .portfolio-featured-meta p {
+      max-width: 420px;
+      margin: 0 0 18px;
+      font-size: 15px;
+      line-height: 1.65;
+      color: rgba(215, 215, 215, 0.78);
     }
 
     .portfolio-featured .read-more-link {
@@ -575,6 +606,23 @@
       content: "→";
       font-size: 15px;
       line-height: 1;
+    }
+
+    .portfolio-featured-visual {
+      position: relative;
+      min-height: 520px;
+      overflow: hidden;
+      border-radius: 40px;
+      background:
+        linear-gradient(180deg, rgba(16, 14, 12, 0.878) 0%, rgba(16, 14, 12, 0.878) 100%),
+        #dcd5ca;
+      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.22);
+    }
+
+    .portfolio-featured-visual img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
     }
 
     .portfolio-grid {
@@ -900,10 +948,20 @@
 
       .portfolio-featured {
         width: calc(100% - 48px);
+        grid-template-columns: 1fr;
       }
 
-      .portfolio-featured h3 {
+      .portfolio-featured-copy {
+        min-height: auto;
+        padding-right: 0;
+      }
+
+      .portfolio-featured-copy h3 {
         font-size: 36px;
+      }
+
+      .portfolio-featured-visual {
+        min-height: 440px;
       }
 
       .services,
@@ -963,14 +1021,21 @@
         width: 100%;
         margin-bottom: 28px;
         padding-bottom: 22px;
+        gap: 20px;
       }
 
-      .portfolio-featured h3 {
+      .portfolio-featured-copy h3 {
         font-size: 28px;
       }
 
-      .portfolio-featured p {
+      .portfolio-featured-copy p,
+      .portfolio-featured-meta p {
         font-size: 15px;
+      }
+
+      .portfolio-featured-visual {
+        min-height: 320px;
+        border-radius: 26px;
       }
 
       .service,
@@ -1027,14 +1092,9 @@
   <div class="page">
     <header class="hero" id="top">
       <div class="hero-inner">
-        <a class="brand-mark" href="#top" aria-label="Tomasz Gajda">
-          <svg viewBox="0 0 64 54" aria-hidden="true">
-            <path d="M4 14H28V19H19V34H13V19H4V14Z" fill="currentColor"/>
-            <path d="M23 27L33 17H39L29 27L39 37H33L23 27Z" fill="currentColor"/>
-            <path d="M42 17H60V22H48V28H56V33H42V17Z" fill="currentColor"/>
-            <circle cx="8" cy="17" r="2" fill="currentColor"/>
-          </svg>
-        </a>
+     <div>
+      <img src="assets/goni/githLogo.png" width="120" height="70" alt="">
+     </div>
 
         <nav class="nav" aria-label="Primary">
           <a href="#about">About me</a>
@@ -1067,7 +1127,7 @@
           </div>
         </div>
 
-        <img class="hero-portrait" src="./assets/goni/hero-portrait.png" alt="Portrait of Tomasz Gajda">
+        <img class="hero-portrait" src="./assets/goni/hero-portrait.png" alt="Portrait of Gith Osman">
       </div>
     </header>
 
@@ -1205,13 +1265,96 @@
           <h2 class="portfolio-title-box" id="portfolio-title">Portfolio</h2>
         </div>
         <div class="portfolio-featured" aria-labelledby="modern-villa-title">
-          <p class="eyebrow">First Project</p>
-          <h3 id="modern-villa-title">Modern Villa</h3>
-          <p>
-            A contemporary residential project defined by layered massing, vertical glazing, and a calm facade language that balances privacy, daylight, and
-            outdoor living.
-          </p>
-          <a class="read-more-link" href="./modernVilla.html">Read More</a>
+          <div class="portfolio-featured-copy">
+            <div>
+              <p class="eyebrow">First Project</p>
+              <h3 id="modern-villa-title">Modern Villa</h3>
+              <p>
+                A contemporary residential project defined by layered massing, vertical glazing, and a calm facade language that balances privacy, daylight,
+                and outdoor living.
+              </p>
+            </div>
+            <div class="portfolio-featured-meta">
+              <p class="eyebrow">Residential Visualization</p>
+              <p>
+                The villa unfolds through broad terraces, measured openings, and restrained material contrast, giving the residence a refined architectural
+                presence.
+              </p>
+              <a class="read-more-link" href="./modernVilla.html">Read More</a>
+            </div>
+          </div>
+          <div class="portfolio-featured-visual">
+            <img src="./assets/goni/modern villa/main image.png" alt="Main exterior rendering of the Modern Villa project">
+          </div>
+        </div>
+        <div class="portfolio-featured" aria-labelledby="ibn-sina-title">
+          <div class="portfolio-featured-copy">
+            <div>
+              <p class="eyebrow">Second Project</p>
+              <h3 id="ibn-sina-title">Ibn Sina General Hospital</h3>
+              <p>
+                A healthcare project organized through clear zoning, environmental response, and a composed civic presence that supports accessibility,
+                circulation, and patient care.
+              </p>
+            </div>
+            <div class="portfolio-featured-meta">
+              <p class="eyebrow">Healthcare Architecture</p>
+              <p>
+                The hospital is shaped by site access, vegetation, and a disciplined medical layout, creating a calm healing environment with a strong public
+                identity.
+              </p>
+              <a class="read-more-link" href="./ibnSinaHospital.html">Read More</a>
+            </div>
+          </div>
+          <div class="portfolio-featured-visual">
+            <img src="./assets/goni/Ibn sina/main_image.png" alt="Main exterior rendering of the Ibn Sina General Hospital project">
+          </div>
+        </div>
+        <div class="portfolio-featured" aria-labelledby="school-project-title">
+          <div class="portfolio-featured-copy">
+            <div>
+              <p class="eyebrow">Third Project</p>
+              <h3 id="school-project-title">Elementary &amp; Middle School</h3>
+              <p>
+                An educational campus shaped by circular planning, shared courtyards, and integrated landscape, creating a softer daily environment for
+                learning, movement, and social connection.
+              </p>
+            </div>
+            <div class="portfolio-featured-meta">
+              <p class="eyebrow">Education Architecture</p>
+              <p>
+                The school combines curved academic wings, open circulation, and planted communal space to support visibility, environmental comfort, and an
+                inclusive campus identity.
+              </p>
+              <a class="read-more-link" href="./elementaryMiddleSchool.html">Read More</a>
+            </div>
+          </div>
+          <div class="portfolio-featured-visual">
+            <img src="./assets/goni/Eelementry_and_middle_school/main_image.png" alt="Main exterior rendering of the elementary and middle school project">
+          </div>
+        </div>
+        <div class="portfolio-featured" aria-labelledby="hotel-project-title">
+          <div class="portfolio-featured-copy">
+            <div>
+              <p class="eyebrow">Fourth Project</p>
+              <h3 id="hotel-project-title">4 Star Hotel</h3>
+              <p>
+                A hospitality project shaped through landscape, faceted volumes, and controlled circulation, creating a smooth and elegant arrival experience
+                with a calm resort character.
+              </p>
+            </div>
+            <div class="portfolio-featured-meta">
+              <p class="eyebrow">Hospitality Design</p>
+              <p>
+                The hotel combines luminous facades, open leisure surfaces, and a layered site plan to balance guest comfort, visual identity, and premium
+                architectural presence.
+              </p>
+              <a class="read-more-link" href="./fourStarHotel.html">Read More</a>
+            </div>
+          </div>
+          <div class="portfolio-featured-visual">
+            <img src="./assets/goni/4star_hotel/main_image.png" alt="Main exterior rendering of the 4 star hotel project">
+          </div>
         </div>
         <div class="portfolio-grid">
           <article class="project neon-top" aria-label="Abstract neon project"></article>
@@ -1284,7 +1427,7 @@
         </a>
       </div>
 
-      <p>@2020 Tomasz Gajda All Rights Reserved.</p>
+      <p>@2026 Gith Osman All Rights Reserved.</p>
     </footer>
   </div>
 </body>
